@@ -1,0 +1,3 @@
+C:\Users\remio\source\repos\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
+C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
+C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
