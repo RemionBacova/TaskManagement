@@ -1,0 +1,30 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>5191866e-2049-4690-b93a-005a63b4b4b5</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>DataBase.usqldbpack</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <Name>DataBase</Name>
+    <RootNamespace>DataBase</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="1- CreateReporting Structure.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="2-Create Reporting Stored Procedures.sql">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(USQLSDKPath)\USqlDBProject.targets" Condition="'$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\USqlDBProject.targets')" />
+</Project>
