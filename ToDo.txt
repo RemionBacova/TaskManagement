@@ -1,0 +1,17 @@
+Projekti Database permban te gjitha skriptet per ndertimin e db table dhe stored procedure. ( ketu do shtohen te gjitha skriptet me numerim te vazhdueshem ) kujdes cdo numer ka nje entitet, ose te gjitha procedurat te cilat i perkasin entitetit.
+momentalisht ka vetem 2 tabela per exe file qe po bejme.
+
+
+Task Management eshte exe per klientin ( qe po punojme tani )
+
+Task Management Interface eshte nderfaqeja ne Blazor
+
+Web API eshte ashtu si e ka dhe emrin.
+
+
+Kemi parasysh :
+
+lidhja me db si per exe si per blazor realizohet me web api
+
+duhet te trasformohet (realizohet tani web api) dhe me pas lidhja e exe dhe platformes.
+
