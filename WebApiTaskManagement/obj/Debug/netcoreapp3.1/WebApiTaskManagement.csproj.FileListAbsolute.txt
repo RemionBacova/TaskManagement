@@ -32,3 +32,4 @@ C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\obj\Debug\netcor
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.dll
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
+C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
