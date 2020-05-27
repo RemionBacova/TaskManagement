@@ -50,15 +50,7 @@ namespace TaskManagement
             this.manager.ThreadManagetStop();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-            this.manager.Dispose();
-            this.Close();
-            this.Dispose();
-            
-        }
-
+   
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //Double clicl to get windows in normal state
@@ -71,16 +63,36 @@ namespace TaskManagement
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.Crimson;
-            button2.BackColor = Color.LightSkyBlue;
-            button1.Text = "Running";
+            System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#60B0F4");
+            button1.BackColor = Color.Gray;
+            pictureBox2.BackColor = Color.Gray;
+            button2.BackColor = col;
+            pictureBox3.BackColor = col;
+            button1.Enabled = false;
+            button2.Enabled = true;
+         
         }
 
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.LightSkyBlue;
-            button2.BackColor = Color.Crimson;
-            button1.Text = "Start";
+            System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#60B0F4");
+            button1.BackColor = col;
+            button2.BackColor = Color.Gray;
+            pictureBox3.BackColor = Color.Gray;
+            pictureBox2.BackColor = col;
+
+            button1.Enabled = true;
+            button2.Enabled = false;
+        }
+
+   
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.manager.Dispose();
+            this.Close();
+            this.Dispose();
+
         }
     }
 }

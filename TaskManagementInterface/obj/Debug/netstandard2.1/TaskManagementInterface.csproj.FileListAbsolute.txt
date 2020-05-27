@@ -868,6 +868,7 @@ C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\bin\Debug\netstanda
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Encodings.Web.dll
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Json.dll
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csprojAssemblyReference.cache
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfoInputs.cache
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfo.cs
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csproj.CoreCompileInputs.cache
