@@ -11,5 +11,6 @@ namespace WebApiTaskManagement.Models
         public int TotalSeconds { get; set; }
         
         public string MachineHash { get; set; }
+        public string GUID { get; set; }
     }
 }

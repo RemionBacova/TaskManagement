@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace TaskManagement
 {
@@ -14,6 +16,8 @@ namespace TaskManagement
         [STAThread]
         static void Main()
         {
+
+            var guid = Guid.NewGuid();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

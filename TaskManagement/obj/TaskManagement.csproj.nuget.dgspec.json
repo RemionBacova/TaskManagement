@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj": {}
+    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj": {
+    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
         "projectName": "TaskManagement",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[12.0.2, )"
             },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
             "System.Management": {
               "target": "Package",
               "version": "[4.7.0, )"
@@ -73,12 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

@@ -4,64 +4,83 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.PortableExecutable;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskManagement.Models;
-using TaskManagement.Models.MachineID;
-using TaskManagement.Models.Reporting;
-using WebApiTaskManagement.Models;
+
 
 namespace TaskManagement
 {
     public partial class Form1 : Form
     {
-        Machines p;
-        ReportingModel q; 
+        ThreadManager manager;
 
         public Form1()
         {
             InitializeComponent();
-            p = new Machines();
-            q = new ReportingModel();
+            this.manager = new ThreadManager();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            GetMachineData();
-            timer1.Start();
+            //NotifyIcon
+            ShowIcon = false;
+            notifyIcon1.Visible = true;
+            notifyIcon1.BalloonTipText = "Application start running";
+            notifyIcon1.BalloonTipTitle = " TASK MANAGEMENT | SITEL";
+            notifyIcon1.ShowBalloonTip(100);
+            this.Hide();
+            //ButtonColor
+           
+            this.manager.ThreadManagerStart();
         }
 
-
-        private async void GetMachineData()
+        private void button2_Click(object sender, EventArgs e)
         {
-            #region code
-
-            p.MachineName = Environment.MachineName;
-            p.Osversion = Environment.MachineName;
-            p.UserDomainName = Environment.UserDomainName;
-            p.UserName = Environment.UserName;
-            p.Version = Environment.Version.ToString();
-            p.MachineHash = MachineIdModel.GetFingerPrint();
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/index.html");
-                var mashi = JsonConvert.SerializeObject(p);
-                var content = new StringContent(mashi, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync("api/Machines", content);
-            }
-            #endregion
-
+          
+            
+            this.manager.ThreadManagetStop();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
-            q.SaveandShowDetails();
+
+            this.manager.Dispose();
+            this.Close();
+            this.Dispose();
+            
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //Double clicl to get windows in normal state
+            ShowInTaskbar = true;
+            notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
+            this.Show();
+            
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            button1.BackColor = Color.Crimson;
+            button2.BackColor = Color.LightSkyBlue;
+            button1.Text = "Running";
+        }
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
+        {
+            button1.BackColor = Color.LightSkyBlue;
+            button2.BackColor = Color.Crimson;
+            button1.Text = "Start";
         }
     }
 }

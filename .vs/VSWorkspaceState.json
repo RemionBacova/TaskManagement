@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TaskManagement",
+    "\\WebApiTaskManagement"
   ],
-  "SelectedNode": "\\WebApiTaskManagement",
+  "SelectedNode": "\\TaskManagement\\TaskManagement.sln",
   "PreviewInSolutionExplorer": false
 }

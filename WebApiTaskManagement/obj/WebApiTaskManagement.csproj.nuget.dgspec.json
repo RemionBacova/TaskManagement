@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
+    "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
+    "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
         "projectName": "WebApiTaskManagement",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\WebApiTaskManagement\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -77,12 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

@@ -22,7 +22,7 @@ namespace WebApiTaskManagement.Repository
         {
             using ( SqlConnection sql = new SqlConnection(_constring))
             {
-                using (SqlCommand cmd = new SqlCommand("spi_tbl_machines", sql))
+                using (SqlCommand cmd = new SqlCommand("spi_tbl_Machines", sql))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter ("@MachineName",machines.MachineName));

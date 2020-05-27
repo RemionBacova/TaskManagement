@@ -26,6 +26,11 @@ namespace WebApiTaskManagement.Controllers
         public async Task spi_tbl_MachineReporting([FromBody] MachineReporting machinerep)
         {
             await _repository.spi_tbl_MachineReporting(machinerep);
-        }
+        
+        
+        
+        
+        
+          }
     }
 }
