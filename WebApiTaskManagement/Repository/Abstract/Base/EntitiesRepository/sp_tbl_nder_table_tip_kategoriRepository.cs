@@ -17,7 +17,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task spi_nder_tip_kateogori(tbl_nder_table_tip_kategori ntk, string tablename)
+        public async Task spi_nder_tip_kateogori(tbl_nder_table_tip_kategoriModel ntk, string tablename)
         {
 
 
@@ -42,7 +42,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
         }
 
-        public async Task spu_nder_tip_kateogori(tbl_nder_table_tip_kategori ntk, string tablename)
+        public async Task spu_nder_tip_kateogori(tbl_nder_table_tip_kategoriModel ntk, string tablename)
         {
             using (SqlConnection sql = new SqlConnection(_constring))
             {

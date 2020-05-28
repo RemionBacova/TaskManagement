@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiTaskManagement.Models.Abstract
 {
-    public abstract class tbl_nder_table_tip_kategori
+    public abstract class tbl_nder_table_tip_kategoriModel
     {
         [PrimaryKey]
         public int nrrendor{ get; set; }
