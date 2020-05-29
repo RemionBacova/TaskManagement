@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace WebApiTaskManagement.Models.Abstract.Base
 {
-    public abstract class tbl_table_Model
+    public abstract class tbl_TABLE_Model
     {
         [PrimaryKey]
-        public int nrrendor { get; set; }
-        public int? id_sup { get; set; }
-        public int? tip_id { get; set; }
-        public int? kodi { get; set; }
-        public string Emertimi { get; set; }
-        public string pershkrimi { get; set; }
-        public string Emertimiang { get; set; }
-        public string pershkrimiang { get; set; }
-        public bool? Aktiv { get; set; }
-        public int? Perdorues_id { get; set; }
-        public int? kategoria { get; set; }
-        public bool? kompleks { get; set; }
+          public int uid { get; set; }       
+          public int? uid_sup { get; set; }
+          public int? type_uid { get; set; }
+          public string code { get; set; }
+          public string nomination { get; set; }
+          public string description { get; set; }
+          public string description1 { get; set; }
+          public string description2 { get; set; }
+          public bool? active { get; set; }
+          public int? user_uid { get; set; }
+          public int? category { get; set; }
+          public bool? complex { get; set; }
     }
 }
