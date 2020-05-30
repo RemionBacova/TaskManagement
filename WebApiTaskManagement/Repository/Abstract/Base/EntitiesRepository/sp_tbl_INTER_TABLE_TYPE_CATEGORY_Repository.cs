@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +11,7 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    public class sp_tbl_INTER_TABLE_TYPE_CATEGORY_Repository
+    public abstract class sp_tbl_INTER_TABLE_TYPE_CATEGORY_Repository
     {
         private readonly string _constring;
         public sp_tbl_INTER_TABLE_TYPE_CATEGORY_Repository(IConfiguration configuration)
@@ -17,27 +19,26 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task spi_nder_tip_kateogori(tbl_INTER_TABLE_TYPE_CATEGORY_Model ntk, string tablename)
+        public async Task<IEnumerable<tbl_INTER_TABLE_TYPE_CATEGORY_Model>> spi_nder_tip_kateogori(tbl_INTER_TABLE_TYPE_CATEGORY_Model ntk, string tablename)
         {
 
 
 
-            using (SqlConnection sql = new SqlConnection(_constring))
+            using (IDbConnection sql = new SqlConnection(_constring))
             {
-                using (SqlCommand cmd = new SqlCommand("spI_tbl_nder_" + tablename + "_tip_kategori", sql))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                string readSp = "spI_tbl_INTER_"+tablename+"_TYPE_CATEGORY";
+                var queryParameters = new DynamicParameters();
+               
                   
-                    cmd.Parameters.Add(new SqlParameter("@" +tablename+"_type_uid", ntk.table_type_uid));
-                    cmd.Parameters.Add(new SqlParameter("@" + tablename + "_type_category_uid", ntk.table_type_category_uid));
-                    cmd.Parameters.Add(new SqlParameter("@user_uid", ntk.user_uid));
+                    queryParameters.Add("@" +tablename+"_type_uid", ntk.table_type_uid);
+                    queryParameters.Add("@" + tablename + "_type_category_uid", ntk.table_type_category_uid);
+                    queryParameters.Add("@user_uid", ntk.user_uid);
 
 
-                    await sql.OpenAsync();
-                    await cmd.ExecuteNonQueryAsync();
-                    return;
+                return await sql.QueryAsync<tbl_INTER_TABLE_TYPE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
-                }
+            }
 
             }
         }
@@ -51,4 +52,4 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
         }
-    }
+    

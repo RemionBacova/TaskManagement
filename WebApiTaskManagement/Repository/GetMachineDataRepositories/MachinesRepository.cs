@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Reflection.PortableExecutable;
 using System.Threading.Tasks;
@@ -18,29 +20,31 @@ namespace WebApiTaskManagement.Repository
         }
 
 
-        public async Task spi_tbl_Machines(Machines machines)
+        public async Task<IEnumerable<Machines>> spi_tbl_Machines(Machines m)
         {
-            using ( SqlConnection sql = new SqlConnection(_constring))
+            
+            using ( IDbConnection sql = new SqlConnection(_constring))
             {
-                using (SqlCommand cmd = new SqlCommand("spi_tbl_Machines", sql))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter ("@MachineName",machines.MachineName));
-                    cmd.Parameters.Add(new SqlParameter("@OsVersion", machines.Osversion));
-                    cmd.Parameters.Add(new SqlParameter("@UserDomainName", machines.UserDomainName));
-                    cmd.Parameters.Add(new SqlParameter("@UserName", machines.UserName));
-                    cmd.Parameters.Add(new SqlParameter("@Version", machines.Version));
-                    cmd.Parameters.Add(new SqlParameter("@MachineHash", machines.MachineHash));
-                    await sql.OpenAsync();
-                    await cmd.ExecuteNonQueryAsync();
-                    return;
+
+                string readSp = "spi_tbl_Machines";
+                var queryParameters = new DynamicParameters();
+
+              
+                    queryParameters.Add("@MachineName",m.MachineName);
+                    queryParameters.Add("@OsVersion",m.Osversion);
+                    queryParameters.Add("@UserDomainName",m.UserDomainName);
+                    queryParameters.Add("@UserName",m.UserName);
+                    queryParameters.Add("@Version",m.Version);
+                    queryParameters.Add("@MachineHash",m.MachineHash);
+
+                return await sql.QueryAsync<Machines>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
                 }
 
             }
-       
+    
 
 
         }
     }
-}
+

@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    public class sp_tbl_TABLE_TYPE_INFO_Repository
+    public  abstract class sp_tbl_TABLE_TYPE_INFO_Repository
     {
         private readonly string _constring;
         public sp_tbl_TABLE_TYPE_INFO_Repository(IConfiguration configuration)
@@ -16,159 +18,156 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task spi_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spi_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
         {
 
 
 
-            using (SqlConnection sql = new SqlConnection(_constring))
+            using (IDbConnection sql = new SqlConnection(_constring))
             {
-                using (SqlCommand cmd = new SqlCommand("spI_tbl_" + tablename + "_TYPE_INFO", sql))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@uid_sup", ti.uid_sup));
-                    cmd.Parameters.Add(new SqlParameter("@type_uid", ti.type_uid));
-                    cmd.Parameters.Add(new SqlParameter("@nomination", ti.nomination));
-                    cmd.Parameters.Add(new SqlParameter("@description", ti.description));
-                    cmd.Parameters.Add(new SqlParameter("@description1", ti.description1));
-                    cmd.Parameters.Add(new SqlParameter("@description2", ti.description2));
-                    cmd.Parameters.Add(new SqlParameter("@property", ti.property));
-                    cmd.Parameters.Add(new SqlParameter("@mandatory", ti.mandatory));
-                    cmd.Parameters.Add(new SqlParameter("@queue", ti.queue));
-                    cmd.Parameters.Add(new SqlParameter("@db", ti.db));
-                    cmd.Parameters.Add(new SqlParameter("@file", ti.file));
-                    cmd.Parameters.Add(new SqlParameter("@user_uid", ti.user_uid));
+
+                string readSp = "spI_tbl_" + tablename + "_TYPE_INFO";
+                var queryParameters = new DynamicParameters();
+
+                    queryParameters.Add("@uid_sup", ti.uid_sup);
+                    queryParameters.Add("@type_uid", ti.type_uid);
+                    queryParameters.Add("@nomination", ti.nomination);
+                    queryParameters.Add("@description", ti.description);
+                    queryParameters.Add("@description1", ti.description1);
+                    queryParameters.Add("@description2", ti.description2);
+                    queryParameters.Add("@property", ti.property);
+                    queryParameters.Add("@mandatory", ti.mandatory);
+                    queryParameters.Add("@queue", ti.queue);
+                    queryParameters.Add("@db", ti.db);
+                    queryParameters.Add("@file", ti.file);
+                    queryParameters.Add("@user_uid", ti.user_uid);
 
 
-                    await sql.OpenAsync();
-                    await cmd.ExecuteNonQueryAsync();
-                    return;
+                return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
-                }
             }
-        }
+            }
+        
 
 
-        public async Task spu_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spu_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
         {
 
 
-            using (SqlConnection sql = new SqlConnection(_constring))
+            using (IDbConnection sql = new SqlConnection(_constring))
             {
-                using (SqlCommand cmd = new SqlCommand("spU_tbl_" + tablename + "_TYPE_INFO", sql))
-                {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new SqlParameter("@UID", ti.uid));
+                string readSp = "spU_tbl_" + tablename + "_TYPE_INFO";
+                var queryParameters = new DynamicParameters();
+
+                queryParameters.Add("@UID", ti.uid);
 
                     if (ti.uid_sup is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_UID_SUP", 1));
+                        queryParameters.Add("@CONSIDERNULL_UID_SUP", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@UID_SUP", ti.uid_sup));
+                        queryParameters.Add("@UID_SUP", ti.uid_sup);
                     }
 
                     if (ti.type_uid is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_TYPE_UID", 1));
+                        queryParameters.Add("@CONSIDERNULL_TYPE_UID", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@tip_id", ti.type_uid));
+                        queryParameters.Add("@tip_id", ti.type_uid);
                     }
 
                     if (ti.nomination is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_NOMINATION", 1));
+                        queryParameters.Add("@CONSIDERNULL_NOMINATION", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@NOMINATION", ti.nomination));
+                        queryParameters.Add("@NOMINATION", ti.nomination);
                     }
                     if (ti.description is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_DESCRIPTION", 1));
+                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@DESCRIPTION", ti.description));
+                        queryParameters.Add("@DESCRIPTION", ti.description);
                     }
                     if (ti.description1 is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_DESCRIPTION1", 1));
+                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION1", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@DESCRIPTION1", ti.description1));
+                        queryParameters.Add("@DESCRIPTION1", ti.description1);
                     }
                     if (ti.description2 is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_DESCRIPTION2", 1));
+                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION2", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@DESCRIPTION2", ti.description2));
+                        queryParameters.Add("@DESCRIPTION2", ti.description2);
                     }
 
                     if (ti.property is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_PROPERTY", 1));
+                        queryParameters.Add("@CONSIDERNULL_PROPERTY", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@PROPERTY", ti.property));
+                        queryParameters.Add("@PROPERTY", ti.property);
                     }
                     if (ti.mandatory is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_MANDATORY", 1));
+                        queryParameters.Add("@CONSIDERNULL_MANDATORY", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@MANDATORY", ti.mandatory));
+                        queryParameters.Add("@MANDATORY", ti.mandatory);
                     }
                     if (ti.queue is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_QUEUE", 1));
+                        queryParameters.Add("@CONSIDERNULL_QUEUE", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@QUEUE", ti.queue));
+                        queryParameters.Add("@QUEUE", ti.queue);
                     }
                
                     if (ti.file is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_FILE", 1));
+                        queryParameters.Add("@CONSIDERNULL_FILE", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@FILE", ti.file));
+                        queryParameters.Add("@FILE", ti.file);
                     }
                     if (ti.active is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_ACTIVE", 1));
+                        queryParameters.Add("@CONSIDERNULL_ACTIVE", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@ACTIVE", ti.active));
+                        queryParameters.Add("@ACTIVE", ti.active);
                     }
 
                     if (ti.user_uid is null)
                     {
-                        cmd.Parameters.Add(new SqlParameter("@CONSIDERNULL_USER_UID", 1));
+                        queryParameters.Add("@CONSIDERNULL_USER_UID", 1);
                     }
                     else
                     {
-                        cmd.Parameters.Add(new SqlParameter("@USER_UID", ti.user_uid));
+                        queryParameters.Add("@USER_UID", ti.user_uid);
                     }
 
 
-                    await sql.OpenAsync();
-                    await cmd.ExecuteNonQueryAsync();
-                    return;
+                return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
-                }
+            }
 
             }
 
@@ -178,4 +177,4 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
     }
-}
+
