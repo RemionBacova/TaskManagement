@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ServiceStack.DataAnnotations;
 using WebApiTaskManagement.Models.Abstract.Base;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
 
@@ -15,12 +16,12 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         private sp_tbl_TABLE_Repository _repository;
 
         private string tableName = "";
-     
 
 
-        public tbl_TABLE_ControllerAbstract(sp_tbl_TABLE_Repository repository,string tableName)
+
+        public tbl_TABLE_ControllerAbstract(sp_tbl_TABLE_Repository repository, string tableName)
         {
-            this._repository = repository; 
+            this._repository = repository;
             this.tableName = tableName;
 
         }
@@ -37,24 +38,31 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             await _repository.spu_tbl_table(modelName, tableName);
         }
 
-        [HttpGet ("{tableName}")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRec( )
+        [HttpGet("{tableName}")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRec()
         {
-           return await _repository.SelectAllActiveRec(tableName);
-            
+            return await _repository.SelectAllActiveRec(tableName);
+
         }
 
         [HttpGet("{UID}")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecByUID( string UID)
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecByUID(string UID)
         {
-            return await _repository.SelectAllActiveRecByUID(tableName,UID);
+            return await _repository.SelectAllActiveRecByUID(tableName, UID);
 
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow( tbl_TABLE_Model modelName, string UID)
+        public async Task<Boolean> DeleteRow(tbl_TABLE_Model modelName, string UID)
         {
-            return await _repository.DeleteRow(tableName,UID);
+            return await _repository.DeleteRow(tableName, UID);
+
+        }
+
+        [HttpGet("GetByParameters")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecBySup(string? uid_sup, string? active, string? nomination, string? description)
+        {
+            return await _repository.SelectAllActiveRecBySup(tableName, uid_sup,active,nomination,description);
 
         }
 
