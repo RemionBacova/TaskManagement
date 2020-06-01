@@ -1075,6 +1075,7 @@ C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstanda
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\staticwebassets\TaskManagementInterface.StaticWebAssets.xml
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.dll
 C:\Users\User\Desktop\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.pdb
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\oAIlpv09S-0jXnze744E1V88Oaw8Ql1x3Alw0hsVYdw=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\Properties\launchSettings.json
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\TaskManagementInterface.StaticWebAssets.xml
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\TaskManagementInterface.dll
@@ -1227,6 +1228,7 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Encodings.Web.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Json.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Threading.Tasks.Extensions.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csprojAssemblyReference.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfoInputs.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfo.cs
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csproj.CoreCompileInputs.cache
@@ -1303,7 +1305,6 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\K3YFmrW2bw2nAvgBqWJvZD2KN9q1vRVzOyp6AOSojMo=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\X3n9B0GKwWD1R7H_6ydrvoazqRQrQRjS_NH5VG6VJNY=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\zNP4aHLW-rhi6gW72YV8xGy1rLa_RQZtwvWEpiwBSrs=.hash
-C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\oAIlpv09S-0jXnze744E1V88Oaw8Ql1x3Alw0hsVYdw=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\K3dpli228kQQ75WVqoiIdmn8u8q8gZHixcWDdCHCRgU=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\dwm_rKImjhxtOmHHVpSxOgl2oh2R26xOWihLaZSv7Vs=.hash
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\integrity\6yXbPGuDNBhkpGyIso_8cbkPxPtNmv1Sv3P0dDul7no=.hash
