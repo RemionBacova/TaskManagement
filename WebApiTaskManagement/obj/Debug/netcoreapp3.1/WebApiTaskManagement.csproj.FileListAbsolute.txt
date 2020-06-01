@@ -172,3 +172,4 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache

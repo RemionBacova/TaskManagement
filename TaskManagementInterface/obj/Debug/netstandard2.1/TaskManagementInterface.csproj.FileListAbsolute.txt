@@ -1228,7 +1228,6 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Encodings.Web.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Text.Json.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\bin\Debug\netstandard2.1\System.Threading.Tasks.Extensions.dll
-C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csprojAssemblyReference.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfoInputs.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.AssemblyInfo.cs
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagementInterface\obj\Debug\netstandard2.1\TaskManagementInterface.csproj.CoreCompileInputs.cache

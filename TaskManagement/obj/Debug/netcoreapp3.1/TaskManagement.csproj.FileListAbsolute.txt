@@ -105,7 +105,6 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
-C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
