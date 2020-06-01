@@ -166,7 +166,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return true;
             }
         }
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? active, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? nomination, string? description)
         {
            
                 using (IDbConnection db = new SqlConnection(_constring))
@@ -182,15 +182,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     {
                         queryParameters.Add("@uid_sup", uid_sup);
                     }
-
-                    if (active is null)
-                    {
-                        queryParameters.Add("active", 1);
-                    }
-                    else
-                    {
-                        queryParameters.Add("@active", active);
-                    }
+                   
                     if (nomination is null)
                     {
                         queryParameters.Add("@nomination", "%");
