@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using WebApiTaskManagement.Models.Abstract.Base; 
 
@@ -43,9 +44,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
-            }
-        
-
+            }   
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spu_Tip_Info_Ch(tbl_TABLE_TYPE_INFO_CH_Model tich, string tablename)
         {
 
@@ -132,9 +131,89 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
 
             }
-
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRec(string tableName)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveRec";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
         }
 
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecByUID(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveRecByUID";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                queryParameters.Add("@uid", UID);
+                return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<Boolean> DeleteRow(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "DeleteRow";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@TABLE", "tbl_"+tableName+"TYPE_INFO_CH");
+                queryParameters.Add("@UID", UID);
+                 await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return true;
+            }
+        }
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? active, string? nomination, string? description)
+        {
+           
+                using (IDbConnection db = new SqlConnection(_constring))
+                {
+                    string readSp = "SelectAllActiveRecBySup";
+                    var queryParameters = new DynamicParameters();
+                    queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                    if (uid_sup is null)
+                    {
+                        queryParameters.Add("@uid_sup", "");
+                    }
+                    else
+                    {
+                        queryParameters.Add("@uid_sup", uid_sup);
+                    }
+
+                    if (active is null)
+                    {
+                        queryParameters.Add("active", 1);
+                    }
+                    else
+                    {
+                        queryParameters.Add("@active", active);
+                    }
+                    if (nomination is null)
+                    {
+                        queryParameters.Add("@nomination", "%");
+                    }
+                    else
+                    {
+                        queryParameters.Add("@nomination", nomination);
+                    }
+                    if (description is null)
+                    {
+                        queryParameters.Add("@description", "%");
+                    }
+                    else
+                    {
+                        queryParameters.Add("@description", description);
+                    }
+
+                    return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
     }
+
+
+}
 

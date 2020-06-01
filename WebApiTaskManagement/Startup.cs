@@ -8,9 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using WebApiTaskManagemenk.Repository.Base.EntitiesRepository;
 using WebApiTaskManagement.Repository;
-
+using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 
 namespace WebApiTaskManagement
 {
@@ -28,6 +29,12 @@ namespace WebApiTaskManagement
             
             services.AddScoped<MachinesRepository>();
             services.AddScoped<MachineReportingRepository>();
+            services.AddScoped<sp_tbl_TABLE_CATEGORY_Repository>();
+            services.AddScoped<sp_tbl_TABLE_Repository>();
+
+
+
+
 
             services.AddMvc();
             //Added Smagger service and also different metadata

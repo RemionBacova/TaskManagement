@@ -103,6 +103,11 @@ C:\Remion Documents\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\
 C:\Remion Documents\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.dll
 C:\Remion Documents\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Remion Documents\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfo.cs
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -125,12 +130,6 @@ C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfoInputs.cache
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfo.cs
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.RazorTargetAssemblyInfo.cache
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csproj.CopyComplete
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\staticwebassets\WebApiTaskManagement.StaticWebAssets.Manifest.cache
@@ -138,3 +137,4 @@ C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.dll
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
+C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache

@@ -11,10 +11,10 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    public abstract class sp_tbl_INTER_TABLE_TYPE_CATEGORY_Repository
+    public abstract class sp_tbl_INTER_TABLE_TYPE_CATEGORYRepository
     {
         private readonly string _constring;
-        public sp_tbl_INTER_TABLE_TYPE_CATEGORY_Repository(IConfiguration configuration)
+        public sp_tbl_INTER_TABLE_TYPE_CATEGORYRepository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
