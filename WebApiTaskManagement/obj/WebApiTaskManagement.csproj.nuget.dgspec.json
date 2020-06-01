@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
+    "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
+    "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
         "projectName": "WebApiTaskManagement",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\obj\\",
+        "projectPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "packagesPath": "C:\\Users\\xhova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\WebApiTaskManagement\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\xhova\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -77,6 +73,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

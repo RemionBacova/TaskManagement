@@ -10,7 +10,7 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    public  abstract class sp_tbl_TABLE_TYPE_INFO_Repository
+    public  class sp_tbl_TABLE_TYPE_INFO_Repository
     {
         private readonly string _constring;
         public sp_tbl_TABLE_TYPE_INFO_Repository(IConfiguration configuration)
@@ -20,9 +20,6 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spi_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
         {
-
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -47,9 +44,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
             }
             }
+
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spu_Tip_Info(tbl_TABLE_TYPE_INFO_Model ti, string tablename)
         {
-
 
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -167,6 +164,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
 
             }
+
+
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> SelectAllActiveRec(string tableName)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -200,7 +199,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return true;
             }
         }
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? active, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? nomination, string? description)
         {
            
                 using (IDbConnection db = new SqlConnection(_constring))
@@ -215,15 +214,6 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     else
                     {
                         queryParameters.Add("@uid_sup", uid_sup);
-                    }
-
-                    if (active is null)
-                    {
-                        queryParameters.Add("active", 1);
-                    }
-                    else
-                    {
-                        queryParameters.Add("@active", active);
                     }
                     if (nomination is null)
                     {

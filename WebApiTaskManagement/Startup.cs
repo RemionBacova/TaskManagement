@@ -25,13 +25,12 @@ namespace WebApiTaskManagement
         public void ConfigureServices(IServiceCollection services)
         {
            
-        
             
             services.AddScoped<MachinesRepository>();
             services.AddScoped<MachineReportingRepository>();
             services.AddScoped<sp_tbl_TABLE_CATEGORY_Repository>();
             services.AddScoped<sp_tbl_TABLE_Repository>();
-
+            services.AddScoped<sp_tbl_TABLE_TYPE_INFO_Repository>();
 
 
 

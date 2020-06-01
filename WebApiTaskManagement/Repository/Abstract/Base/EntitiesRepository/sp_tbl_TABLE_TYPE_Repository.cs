@@ -10,7 +10,7 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
 {
-    public abstract class sp_tbl_TABLE_TYPE_Repository
+    public  class sp_tbl_TABLE_TYPE_Repository
     {
         private readonly string _constring;
         public sp_tbl_TABLE_TYPE_Repository(IConfiguration configuration)

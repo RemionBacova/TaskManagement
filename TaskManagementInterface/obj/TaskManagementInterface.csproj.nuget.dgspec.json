@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj": {}
+    "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj": {
+    "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
+        "projectUniqueName": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
         "projectName": "TaskManagementInterface",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\obj\\",
+        "projectPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
+        "packagesPath": "C:\\Users\\xhova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagementInterface\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\xhova\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
