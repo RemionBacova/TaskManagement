@@ -18,11 +18,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
+        #region SPI TABLE  
         public async Task<IEnumerable<tbl_TABLE_Model>> spi_tbl_table(tbl_TABLE_Model tab, string tableName)
         {
-
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -46,11 +44,11 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
             }
         }
+        #endregion
 
+        #region SPU TABLE
         public async Task<IEnumerable<tbl_TABLE_Model>> spu_tbl_table(tbl_TABLE_Model tab, string tableName)
         {
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -154,7 +152,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
 
         }
+        #endregion
 
+        #region SELECT ALL
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRec( string tableName)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -165,19 +165,24 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+        #endregion
 
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecByUID(string tableName, string UID)
-        {
-            using (IDbConnection db = new SqlConnection(_constring))
-            {
-                string readSp = "SelectAllActiveRecByUID";
-                var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName);
-                queryParameters.Add("@uid", UID);
-                return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-            }
-        }
+        #region SELECT BY ID
+                public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string tableName, string UID)
+                {
+                    using (IDbConnection db = new SqlConnection(_constring))
+                    {
+                        string readSp = "SelectActiveRecByUID";
+                        var queryParameters = new DynamicParameters();
+                        queryParameters.Add("@table", "tbl_" + tableName);
+                        queryParameters.Add("@uid", UID);
+                        return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                    }
+                }
+        #endregion
 
+
+        #region DELETE ROW
         public async Task<Boolean> DeleteRow(string tableName, string UID )
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -190,13 +195,16 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return true;
             }
         }
+        #endregion
 
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? active, string? nomination, string? description)
+        
+        #region SELECT BY PARAMETERS
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? active, string? nomination, string? description)
         {
             
                 using (IDbConnection db = new SqlConnection(_constring))
                 {
-                    string readSp = "SelectAllActiveRecBySup";
+                    string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
                     queryParameters.Add("@table", "tbl_" + tableName);
                     if (uid_sup is null)
@@ -236,8 +244,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
                 }
             }
-
-        }
+        #endregion
     }
+}
 
 

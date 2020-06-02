@@ -20,11 +20,9 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
+        #region SPI KATEGORIA
         public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> spi_Kateogria(tbl_TABLE_CATEGORY_Model k, string tablename)
         {
-
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -46,14 +44,12 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
 
             }
         }
+        #endregion
 
 
-
-
+        #region SPU KATEGORIA
         public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> spu_Kateogria(tbl_TABLE_CATEGORY_Model k, string tablename)
         {
-
-
 
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -144,8 +140,9 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
 
             }
         }
+        #endregion
 
-
+        #region SELECT ALL
         public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectAllActiveRec(string tableName)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -156,17 +153,24 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectAllActiveRecByUID(string tableName, string UID)
+        #endregion
+
+        #region SELECT BY ID
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByUID(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
-                string readSp = "SelectAllActiveRecByUID";
+                string readSp = "SelectActiveRecByUID";
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table", "tbl_" + tableName + "_CATEGORY");
                 queryParameters.Add("@uid", UID);
                 return await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        #endregion
+
+        #region DELETE ROW
         public async Task<Boolean> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -179,12 +183,14 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
                 return true;
             }
         }
+        #endregion
 
-        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? active, string? nomination, string? description)
+        #region SELECT BY PARAMETERS
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? active, string? nomination, string? description)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
-                string readSp = "SelectAllActiveRecBySup";
+                string readSp = "SelectActiveRecByParameters";
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table", "tbl_" + tableName + "_CATEGORY");
                 if (uid_sup is null)
@@ -224,7 +230,7 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-
+        #endregion
 
 
 

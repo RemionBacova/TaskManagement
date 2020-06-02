@@ -17,11 +17,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
-
+        #region SPI NDER TABLE KATEGORI
         public async Task<IEnumerable<tbl_INTER_TABLE_CATEGORY_Model>> spi_nder_table_kategori(tbl_INTER_TABLE_CATEGORY_Model nt, string tablename)
         {
-
-
 
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -40,6 +38,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
 
         }
+        #endregion
     }
 }
 

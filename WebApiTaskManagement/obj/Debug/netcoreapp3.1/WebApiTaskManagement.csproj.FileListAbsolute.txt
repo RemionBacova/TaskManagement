@@ -138,3 +138,9 @@ C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
 C:\Users\User\Desktop\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfoInputs.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfo.cs
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.MvcApplicationPartsAssemblyInfo.cache

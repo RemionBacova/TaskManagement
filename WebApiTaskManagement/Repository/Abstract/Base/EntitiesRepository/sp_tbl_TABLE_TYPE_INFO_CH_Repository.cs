@@ -19,12 +19,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
-
+        #region SPI TIP INFO
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spi_Tip_Info_Ch(tbl_TABLE_TYPE_INFO_CH_Model tich, string tablename)
         {
-
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -44,11 +41,13 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
-            }   
+            }
+#endregion
+
+
+        #region SPU TIP INFO
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spu_Tip_Info_Ch(tbl_TABLE_TYPE_INFO_CH_Model tich, string tablename)
         {
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -130,7 +129,10 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
             }
 
-            }
+         }
+        #endregion
+
+        #region SELECT ALL
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRec(string tableName)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -141,19 +143,23 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+        #endregion
 
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecByUID(string tableName, string UID)
+        #region SELECT BY ID
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByUID(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
-                string readSp = "SelectAllActiveRecByUID";
+                string readSp = "SelectActiveRecByUID";
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
                 queryParameters.Add("@uid", UID);
                 return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+#endregion
 
+        #region DELETE ROW
         public async Task<Boolean> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
@@ -166,12 +172,15 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return true;
             }
         }
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRecBySup(string tableName, string? uid_sup, string? nomination, string? description)
+#endregion
+
+        #region SELECT BY PARAMETERS
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? nomination, string? description)
         {
            
                 using (IDbConnection db = new SqlConnection(_constring))
                 {
-                    string readSp = "SelectAllActiveRecBySup";
+                    string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
                     queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
                     if (uid_sup is null)
@@ -203,7 +212,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-
+        #endregion
     }
 
 

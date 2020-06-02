@@ -46,9 +46,9 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpGet("{UID}")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecByUID(string UID)
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string UID)
         {
-            return await _repository.SelectAllActiveRecByUID(tableName, UID);
+            return await _repository.SelectActiveRecByUID(tableName, UID);
 
         }
 
@@ -60,9 +60,9 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpGet("GetByParameters")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRecBySup(string? uid_sup, string? active, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByParameters(string? uid_sup, string? active, string? nomination, string? description)
         {
-            return await _repository.SelectAllActiveRecBySup(tableName, uid_sup,active,nomination,description);
+            return await _repository.SelectActiveRecByParameters(tableName, uid_sup,active,nomination,description);
 
         }
 
