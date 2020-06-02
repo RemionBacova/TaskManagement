@@ -115,4 +115,3 @@ C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
-C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache

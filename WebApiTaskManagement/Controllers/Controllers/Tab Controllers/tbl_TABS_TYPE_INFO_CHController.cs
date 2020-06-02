@@ -10,9 +10,9 @@ namespace WebApiTaskManagement.Controllers.Controllers.Clients_Contollers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class tbl_EMPLOYEES_TYPE_INFO_CHController : Abstract.Base.tbl_TABLE_TYPE_INFO_CH_ControllerAbstract
+    public class tbl_TABS_TYPE_INFO_CHController : Abstract.Base.tbl_TABLE_TYPE_INFO_CH_ControllerAbstract
     {
-        public tbl_EMPLOYEES_TYPE_INFO_CHController(sp_tbl_TABLE_TYPE_INFO_CH_Repository repository):base(repository, "EMPLOYEES")
+        public tbl_TABS_TYPE_INFO_CHController(sp_tbl_TABLE_TYPE_INFO_CH_Repository repository):base(repository, "TABS")
         {
 
         }

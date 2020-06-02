@@ -52,6 +52,13 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
+        [HttpGet("GetByType")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByTYPE(string TYPE_UID)
+        {
+            return await _repository.SelectActiveRecByTYPE(tableName, TYPE_UID);
+
+        }
+
         [HttpDelete("{UID}")]
         public async Task<Boolean> DeleteRow(tbl_TABLE_Model modelName, string UID)
         {

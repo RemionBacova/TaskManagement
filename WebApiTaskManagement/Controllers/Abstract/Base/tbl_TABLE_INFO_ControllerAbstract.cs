@@ -58,7 +58,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         [HttpGet("GetByParameters")]
         public async Task<IEnumerable<tbl_TABLE_INFO_Model>> SelectActiveRecByParameters(string? uid_sup, string? nomination, string? description)
         {
-            return await _repository.SelectAllActiveRecBySup(tableName, uid_sup, nomination, description);
+            return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
 
         }
 

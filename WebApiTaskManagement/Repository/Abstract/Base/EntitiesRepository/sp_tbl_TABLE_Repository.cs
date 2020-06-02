@@ -181,6 +181,19 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 }
         #endregion
 
+        #region SELECT BY TYPE
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByTYPE(string tableName,string TYPE_UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveRecByType";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName);
+                queryParameters.Add("@type_uid", TYPE_UID);
+                return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        #endregion
 
         #region DELETE ROW
         public async Task<Boolean> DeleteRow(string tableName, string UID )
