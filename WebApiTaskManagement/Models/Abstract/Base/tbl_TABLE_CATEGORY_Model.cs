@@ -19,7 +19,6 @@ namespace WebApiTaskManagement.Models.Abstract.Base
         public string description { get; set; }
         public string description1 { get; set; }
         public string description2{ get; set; }
-        
         public float queue { get; set; }
         public int? user_uid { get; set; }
     }
