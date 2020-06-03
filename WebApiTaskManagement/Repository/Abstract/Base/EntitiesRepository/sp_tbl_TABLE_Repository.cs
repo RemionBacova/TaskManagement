@@ -291,9 +291,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
             using (IDbConnection db = new SqlConnection(_constring))
             {
-                string readSp = "SelectActiveRecByCategory";
+                string readSp = "SelectActiveRecByCategoryAndType";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName);
+                queryParameters.Add("@table", tableName);
                 queryParameters.Add("@category_uid", category_uid);
                 queryParameters.Add("@type_uid", type_uid);
                 return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
