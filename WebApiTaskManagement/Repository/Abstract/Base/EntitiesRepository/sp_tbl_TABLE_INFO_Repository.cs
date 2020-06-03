@@ -36,7 +36,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 
                     queryParameters.Add("@uid_sup", uid_sup);
                     queryParameters.Add("@element_uid", element_uid);
-                    queryParameters.Add("@type_info_uid", type_info_uid);
+                    queryParameters.Add("@type_info_id", type_info_uid);
                     queryParameters.Add("@nomination", nomination);
                     queryParameters.Add("@description", description);
                     queryParameters.Add("@description1", description1);
@@ -193,7 +193,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             {
                 string readSp = "SelectActiveRecByParameters";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName + "_INFO");
+                queryParameters.Add("@table", tableName + "_INFO");
                 if (uid_sup is null)
                 {
                     queryParameters.Add("@uid_sup", "");

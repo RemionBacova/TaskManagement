@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiTaskManagement.Models.Abstract.Base
 {
-    public abstract class tbl_TABLE_TYPE_INFO_CH_Model
+    public class tbl_TABLE_TYPE_INFO_CH_Model
     {
         [PrimaryKey]
         [AutoIncrement]

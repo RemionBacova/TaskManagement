@@ -110,7 +110,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
                     if (property is null)
                     {
-                        queryParameters.Add("@CONSIDERNULL_PROPERTY", 1);
+                        queryParameters.Add("@CONSIDERNULL_veti", 1);
                     }
                     else
                     {
@@ -126,7 +126,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     }
                     if (queue is null)
                     {
-                        queryParameters.Add("@CONSIDERNULL_QUEUE", 1);
+                        queryParameters.Add("@CONSIDERNULL_Rradha", 1);
                     }
                     else
                     {
@@ -205,7 +205,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 {
                     string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO");
+                    queryParameters.Add("@table", tableName + "_TYPE_INFO");
                     if (uid_sup is null)
                     {
                         queryParameters.Add("@uid_sup", "");

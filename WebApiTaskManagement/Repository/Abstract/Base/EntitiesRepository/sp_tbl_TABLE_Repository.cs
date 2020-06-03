@@ -10,9 +10,10 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    #region IConfiguration
+  
     public class sp_tbl_TABLE_Repository
     {
+        #region IConfiguration
         private readonly string _constring;
         public sp_tbl_TABLE_Repository(IConfiguration configuration)
         {

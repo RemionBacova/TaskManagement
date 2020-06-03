@@ -12,9 +12,10 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-        #region IConfiguration
+       
     public class sp_tbl_TABLE_TYPE_INFO_CH_Repository
     {
+        #region IConfiguration
         private readonly string _constring;
         public sp_tbl_TABLE_TYPE_INFO_CH_Repository(IConfiguration configuration)
         {
@@ -164,6 +165,9 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return true;
             }
         }
+        #endregion
+
+        #region SP_SelectByParameters
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup,  string? nomination, string? description)
         {
            
@@ -171,7 +175,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 {
                     string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO_CH");
+                    queryParameters.Add("@table", tableName + "_TYPE_INFO_CH");
                     if (uid_sup is null)
                     {
                         queryParameters.Add("@uid_sup", "");
@@ -203,6 +207,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
         }
         #endregion
+
 
     }
 

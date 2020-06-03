@@ -195,7 +195,7 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
             {
                 string readSp = "SelectActiveRecByParameters";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName + "_CATEGORY");
+                queryParameters.Add("@table",  tableName + "_CATEGORY");
                 if (uid_sup is null)
                 {
                     queryParameters.Add("@uid_sup", "");

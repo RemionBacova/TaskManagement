@@ -53,7 +53,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
         #endregion
 
         #region SPU_TYPE
-        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> spu_tipi(string tablename,int?uid,int? uid_sup, bool? elcat, string? code, string? codebegin,string?codeactual
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> spu_tipi(string tablename,int?uid,int? uid_sup, bool? elcat, string? code 
             ,  string? codeend, string? nomination, string? description, string? description1, string? description2, int? user_uid)
         {
 
@@ -92,14 +92,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 {
                     queryParameters.Add("@CODE",code);
                 }
-                if (codebegin is null)
-                {
-                    queryParameters.Add("@CONSIDERNULL_CODEBEGIN", 1);
-                }
-                else
-                {
-                    queryParameters.Add("@CODEBEGIN",codebegin);
-                }
+                
                 if (codeend is null)
                 {
                     queryParameters.Add("@CONSIDERNULL_CODEEND", 1);
@@ -108,14 +101,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 {
                     queryParameters.Add("@CODEEND",codeend);
                 }
-                if (codeactual is null)
-                {
-                    queryParameters.Add("@CONSIDERNULL_CODEACTUAL", 1);
-                }
-                else
-                {
-                    queryParameters.Add("@CODEACTUAL",codeactual);
-                }
+                
                 if (nomination is null)
                 {
                     queryParameters.Add("@CONSIDERNULL_NOMINATION", 1);
@@ -208,7 +194,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
             {
                 string readSp = "SelectActiveRecByParameters";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName + "_TYPE");
+                queryParameters.Add("@table", tableName + "_TYPE");
                 if (uid_sup is null)
                 {
                     queryParameters.Add("@uid_sup", "");
