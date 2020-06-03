@@ -9,6 +9,7 @@ namespace WebApiTaskManagement.Models.Abstract.Base
     public abstract class tbl_TABLE_TYPE_INFO_CH_Model
     {
         [PrimaryKey]
+        [AutoIncrement]
         public int uid { get; set; }
         public int? uid_sup { get; set; }
         public int? type_info_uid { get; set; }

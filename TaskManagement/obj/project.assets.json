@@ -1687,20 +1687,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xhova\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
       "projectName": "TaskManagement",
-      "projectPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
-      "packagesPath": "C:\\Users\\xhova\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xhova\\Desktop\\Internship\\Analysis\\Task Management System\\TaskManagement\\TaskManagement\\TaskManagement\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\xhova\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1758,12 +1763,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

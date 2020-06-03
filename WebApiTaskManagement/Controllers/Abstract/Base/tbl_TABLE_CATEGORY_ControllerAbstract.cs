@@ -23,45 +23,52 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpPost]
-        public async Task spi_Kateogria([FromBody] tbl_TABLE_CATEGORY_Model modelName)
+        [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
+        public async Task spi_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName, */int? uid_sup, bool? elcat, string? code, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spi_Kateogria(modelName, tableName);
+            await _repository.spi_Kateogria( tableName,uid_sup,elcat,code,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut("{UID}")]
-        public async Task spu_Kateogria([FromBody] tbl_TABLE_CATEGORY_Model modelName)
+        [HttpPut("{uid}/{uid_sup}/{elcat}/{code}/{nomination}")]
+
+
+        public async Task spu_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName*/int?uid, int? uid_sup, bool? elcat, string? code, string? nomination, string? description
+            , string? description1, string? description2 ,int? user_uid)
         {
-            await _repository.spu_Kateogria(modelName, tableName);
+          
+            await _repository.spu_Kateogria(tableName,uid, uid_sup, elcat, code, nomination, description, description1, description2, user_uid);
         }
 
         [HttpGet]
         public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectAllActiveRec()
-        {
+        { 
+            
             return await _repository.SelectAllActiveRec(tableName);
 
         }
 
         [HttpGet("{UID}")]
-        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByUID( string UID)
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByUID(string UID)
         {
             return await _repository.SelectActiveRecByUID(tableName, UID);
 
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow( string UID)
+        public async Task<Boolean> DeleteRow(string UID)
         {
             return await _repository.DeleteRow(tableName, UID);
 
         }
 
         [HttpGet("GetByParameters")]
-        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByParameters(string? uid_sup, string? active, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> SelectActiveRecByParameters(string? uid_sup, string? nomination, string? description)
         {
-            return await _repository.SelectActiveRecByParameters(tableName, uid_sup, active, nomination, description);
+            return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
 
         }
+
 
 
     }

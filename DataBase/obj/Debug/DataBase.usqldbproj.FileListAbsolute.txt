@@ -5,9 +5,10 @@ C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpro
 C:\Remion Documents\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
 C:\Remion Documents\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Remion Documents\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
-C:\Users\User\Desktop\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
-C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
+C:\Users\User\Desktop\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
+C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbprojAssemblyReference.cache
+C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack

@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\TaskManagement",
-    "\\WebApiTaskManagement"
+    "\\WebApiTaskManagement",
+    "\\WebApiTaskManagement\\Controllers",
+    "\\WebApiTaskManagement\\Controllers\\Abstract"
   ],
   "SelectedNode": "\\TaskManagement\\TaskManagement.sln",
   "PreviewInSolutionExplorer": false

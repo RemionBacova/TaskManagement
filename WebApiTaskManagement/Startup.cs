@@ -12,6 +12,7 @@ using WebApiTaskManagemenk.Repository.Base.EntitiesRepository;
 using WebApiTaskManagement.Repository;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using WebApiTaskManagement.Repository.Base.EntitiesRepository;
 
 namespace WebApiTaskManagement
 {
@@ -28,9 +29,12 @@ namespace WebApiTaskManagement
             
             services.AddScoped<MachinesRepository>();
             services.AddScoped<MachineReportingRepository>();
-            services.AddScoped<sp_tbl_TABLE_CATEGORY_Repository>();
-            services.AddScoped<sp_tbl_TABLE_Repository>();
-            services.AddScoped<sp_tbl_TABLE_TYPE_INFO_Repository>();
+            services.AddTransient<sp_tbl_TABLE_CATEGORY_Repository>();
+            services.AddTransient<sp_tbl_TABLE_Repository>();
+            services.AddTransient<sp_tbl_TABLE_TYPE_INFO_Repository>();
+            services.AddTransient<sp_tbl_TABLE_TYPE_INFO_CH_Repository>();
+            services.AddTransient<sp_tbl_TABLE_TYPE_Repository>();
+            services.AddTransient<sp_tbl_TABLE_INFO_Repository>();
 
 
 

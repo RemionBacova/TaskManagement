@@ -26,36 +26,32 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpPost]
-        public async Task spi_tbl_table([FromBody] tbl_TABLE_Model modelName)
+        [HttpPost("{uid_sup}/{type_uid}/{code}/{nomination}/{category}/{complex}")]
+        public async Task spi_tbl_table(  int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid, int? category, bool? complex
+        )
         {
-            await _repository.spi_tbl_table(modelName, tableName);
+            await _repository.spi_tbl_table(tableName,uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
         }
 
-        [HttpPut]
-        public async Task spu_tbl_table([FromBody] tbl_TABLE_Model modelName)
+        [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
+        public async Task spu_tbl_table( int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
-            await _repository.spu_tbl_table(modelName, tableName);
+            await _repository.spu_tbl_table(tableName,uid,uid_sup,type_uid,code,nomination,description,description1,description2,user_uid,category,complex);
         }
 
-        [HttpGet("{tableName}")]
+        [HttpGet]
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRec()
         {
             return await _repository.SelectAllActiveRec(tableName);
 
         }
 
-        [HttpGet("{UID}")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string UID)
+        [HttpGet("{uid}")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string uid)
         {
-            return await _repository.SelectActiveRecByUID(tableName, UID);
-
-        }
-
-        [HttpGet("GetByType")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByTYPE(string TYPE_UID)
-        {
-            return await _repository.SelectActiveRecByTYPE(tableName, TYPE_UID);
+            return await _repository.SelectActiveRecByUID(tableName, uid);
 
         }
 
@@ -66,10 +62,24 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpGet("GetByParameters")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByParameters(string? uid_sup, string? active, string? nomination, string? description)
+        [HttpGet("{nomination}/nominations")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByProperty(string? info,string? nomination)
         {
-            return await _repository.SelectActiveRecByParameters(tableName, uid_sup,active,nomination,description);
+            return await _repository.SelectActiveRecByProperty(tableName, info,nomination);
+
+        }
+
+        [HttpGet("GetByType")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByTYPE(string TYPE_UID)
+        {
+            return await _repository.SelectActiveRecByTYPE(tableName, TYPE_UID);
+
+        }
+
+        [HttpGet("GetByParameters")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByParameters(string? uid_sup,string? nomination, string? description)
+        {
+            return await _repository.SelectActiveRecByParameters(tableName, uid_sup,nomination,description);
 
         }
 

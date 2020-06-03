@@ -7,31 +7,34 @@ using Microsoft.AspNetCore.Mvc;
 using WebApiTaskManagement.Models.Abstract.Base;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
 
-namespace WebApiTaskManagement.Controllers.Abstract.Base
+namespace WebApiTaskManagement.Controllers.Abstract
 {
     [Route("api/[controller]")]
     [ApiController]
     public abstract class tbl_TABLE_TYPE_INFO_CH_ControllerAbstract : ControllerBase
     {
         private sp_tbl_TABLE_TYPE_INFO_CH_Repository _repository;
-        private string tableName;
-
+        private string tableName = "";
         public tbl_TABLE_TYPE_INFO_CH_ControllerAbstract(sp_tbl_TABLE_TYPE_INFO_CH_Repository repository, string tableName)
         {
-            _repository = repository;
+            this._repository = repository;
             this.tableName = tableName;
+
         }
 
-        [HttpPost]
-        public async Task spi_Tip_Info_Ch([FromBody] tbl_TABLE_TYPE_INFO_CH_Model modelName)
+        [HttpPost("{uid_sup}/{type_info_uid}/{nomination}")]
+        public async Task spi_Info(int? uid_sup, int? type_info_uid, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spi_Tip_Info_Ch(modelName, tableName);
+            await _repository.spi_Tip_Info_Ch( tableName,uid_sup,type_info_uid,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut]
-        public async Task spu_Tip_Info_Ch([FromBody] tbl_TABLE_TYPE_INFO_CH_Model modelName)
+        [HttpPut("{uid_sup}/{type_info_uid}/{nomination}")]
+        public async Task spu_Info(int? uid, int? uid_sup, int? type_info_uid, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spu_Tip_Info_Ch(modelName, tableName);
+            await _repository.spu_Tip_Info_Ch( tableName,  uid,  uid_sup,  type_info_uid,  nomination, description
+            ,  description1,  description2,  user_uid);
         }
 
         [HttpGet]
@@ -61,6 +64,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
 
         }
+
 
     }
 }

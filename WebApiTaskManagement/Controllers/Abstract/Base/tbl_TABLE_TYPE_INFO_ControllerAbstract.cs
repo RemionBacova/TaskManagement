@@ -22,16 +22,20 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             this.tableName = tableName;
         }
 
-        [HttpPost]
-        public async Task spi_Tip_Info([FromBody] tbl_TABLE_TYPE_INFO_Model modelName)
+        [HttpPost("{uid_sup}/{type_info_uid}/{nomination}/{property}")]
+        public async Task spi_Tip_Info(int? uid_sup, int? type_uid, string? nomination, string? description
+            , string? description1, string? description2, int? property, bool? mandatory, int? db, bool? file, int? user_uid)
         {
-            await _repository.spi_Tip_Info(modelName, tableName);
+            await _repository.spi_Tip_Info( tableName, uid_sup,  type_uid,  nomination,  description
+            , description1,  description2,  property,  mandatory,  db,  file,  user_uid);
         }
 
-        [HttpPut]
-        public async Task spu_Tip_Info([FromBody] tbl_TABLE_TYPE_INFO_Model modelName)
+        [HttpPut("{uid}/{uid_sup}/{type_info_uid}/{nomination}/{property}")]
+        public async Task spu_Tip_Info( int? uid, int? uid_sup, int? type_uid, string? nomination, string? description
+            , string? description1, string? description2, int? property, bool? mandatory, float? queue, bool? file, int? user_uid)
         {
-            await _repository.spu_Tip_Info(modelName, tableName);
+            await _repository.spu_Tip_Info( tableName,uid, uid_sup, type_uid, nomination, description
+            , description1, description2, property, mandatory, queue, file, user_uid);
         }
 
         [HttpGet]
@@ -54,6 +58,8 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.DeleteRow(tableName, UID);
 
         }
+
+     
 
         [HttpGet("GetByParameters")]
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> SelectActiveRecByParameters(string? uid_sup, string? nomination, string? description)

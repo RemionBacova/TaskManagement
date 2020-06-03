@@ -21,16 +21,18 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             _repository = repository;
             this.tableName = tableName;
         }
-        [HttpPost]
-        public async Task spi_Tip([FromBody] tbl_TABLE_TYPE_Model modelName)
+        [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
+        public async Task spi_Tip(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spi_Tipi(modelName, tableName);
+            await _repository.spi_Tipi(tableName,uid_sup,elcat,code,codeend,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut]
-        public async Task spu_Tip([FromBody] tbl_TABLE_TYPE_Model modelName)
+        [HttpPut("{uid_sup}/{elcat}/{code}/{nomination}")]
+        public async Task spu_Tip(int? uid, int? uid_sup, bool? elcat, string? code, string? codebegin,string?codeactual, string? codeend, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spu_tipi(modelName, tableName);
+            await _repository.spu_tipi(tableName,uid, uid_sup, elcat, code, codebegin,codeactual,codeend, nomination, description, description1, description2, user_uid);
         }
 
         [HttpGet]
@@ -55,7 +57,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpGet("GetByParameters")]
-        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> SelectActiveRecByParameters( string? uid_sup, string? nomination, string? description)
         {
             return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
 

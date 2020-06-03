@@ -12,15 +12,19 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
-    public abstract class sp_tbl_TABLE_TYPE_INFO_CH_Repository
+        #region IConfiguration
+    public class sp_tbl_TABLE_TYPE_INFO_CH_Repository
     {
         private readonly string _constring;
         public sp_tbl_TABLE_TYPE_INFO_CH_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
-        #region SPI TIP INFO
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spi_Tip_Info_Ch(tbl_TABLE_TYPE_INFO_CH_Model tich, string tablename)
+        #endregion
+
+        #region SPI_TABLE
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spi_Tip_Info_Ch( string tablename,int?uid_sup,int?type_info_uid, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -28,101 +32,89 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 string readSp = "spI_tbl_" + tablename + "_TYPE_INFO_CH";
                 var queryParameters = new DynamicParameters();
                 
-                   queryParameters.Add("@uid_sup", tich.uid_sup);
-                   queryParameters.Add("@type_info_uid", tich.type_info_uid);
-                   queryParameters.Add("@nomination", tich.nomination);
-                   queryParameters.Add("@description", tich.description);
-                   queryParameters.Add("@description1", tich.description1);
-                   queryParameters.Add("@description2", tich.description2);                   
-                   queryParameters.Add("@user_uid", tich.user_uid);
-                   queryParameters.Add("@VA", tich.VA);
-
-
+                   queryParameters.Add("@uid_sup", uid_sup);
+                   queryParameters.Add("@type_info_uid", type_info_uid);
+                   queryParameters.Add("@nomination", nomination);
+                   queryParameters.Add("@description", description);
+                   queryParameters.Add("@description1", description1);
+                   queryParameters.Add("@description2", description2);                   
+                   queryParameters.Add("@user_uid", user_uid);
+                
                 return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
-            }
-#endregion
+        }
+        #endregion
 
-
-        #region SPU TIP INFO
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spu_Tip_Info_Ch(tbl_TABLE_TYPE_INFO_CH_Model tich, string tablename)
+        #region SPU_TABLE
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> spu_Tip_Info_Ch( string tablename, int?uid,int? uid_sup, int? type_info_uid, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
-
                 string readSp = "spU_tbl_" + tablename + "_TYPE_INFO_CH";
                 var queryParameters = new DynamicParameters();
 
-                queryParameters.Add("@UID", tich.uid);
+                queryParameters.Add("@UID",uid);
 
-                    if (tich.uid_sup is null)
+                    if (uid_sup is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_UID_SUP", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@UID_SUP", tich.uid_sup);
+                       queryParameters.Add("@UID_SUP",uid_sup);
                     }
 
-                    if (tich.type_info_uid is null)
+                    if (type_info_uid is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_TYPE_INFO_UID", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@TYPE_INFO_UID", tich.type_info_uid);
+                       queryParameters.Add("@TYPE_INFO_UID",type_info_uid);
                     }
 
-                    if (tich.nomination is null)
+                    if (nomination is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_NOMINATION", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@NOMINATION", tich.nomination);
+                       queryParameters.Add("@NOMINATION",nomination);
                     }
-                    if (tich.description is null)
+                    if (description is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@DESCRIPTION", tich.description);
+                       queryParameters.Add("@DESCRIPTION",description);
                     }
-                    if (tich.description1 is null)
-                    {
-                       queryParameters.Add("@CONSIDERNULL_DESCRIPTION1", 1);
-                    }
-                    else
-                    {
-                       queryParameters.Add("@DESCRIPTION1", tich.description1);
-                    }
-                    if (tich.description2 is null)
+                    if (description1 is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION2", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@DESCRIPTION2", tich.description2);
+                       queryParameters.Add("@DESCRIPTION2",description1);
                     }
-
-                    if (tich.active is null)
+                    if (description2 is null)
                     {
-                       queryParameters.Add("@CONSIDERNULL_ACTIVE", 1);
+                       queryParameters.Add("@CONSIDERNULL_DESCRIPTION3", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@ACTIVE", tich.active);
+                       queryParameters.Add("@DESCRIPTION3",description2);
                     }
 
-                    if (tich.user_uid is null)
+                    if (user_uid is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_USER_UID", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@USER_UID", tich.user_uid);
+                       queryParameters.Add("@USER_UID",user_uid);
                     }
 
                 return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
@@ -132,57 +124,54 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
          }
         #endregion
 
-        #region SELECT ALL
+        #region SP_SelectAllActiveRec
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectAllActiveRec(string tableName)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
                 string readSp = "SelectAllActiveRec";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO_CH");
                 return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
         #endregion
 
-        #region SELECT BY ID
+        #region SP_SelectActiveRecByUID
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByUID(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
                 string readSp = "SelectActiveRecByUID";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO_CH");
                 queryParameters.Add("@uid", UID);
                 return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-#endregion
+        #endregion
 
-        #region DELETE ROW
+        #region SP_DeleteRow
         public async Task<Boolean> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
                 string readSp = "DeleteRow";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@TABLE", "tbl_"+tableName+"TYPE_INFO_CH");
+                queryParameters.Add("@TABLE", "tbl_"+tableName+"_TYPE_INFO_CH");
                 queryParameters.Add("@UID", UID);
                  await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
                 return true;
             }
         }
-#endregion
-
-        #region SELECT BY PARAMETERS
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? nomination, string? description)
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup,  string? nomination, string? description)
         {
            
                 using (IDbConnection db = new SqlConnection(_constring))
                 {
                     string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@table", "tbl_" + tableName + "TYPE_INFO_CH");
+                    queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO_CH");
                     if (uid_sup is null)
                     {
                         queryParameters.Add("@uid_sup", "");
@@ -191,7 +180,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     {
                         queryParameters.Add("@uid_sup", uid_sup);
                     }
-                   
+
+                
                     if (nomination is null)
                     {
                         queryParameters.Add("@nomination", "%");
@@ -213,6 +203,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
         }
         #endregion
+
     }
 
 
