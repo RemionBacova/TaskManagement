@@ -62,10 +62,10 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpGet("{nomination}/nominations")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByProperty(string? info,string? nomination)
+        [HttpGet("{nomination}/Property")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByProperty(string? typeID, string? nomination)
         {
-            return await _repository.SelectActiveRecByProperty(tableName, info,nomination);
+            return await _repository.SelectActiveRecByProperty(tableName, typeID,nomination);
 
         }
 
@@ -82,6 +82,21 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.SelectActiveRecByParameters(tableName, uid_sup,nomination,description);
 
         }
+
+        [HttpGet("GetByCategory")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectByCategory(string? category_uid)
+        {
+            return await _repository.SelectByCategory(tableName, category_uid);
+
+        }
+
+        [HttpGet("GetByCategoryType")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByCategoryAndType(string? category_uid,string?type_uid)
+        {
+            return await _repository.SelectActiveRecByCategoryAndType(tableName, category_uid,type_uid);
+
+        }
+
 
 
     }

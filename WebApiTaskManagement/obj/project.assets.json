@@ -1473,11 +1473,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
       "projectName": "WebApiTaskManagement",
-      "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\WebApiTaskManagement\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\WebApiTaskManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

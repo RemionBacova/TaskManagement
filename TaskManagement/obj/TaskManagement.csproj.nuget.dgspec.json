@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
         "projectName": "TaskManagement",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagement\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\TaskManagement\\TaskManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

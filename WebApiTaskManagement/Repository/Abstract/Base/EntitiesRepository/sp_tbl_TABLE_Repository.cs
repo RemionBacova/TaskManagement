@@ -198,14 +198,14 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         #endregion
 
         #region SP_SelectByNomination
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByProperty(string tableName, string? info, string? nomination)
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByProperty(string tableName, string? typeID, string? nomination)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
                 string readSp = "SelectActiveRecByProperty";
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table", "tbl_" + tableName);
-                queryParameters.Add("@typeID", info);
+                queryParameters.Add("@typeID", typeID);
                 queryParameters.Add("@nomination", nomination);
                 return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
@@ -237,7 +237,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 {
                     string readSp = "SelectActiveRecByParameters";
                     var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@table", "tbl_" + tableName);
+                    queryParameters.Add("@table", tableName);
                     if (uid_sup is null)
                     {
                         queryParameters.Add("@uid_sup", "");
@@ -270,7 +270,47 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
             }
         #endregion
 
+        #region SP_SelectByCategory
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectByCategory(string tableName, string? category_uid)
+        {
+           
+                using (IDbConnection db = new SqlConnection(_constring))
+                {
+                    string readSp = "SelectActiveRecByCategory";
+                    var queryParameters = new DynamicParameters();
+                    queryParameters.Add("@table", tableName);
+                    queryParameters.Add("@category_uid", category_uid);
+                    return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                }
+          }
+        #endregion
+
+        #region SP_SelectByCategoryType
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByCategoryAndType(string tableName, string? category_uid,string type_uid)
+        {
+
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveRecByCategory";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName);
+                queryParameters.Add("@category_uid", category_uid);
+                queryParameters.Add("@type_uid", type_uid);
+                return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+        #endregion
+
     }
+
+
+
+
+
 }
+
+
 
 
