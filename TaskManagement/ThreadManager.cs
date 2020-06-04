@@ -83,7 +83,7 @@ namespace TaskManagement
                 // TimeDifference of writing new data
 
               
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
         }
 

@@ -35,6 +35,7 @@ namespace WebApiTaskManagement
             services.AddTransient<sp_tbl_TABLE_TYPE_INFO_CH_Repository>();
             services.AddTransient<sp_tbl_TABLE_TYPE_Repository>();
             services.AddTransient<sp_tbl_TABLE_INFO_Repository>();
+            services.AddScoped<sp_tbl_INTER_TABLE_TABLE_Repository>();
 
 
 
