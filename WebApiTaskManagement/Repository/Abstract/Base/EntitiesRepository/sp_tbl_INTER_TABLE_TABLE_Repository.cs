@@ -61,6 +61,56 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #endregion
 
+        #region sp_get
+        public async Task<IEnumerable<tbl_INTER_TABLE_TABLE>> SelectConnections(string table1,string table2)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveConnections_TABLE1_TABLE2";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table1_name", table1);
+                queryParameters.Add("@table2_name", table2);
+                return await db.QueryAsync<tbl_INTER_TABLE_TABLE>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
+        
+        #region sp_SelectAllActiveConnections_TABLE1_TABLE2_Table2_UID
+        public async Task<IEnumerable<tbl_INTER_TABLE_TABLE>> SelectAllActiveConnections_TABLE1_TABLE2_Table2_UID(string? table1, string? table2, int? table2_uid)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveConnections_TABLE1_TABLE2_Table1_ID";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table1_name", table1);
+                queryParameters.Add("@table2_name", table2);
+                queryParameters.Add("@table2_uid", table2_uid);
+                return await db.QueryAsync<tbl_INTER_TABLE_TABLE>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
+
+
+        #region sp_SelectAllActiveConnections_TABLE1_TABLE2_Table1_UID
+        public async Task<IEnumerable<tbl_INTER_TABLE_TABLE>> SelectAllActiveConnections_TABLE1_TABLE2_Table1_UID(string? table1, string? table2, int? table1_uid)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveConnections_TABLE1_TABLE2_Table1_ID";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table1_name", table1);
+                queryParameters.Add("@table2_name", table2);
+                queryParameters.Add("@table1_uid", table1_uid);
+                return await db.QueryAsync<tbl_INTER_TABLE_TABLE>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
     }
 }
 

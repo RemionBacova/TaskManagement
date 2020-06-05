@@ -29,7 +29,7 @@ namespace WebApiTaskManagement.Controllers.Abstract
             await _repository.spi_Tip_Info_Ch( tableName,uid_sup,type_info_uid,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut("{uid_sup}/{type_info_uid}/{nomination}")]
+        [HttpPut("{uid}/{uid_sup}/{type_info_uid}/{nomination}")]
         public async Task spu_Info(int? uid, int? uid_sup, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
