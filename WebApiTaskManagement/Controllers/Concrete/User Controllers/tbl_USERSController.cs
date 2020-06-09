@@ -11,12 +11,12 @@ namespace WebApiTaskManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class tbl_ENTITYEController : Abstract.Base.tbl_TABLE_ControllerAbstract
+    public class tbl_USERSController : Abstract.Base.tbl_TABLE_ControllerAbstract
     {
         
 
        
-        public tbl_ENTITYEController(sp_tbl_TABLE_Repository repository) : base(repository, "USERS") 
+        public tbl_USERSController(sp_tbl_TABLE_Repository repository) : base(repository, "USERS") 
         { }
       
 

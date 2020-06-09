@@ -15,7 +15,6 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
     {
       
         private readonly string _constring;
-        private int error_id;
         public sp_tbl_TABLE_CATEGORY_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");

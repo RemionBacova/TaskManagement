@@ -27,6 +27,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpPost("{uid_sup}/{type_uid}/{code}/{nomination}/{category}/{complex}")]
+
         public async Task spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
@@ -34,6 +35,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
+
         public async Task spu_tbl_table( int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
