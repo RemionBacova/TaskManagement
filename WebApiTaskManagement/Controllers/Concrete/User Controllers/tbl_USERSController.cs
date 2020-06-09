@@ -13,13 +13,10 @@ namespace WebApiTaskManagement.Controllers
     [ApiController]
     public class tbl_USERSController : Abstract.Base.tbl_TABLE_ControllerAbstract
     {
-        
-
-       
         public tbl_USERSController(sp_tbl_TABLE_Repository repository) : base(repository, "USERS") 
-        { }
-      
-
+        { 
+        }
+    
     }  
 }
 
