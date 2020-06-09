@@ -22,7 +22,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             this.tableName = tableName;
         }
 
-        [HttpPost("{uid_sup}/{type_info_uid}/{nomination}/{property}")]
+        [HttpPost("{uid_sup}/{nomination}/{property}")]
         public async Task spi_Tip_Info(int? uid_sup, int? type_uid, string? nomination, string? description
             , string? description1, string? description2, int? property, bool? mandatory, int? db, bool? file, int? user_uid)
         {

@@ -238,3 +238,4 @@ C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.dll
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.genruntimeconfig.cache
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
