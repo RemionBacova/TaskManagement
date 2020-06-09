@@ -131,7 +131,6 @@ C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreap
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
-C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
@@ -142,3 +141,4 @@ C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreap
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
 C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache

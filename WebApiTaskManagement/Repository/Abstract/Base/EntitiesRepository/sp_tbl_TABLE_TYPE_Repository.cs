@@ -11,42 +11,57 @@ using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
 {
-        #region IConfiguration
+      
     public class sp_tbl_TABLE_TYPE_Repository
     {
         private readonly string _constring;
+        private int error_id;
         public sp_tbl_TABLE_TYPE_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
-        #endregion
+  
 
         #region SPI_TYPE
-        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> spi_Tipi(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_Tipi(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-
-
-
-            using (IDbConnection sql = new SqlConnection(_constring))
+            try
             {
+                using (IDbConnection sql = new SqlConnection(_constring))
+                {
 
-                string readSp = "spI_tbl_" + tablename + "_TYPE";
-                var queryParameters = new DynamicParameters();
+                    string readSp = "spI_tbl_" + tablename + "_TYPE";
+                    var queryParameters = new DynamicParameters();
 
-                queryParameters.Add("@uid_sup", uid_sup);
-                queryParameters.Add("@elcat", elcat);
-                queryParameters.Add("@code", code);         
-                queryParameters.Add("@codeend", codeend);
-                queryParameters.Add("@nomination", nomination);
-                queryParameters.Add("@description", description);
-                queryParameters.Add("@description1", description1);
-                queryParameters.Add("@description2", description2);                 
-                queryParameters.Add("@user_uid", user_uid);
+                    queryParameters.Add("@uid_sup", uid_sup);
+                    queryParameters.Add("@elcat", elcat);
+                    queryParameters.Add("@code", code);
+                    queryParameters.Add("@codeend", codeend);
+                    queryParameters.Add("@nomination", nomination);
+                    queryParameters.Add("@description", description);
+                    queryParameters.Add("@description1", description1);
+                    queryParameters.Add("@description2", description2);
+                    queryParameters.Add("@user_uid", user_uid);
 
-                return await sql.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                    return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch
+            {
+                using (IDbConnection db = new SqlConnection(_constring))
+                {
+                    string readSp = "select_Error";
+                    var queryParameters = new DynamicParameters();
+                    queryParameters.Add("@error_id", error_id);
+
+                    return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                }
 
             }
+
+          
 
         }
 

@@ -13,6 +13,6 @@ C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbprojAssem
 C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
 C:\Users\User\Documents\GitHub\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
-C:\Users\User\Documents\GitHub\TaskManagement\DataBase\obj\Debug\DataBase.usqldbprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
+C:\Users\User\Documents\GitHub\TaskManagement\DataBase\obj\Debug\DataBase.usqldbprojAssemblyReference.cache

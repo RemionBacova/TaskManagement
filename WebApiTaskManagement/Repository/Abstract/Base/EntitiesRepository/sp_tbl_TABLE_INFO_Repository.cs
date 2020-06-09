@@ -12,28 +12,28 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 {
     public class sp_tbl_TABLE_INFO_Repository
     {
-        #region IConfiguration
+      
         private readonly string _constring;
+        private int error_id;
         public sp_tbl_TABLE_INFO_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        #endregion
 
         #region SPI_INFO
-        public async Task<IEnumerable<tbl_TABLE_INFO_Model>> spi_Info( string tablename, int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_Info(string tablename, int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-
-
-
-            using (IDbConnection sql = new SqlConnection(_constring))
+            try
             {
 
-                string readSp = "spI_tbl_"+tablename+"_INFO";
-                var queryParameters = new DynamicParameters();
-                
+                using (IDbConnection sql = new SqlConnection(_constring))
+                {
+
+                    string readSp = "spI_tbl_" + tablename + "_INFO";
+                    var queryParameters = new DynamicParameters();
+
                     queryParameters.Add("@uid_sup", uid_sup);
                     queryParameters.Add("@element_uid", element_uid);
                     queryParameters.Add("@type_info_id", type_info_uid);
@@ -43,16 +43,26 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     queryParameters.Add("@description2", description2);
                     queryParameters.Add("@user_uid", user_uid);
 
-                return await sql.QueryAsync<tbl_TABLE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                    return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
+                }
+            }
+            catch
+            {
+                using (IDbConnection db = new SqlConnection(_constring))
+                {
+                    string readSp = "select_Error";
+                    var queryParameters = new DynamicParameters();
+                    queryParameters.Add("@error_id", error_id);
+
+                    return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                }
 
             }
-
-            }
-        #endregion
-
-        #region SPU_INFO
-        public async Task<IEnumerable<tbl_TABLE_INFO_Model>> spu_Info( string tablename ,int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
+            #endregion
+        }
+            #region SPU_INFO
+            public async Task<IEnumerable<tbl_TABLE_INFO_Model>> spu_Info( string tablename ,int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
 

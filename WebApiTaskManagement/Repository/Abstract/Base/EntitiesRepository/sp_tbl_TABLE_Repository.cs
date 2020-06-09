@@ -1,11 +1,15 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
+using ServiceStack.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
@@ -15,47 +19,49 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
     {
         #region IConfiguration
         private readonly string _constring;
+       
+     
+
         public sp_tbl_TABLE_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
-
+       
 
         #endregion
 
         #region SPI_TABLE
-        public async Task<IEnumerable<tbl_TABLE_Model>> spi_tbl_table(string tableName, int? uid_sup, int? type_uid, string?code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(string tableName, int? uid_sup, int? type_uid, string?code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid ,int?category,bool?complex)
         {
 
+
             using (IDbConnection sql = new SqlConnection(_constring))
             {
-
                 string readSp = "spI_tbl_" + tableName;
                 var queryParameters = new DynamicParameters();
 
-                queryParameters.Add("@uid_sup",  uid_sup);
-                queryParameters.Add("@type_uid",  type_uid);
-                queryParameters.Add("@code",  code);
-                queryParameters.Add("@nomination",  nomination);
-                queryParameters.Add("@description",  description);
-                queryParameters.Add("@description1",  description1);
-                queryParameters.Add("@description2",  description2);
-                queryParameters.Add("@user_uid",  user_uid);
-                queryParameters.Add("@category",  category);
-                queryParameters.Add("@complex",  complex);
+                queryParameters.Add("@uid_sup", uid_sup);
+                queryParameters.Add("@type_uid", type_uid);
+                queryParameters.Add("@code", code);
+                queryParameters.Add("@nomination", nomination);
+                queryParameters.Add("@description", description);
+                queryParameters.Add("@description1", description1);
+                queryParameters.Add("@description2", description2);
+                queryParameters.Add("@user_uid", user_uid);
+                queryParameters.Add("@category", category);
+                queryParameters.Add("@complex", complex);
+              
 
+                  return  await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
-                return await sql.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-
-
-            }
+            } 
         }
         #endregion
 
         #region SPU_TABLE
 
-        public async Task<IEnumerable<tbl_TABLE_Model>> spu_tbl_table( string tableName, int?uid,int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spu_tbl_table( string tableName, int?uid,int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
 
@@ -148,7 +154,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
 
-                return await sql.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
 
@@ -304,7 +310,22 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #endregion
 
+        public async Task<IEnumerable<SelectError_Model>> SelectErrors(int?error_id)
+        {
+
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "select_Error";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@error_id",error_id);
+       
+                return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
+    
+   
 
 
 

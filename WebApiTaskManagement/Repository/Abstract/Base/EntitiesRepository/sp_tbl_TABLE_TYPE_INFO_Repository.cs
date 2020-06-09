@@ -13,19 +13,22 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
     public  class sp_tbl_TABLE_TYPE_INFO_Repository
     {
         private readonly string _constring;
+        private int error_id;
         public sp_tbl_TABLE_TYPE_INFO_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spi_Tip_Info(string tablename, int? uid_sup, int? type_uid, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_Tip_Info(string tablename, int? uid_sup, int? type_uid, string? nomination, string? description
             , string? description1, string? description2, int?property,bool?mandatory,int?db,bool?file,int? user_uid)
         {
-            using (IDbConnection sql = new SqlConnection(_constring))
+            try
             {
+                using (IDbConnection sql = new SqlConnection(_constring))
+                {
 
-                string readSp = "spI_tbl_" + tablename + "_TYPE_INFO";
-                var queryParameters = new DynamicParameters();
+                    string readSp = "spI_tbl_" + tablename + "_TYPE_INFO";
+                    var queryParameters = new DynamicParameters();
 
                     queryParameters.Add("@uid_sup", uid_sup);
                     queryParameters.Add("@type_id", type_uid);
@@ -34,16 +37,29 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     queryParameters.Add("@description1", description1);
                     queryParameters.Add("@description2", description2);
                     queryParameters.Add("@property", property);
-                    queryParameters.Add("@mandatory", mandatory);       
+                    queryParameters.Add("@mandatory", mandatory);
                     queryParameters.Add("@db", db);
                     queryParameters.Add("@file", file);
                     queryParameters.Add("@user_id", user_uid);
 
 
-                return await sql.QueryAsync<tbl_TABLE_TYPE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                    return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+
+                }
+            }
+            catch
+            {
+                using (IDbConnection conn = new SqlConnection(_constring))
+                {
+                    string readSp = "select_Error";
+                    var queryParameters = new DynamicParameters();
+                    queryParameters.Add("@error_id", error_id);
+
+                    return await conn.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                }
 
             }
-            }
+        }
 
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_Model>> spu_Tip_Info( string tablename, int?uid,int? uid_sup, int? type_uid, string? nomination, string? description
             , string? description1, string? description2, int? property, bool? mandatory, float? queue, bool? file, int? user_uid)
