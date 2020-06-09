@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
 using ServiceStack.DataAnnotations;
 using WebApiTaskManagement.Models.Abstract.Base;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
-
 
 namespace WebApiTaskManagement.Controllers.Abstract.Base
 {
@@ -18,7 +16,8 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         private sp_tbl_TABLE_Repository _repository;
 
         private string tableName = "";
-       
+
+
 
         public tbl_TABLE_ControllerAbstract(sp_tbl_TABLE_Repository repository, string tableName)
         {
@@ -28,22 +27,17 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpPost("{uid_sup}/{type_uid}/{code}/{nomination}/{category}/{complex}")]
-        public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid, int? category, bool? complex
-        )
-        {
-           
-               return  await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
-
-        }
-
-       
-
-        [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
-        public async Task<IEnumerable<SelectError_Model>> spu_tbl_table( int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+        public async Task spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
-           return await _repository.spu_tbl_table(tableName,uid,uid_sup,type_uid,code,nomination,description,description1,description2,user_uid,category,complex);
+           await _repository.spi_tbl_table(tableName,uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
+        }
+
+        [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
+        public async Task spu_tbl_table( int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid, int? category, bool? complex)
+        {
+            await _repository.spu_tbl_table(tableName,uid,uid_sup,type_uid,code,nomination,description,description1,description2,user_uid,category,complex);
         }
 
         [HttpGet]
@@ -52,7 +46,6 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.SelectAllActiveRec(tableName);
 
         }
-      
 
         [HttpGet("{uid}")]
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string uid)
@@ -100,13 +93,6 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByCategoryAndType(string? category_uid,string?type_uid)
         {
             return await _repository.SelectActiveRecByCategoryAndType(tableName, category_uid,type_uid);
-
-        }
-
-        [HttpGet("{error_id}/getError")]
-        public async Task<IEnumerable<SelectError_Model>> SelectErrors(int? error_id)
-        {
-            return await _repository.SelectErrors(error_id);
 
         }
 
