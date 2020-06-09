@@ -21,9 +21,6 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         public async Task<IEnumerable<SelectError_Model>> spi_nder_table_kategori(tbl_INTER_TABLE_CATEGORY_Model nt, string tablename)
         {
-
-            try
-            {
                 using (IDbConnection sql = new SqlConnection(_constring))
                 {
 
@@ -39,25 +36,11 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
                 }
-
-            }
-            catch
-            {
-                using (IDbConnection db = new SqlConnection(_constring))
-                {
-                    string readSp = "select_Error";
-                    var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@error_id", error_id);
-
-                    return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                }
-
             }
 
           
         }
     }
-}
 
       
 

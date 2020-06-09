@@ -25,9 +25,6 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         public async Task<IEnumerable<SelectError_Model>> spi_Info(string tablename, int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-            try
-            {
-
                 using (IDbConnection sql = new SqlConnection(_constring))
                 {
 
@@ -46,28 +43,14 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
                 }
-            }
-            catch
-            {
-                using (IDbConnection db = new SqlConnection(_constring))
-                {
-                    string readSp = "select_Error";
-                    var queryParameters = new DynamicParameters();
-                    queryParameters.Add("@error_id", error_id);
-
-                    return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                }
-
-            }
+            
+         
             #endregion
         }
-            #region SPU_INFO
-            public async Task<IEnumerable<tbl_TABLE_INFO_Model>> spu_Info( string tablename ,int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
+        #region SPU_INFO
+            public async Task<IEnumerable<SelectError_Model>> spu_Info( string tablename ,int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-
-
-
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
@@ -146,7 +129,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                         queryParameters.Add("@USER_UID", user_uid);
                     }
 
-                return await sql.QueryAsync<tbl_TABLE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
 
             }

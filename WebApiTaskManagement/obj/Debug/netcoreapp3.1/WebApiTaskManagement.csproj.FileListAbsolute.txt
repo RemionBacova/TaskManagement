@@ -226,7 +226,6 @@ C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csprojAssemblyReference.cache
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfoInputs.cache
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.AssemblyInfo.cs
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\WebApiTaskManagement\obj\Debug\netcoreapp3.1\WebApiTaskManagement.csproj.CoreCompileInputs.cache

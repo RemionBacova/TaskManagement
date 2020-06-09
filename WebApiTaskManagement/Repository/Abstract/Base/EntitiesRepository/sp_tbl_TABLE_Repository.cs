@@ -21,7 +21,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
         #region SPI_TABLE
-        public async Task<IEnumerable<tbl_TABLE_Model>> spi_tbl_table(string tableName, int? uid_sup, int? type_uid, string?code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(string tableName, int? uid_sup, int? type_uid, string?code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid ,int?category,bool?complex)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
@@ -40,7 +40,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 queryParameters.Add("@category",  category);
                 queryParameters.Add("@complex", complex);
 
-                return await sql.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
                
             }
         }
@@ -48,7 +48,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #region SPU_TABLE
 
-        public async Task<IEnumerable<tbl_TABLE_Model>> spu_tbl_table( string tableName, int?uid,int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spu_tbl_table( string tableName, int?uid,int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
@@ -137,7 +137,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 }
 
 
-                return await sql.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
         }

@@ -167,4 +167,3 @@ C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\D
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
-C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
