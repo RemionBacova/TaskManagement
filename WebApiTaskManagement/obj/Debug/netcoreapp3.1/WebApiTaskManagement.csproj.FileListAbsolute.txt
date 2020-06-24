@@ -48,7 +48,6 @@ C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcor
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\WebApiTaskManagement.runtimeconfig.json
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\WebApiTaskManagement.runtimeconfig.dev.json
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\WebApiTaskManagement.pdb
-C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\Dapper.dll
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\ServiceStack.Interfaces.dll
 C:\Users\remio\source\repos\TaskManagement\WebApiTaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll

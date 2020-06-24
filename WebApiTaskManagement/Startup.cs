@@ -1,22 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
+using System;
+using System.Net.Http;
 using WebApiTaskManagemenk.Repository.Base.EntitiesRepository;
 using WebApiTaskManagement.Repository;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using WebApiTaskManagement.Repository.Base.EntitiesRepository;
-using Microsoft.Net.Http.Headers;
-using System.Net.Http;
 using WebApiTaskManagement.Repository.Concrete;
-using WebApiTaskManagement.Repository;
 
 namespace WebApiTaskManagement
 {

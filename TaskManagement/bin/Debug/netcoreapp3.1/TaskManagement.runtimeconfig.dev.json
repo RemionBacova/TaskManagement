@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\xhova\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\xhova\\.nuget\\packages"
+      "C:\\Users\\remio\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\remio\\.nuget\\packages"
     ]
   }
 }
