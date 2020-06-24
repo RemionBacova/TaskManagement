@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj": {}
+    "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj": {
+    "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\TaskManagement\\TaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
         "projectName": "TaskManagement",
-        "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\TaskManagement.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagement\\obj\\",
+        "projectPath": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+        "packagesPath": "C:\\Users\\xhova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\TaskManagement\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\xhova\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -57,6 +53,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.2, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
             },
             "System.Management": {
               "target": "Package",

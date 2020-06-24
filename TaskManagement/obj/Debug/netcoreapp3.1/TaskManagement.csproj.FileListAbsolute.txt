@@ -1,22 +1,3 @@
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
-C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
@@ -37,3 +18,152 @@ C:\Users\User\Desktop\TaskManagement-master\TaskManagement\bin\Debug\netcoreapp3
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
 C:\Users\User\Desktop\TaskManagement-master\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\remio\source\repos\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Remion Documents\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Remion Documents\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\xhova\Desktop\Internship\Analysis\Task Management System\TaskManagement\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\User\Desktop\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\User\Documents\GitHub\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.exe
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.deps.json
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.json
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.runtimeconfig.dev.json
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\System.Management.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Management.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Form1.resources
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.Properties.Resources.resources
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.GenerateResource.cache
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfoInputs.cache
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.AssemblyInfo.cs
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CoreCompileInputs.cache
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.csproj.CopyComplete
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.dll
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.pdb
+C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\TaskManagement\obj\Debug\netcoreapp3.1\TaskManagement.genruntimeconfig.cache

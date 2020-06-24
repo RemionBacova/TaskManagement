@@ -1457,11 +1457,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagementInterface\\TaskManagementInterface.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
       "projectName": "TaskManagementInterface",
-      "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagementInterface\\TaskManagementInterface.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\TaskManagementInterface.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement-master\\TaskManagementInterface\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\TaskManagement\\TaskManagementInterface\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagement", "TaskManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiTaskManagement", "..\WebApiTaskManagement\WebApiTaskManagement.csproj", "{668E97BE-A023-4826-A117-B15C851F45DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagementInterface", "..\TaskManagementInterface\TaskManagementInterface.csproj", "{CA63427A-F0A4-4796-83A3-80A4BDD15470}"
-EndProject
 Project("{0C603C2C-620A-423B-A800-4F3E2F6281F1}") = "DataBase", "..\DataBase\DataBase.usqldbproj", "{5191866E-2049-4690-B93A-005A63B4B4B5}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{668E97BE-A023-4826-A117-B15C851F45DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{668E97BE-A023-4826-A117-B15C851F45DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{668E97BE-A023-4826-A117-B15C851F45DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA63427A-F0A4-4796-83A3-80A4BDD15470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA63427A-F0A4-4796-83A3-80A4BDD15470}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA63427A-F0A4-4796-83A3-80A4BDD15470}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA63427A-F0A4-4796-83A3-80A4BDD15470}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5191866E-2049-4690-B93A-005A63B4B4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5191866E-2049-4690-B93A-005A63B4B4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5191866E-2049-4690-B93A-005A63B4B4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
