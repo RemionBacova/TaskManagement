@@ -1456,23 +1456,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\remio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "projectUniqueName": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
       "projectName": "WebApiTaskManagement",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\obj\\",
+      "projectPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1527,12 +1523,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

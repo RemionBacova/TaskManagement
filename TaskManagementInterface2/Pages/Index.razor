@@ -1,0 +1,18 @@
+﻿@page "/"
+@page "/index"
+@inherits MainLayout
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject HttpClient http
+@using TaskManagementInterface.Data
+
+<p>Hello</p>
+<AuthorizeView>
+    <Authorized>
+        <p>Welcome,@context.User.Identity.Name</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are singned out !</p>
+    </NotAuthorized>
+</AuthorizeView>
+

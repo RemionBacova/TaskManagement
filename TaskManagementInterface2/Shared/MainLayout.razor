@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+@using TaskManagementInterface.Data
+@inject AuthenticationStateProvider AuthenticationStateProvider
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main" style="background-color:#f7f7f9">
+    <div class="top-row px-4">
+        <AuthorizeView>
+            <Authorized>
+                <label style="color:black;font-weight:bold;margin-top:10px">@context.User.Identity.Name  </label>
+                 <a href="/login" @onclick="(() => Logout())">Logout</a>
+            </Authorized>
+            <NotAuthorized>
+               <a href="/login">Login</a>
+            </NotAuthorized>
+        </AuthorizeView>
+        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+@code{
+    public void Logout()
+    {
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsLoggedOut();
+    }
+}

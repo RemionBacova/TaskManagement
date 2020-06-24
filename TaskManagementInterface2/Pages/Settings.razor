@@ -1,0 +1,108 @@
+﻿@inherits LayoutComponentBase
+@page "/settings"
+@using TaskManagementInterface.Data
+@using Newtonsoft.Json
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationMang
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IUserService userService
+@inject IJSRuntime jsRunTime
+
+
+    
+            
+                <div class="col-8 card">
+
+
+
+
+                    <EditForm Model="@pass" OnValidSubmit="@ValidateUser">
+                        <div>
+                            <br /><br /><br /><br /><br />
+                        </div>
+                        <div>
+                            <h3 style="font-weight:bold; color:black;">CHANGE PASSWORD</h3>
+                        </div>
+                        <div>
+                            <br />
+                        </div>
+                        <div class="col-12 row">
+                            <input class="form-control col-12" @bind="pass.username" placeholder="USERNAME" />
+                        </div>
+                        <br />
+
+                        <div class="col-12 row">
+                            <input type="password" class="form-control col-12" @bind="pass.OldPassword" placeholder="OLD PASSWORD" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <input type="password" class="form-control col-12" @bind="pass.NewPassword" placeholder=" NEW PASSWORD" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <span class="col-12"></span>
+                            <input type="submit" class="form-control col-12 btn btn-primary" value="SUBMIT" />
+
+                        </div>
+                        <br />
+                        <div class="col-12 row" style="text-align:left; font-weight:bold">
+                            <span class="col-12">@LoginSuccessMsg</span>
+                        </div>
+                        <br />
+                        <div class="col-12 row" style="text-align:left; font-weight:bold">
+                            <span class="col-12">@LoginMessage</span>
+                        </div>
+                    </EditForm>
+
+                </div>
+
+      
+
+
+
+    
+
+    @code {
+
+        private ChangePass pass;
+        private Users_Model user;
+        public string LoginMessage { get; set; }
+        public string LoginSuccessMsg { get; set; }
+
+
+
+
+
+        [CascadingParameter]
+        private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+        protected override Task OnInitializedAsync()
+        {
+            pass = new ChangePass();
+
+
+            return base.OnInitializedAsync();
+
+        }
+
+        private async Task ValidateUser()
+        {
+            try
+            {
+                await userService.ChangePassAsync(pass);
+                LoginSuccessMsg = "Success";
+
+                ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(pass.username);
+                NavigationMang.NavigateTo("/index");
+
+
+                await sessionStorage.SetItemAsync("username", pass.username);
+            }
+            catch (Exception e)
+            {
+                LoginMessage = e.Message;
+
+            }
+        }
+
+    }

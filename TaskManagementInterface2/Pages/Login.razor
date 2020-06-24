@@ -1,0 +1,83 @@
+﻿
+@page  "/login"
+@using TaskManagementInterface.Data
+@using Newtonsoft.Json
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationMang
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IUserService userService
+@inject IJSRuntime jsRunTime
+
+<center>
+    <div class="col-6 card">
+
+
+
+
+        <EditForm Model="@user" OnValidSubmit="@ValidateUser">
+            <div>
+                <br /><br /><br /><br /><br />
+            </div>
+            <div class="text-center">
+                <h5 style="font-weight:bold; color:black;">TASK MANAGEMENT</h5>
+            </div>
+            <div>
+                <br />
+            </div>
+            <div class="col-6 row">
+                <input class="form-control col-12" @bind="user.Username" placeholder="USERNAME" />
+            </div>
+            <br />
+            <div class="col-6 row text-center">
+                <input type="password" class="form-control col-12" @bind="user.Password" placeholder="PASSWORD" />
+            </div>
+            <br />
+            <div class="col-6 row">
+                <input type="submit" class="form-control col-6 btn btn-primary" value="Login" />
+                
+            </div>
+            <br />
+            <div class="col-6 row" style="text-align:left; font-weight:bold">
+                    <span class="col-12">@LoginMessage</span>
+                </div>
+        </EditForm>
+    </div>
+
+
+</center>
+
+@code {
+
+    private Users_Model user;
+    public string LoginMessage { get; set; }
+
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        user = new Users_Model();
+
+        return base.OnInitializedAsync();
+
+    }
+
+    private async Task ValidateUser()
+    {
+        try
+        {
+            await userService.LoginAsync(user);
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(user.Username);
+            NavigationMang.NavigateTo("Index");
+            await sessionStorage.SetItemAsync("description", user.Username);
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            LoginMessage = e.Message;
+
+        }
+    }
+
+}
