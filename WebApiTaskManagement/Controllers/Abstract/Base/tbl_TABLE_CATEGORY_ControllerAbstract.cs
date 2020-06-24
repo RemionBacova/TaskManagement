@@ -24,20 +24,20 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
-        public async Task spi_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName, */int? uid_sup, bool? elcat, string? code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName, */int? uid_sup, bool? elcat, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spi_Kateogria( tableName,uid_sup,elcat,code,nomination,description,description1,description2,user_uid);
+           return await _repository.spi_Kateogria( tableName,uid_sup,elcat,code,nomination,description,description1,description2,user_uid);
         }
 
         [HttpPut("{uid}/{uid_sup}/{elcat}/{code}/{nomination}")]
 
 
-        public async Task spu_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName*/int?uid, int? uid_sup, bool? elcat, string? code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spu_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName*/int?uid, int? uid_sup, bool? elcat, string? code, string? nomination, string? description
             , string? description1, string? description2 ,int? user_uid)
         {
           
-            await _repository.spu_Kateogria(tableName,uid, uid_sup, elcat, code, nomination, description, description1, description2, user_uid);
+           return await _repository.spu_Kateogria(tableName,uid, uid_sup, elcat, code, nomination, description, description1, description2, user_uid);
         }
 
         [HttpGet]

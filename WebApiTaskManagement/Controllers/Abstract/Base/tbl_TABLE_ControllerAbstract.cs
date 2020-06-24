@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ServiceStack.DataAnnotations;
+using WebApiTaskManagement.Models;
 using WebApiTaskManagement.Models.Abstract.Base;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
+using WebApiTaskManagemenk.Repository;
 
 namespace WebApiTaskManagement.Controllers.Abstract.Base
 {
@@ -26,20 +28,21 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpPost("{uid_sup}/{type_uid}/{code}/{nomination}/{category}/{complex}")]
 
-        public async Task spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+
+        [HttpPost("Add")]
+        public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
-           await _repository.spi_tbl_table(tableName,uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
+            return await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
         }
 
         [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
 
-        public async Task spu_tbl_table( int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spu_tbl_table(int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
-            await _repository.spu_tbl_table(tableName,uid,uid_sup,type_uid,code,nomination,description,description1,description2,user_uid,category,complex);
+            return await _repository.spu_tbl_table(tableName, uid, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
         }
 
         [HttpGet]
@@ -98,6 +101,12 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
+        [HttpGet("GetTyperByCategory")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveTypeByCategory(string? category_uid)
+        {
+            return await _repository.SelectActiveTypeByCategory(tableName, category_uid);
+
+        }
 
 
     }

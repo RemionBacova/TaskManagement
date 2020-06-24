@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
         "projectName": "WebApiTaskManagement",
-        "projectPath": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
-        "packagesPath": "C:\\Users\\xhova\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xhova\\Desktop\\Sitel Task Management\\TaskManagement\\WebApiTaskManagement\\obj\\",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\TaskManagement-master (3)\\TaskManagement-master\\WebApiTaskManagement\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\xhova\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

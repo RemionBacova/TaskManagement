@@ -13,6 +13,10 @@ using WebApiTaskManagement.Repository;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using WebApiTaskManagement.Repository.Base.EntitiesRepository;
+using Microsoft.Net.Http.Headers;
+using System.Net.Http;
+using WebApiTaskManagement.Repository.Concrete;
+using WebApiTaskManagement.Repository;
 
 namespace WebApiTaskManagement
 {
@@ -36,6 +40,10 @@ namespace WebApiTaskManagement
             services.AddTransient<sp_tbl_TABLE_TYPE_Repository>();
             services.AddTransient<sp_tbl_TABLE_INFO_Repository>();
             services.AddScoped<sp_tbl_INTER_TABLE_TABLE_Repository>();
+            services.AddTransient<tbl_ENTITIES_Repository>();
+            services.AddTransient<Login_Repository>();
+            services.AddTransient<tbl_MENU_Repository>();
+            services.AddSingleton<HttpClient>();
 
 
 
@@ -73,6 +81,12 @@ namespace WebApiTaskManagement
             {
                 app.UseHsts();
             }
+
+            //Add cors
+            app.UseCors(policy =>
+            policy.WithOrigins("http://192.168.1.118:80")
+            .AllowAnyMethod()
+            .WithHeaders(HeaderNames.ContentType));
 
             app.UseHttpsRedirection();
          

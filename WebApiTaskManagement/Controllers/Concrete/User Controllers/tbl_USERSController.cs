@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiTaskManagement.Controllers.Abstract.Base;
+using WebApiTaskManagement.Models;
+using WebApiTaskManagement.Models.Abstract.Base;
+using WebApiTaskManagement.Models.LoginModels;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
+using WebApiTaskManagement.Repository.Concrete;
 
 namespace WebApiTaskManagement.Controllers
 {
@@ -13,11 +17,16 @@ namespace WebApiTaskManagement.Controllers
     [ApiController]
     public class tbl_USERSController : Abstract.Base.tbl_TABLE_ControllerAbstract
     {
-        public tbl_USERSController(sp_tbl_TABLE_Repository repository) : base(repository, "USERS") 
-        { 
+        private Login_Repository _repository;
+
+
+        public tbl_USERSController(sp_tbl_TABLE_Repository repository) : base(repository, "USERS")
+        {
         }
-    
-    }  
+
+
+       
+    }
 }
 
 

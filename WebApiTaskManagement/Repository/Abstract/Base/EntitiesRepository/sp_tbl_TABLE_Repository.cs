@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTaskManagement.Models;
 using WebApiTaskManagement.Models.Abstract.Base;
 
 namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
@@ -292,7 +293,31 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #endregion
 
+        #region SP_SelectActiveTypeByCategory
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveTypeByCategory(string tableName, string? category_uid)
+        {
+
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveTypesByCategory";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", tableName);
+                queryParameters.Add("@category_uid", category_uid);
+                
+                return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+        #endregion
+
+
+
+
     }
+
+
+
 
 
 

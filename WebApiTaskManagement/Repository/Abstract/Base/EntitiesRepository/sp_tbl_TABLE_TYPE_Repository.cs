@@ -51,7 +51,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
         #endregion
 
         #region SPU_TYPE
-        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> spu_tipi(string tablename,int?uid,int? uid_sup, bool? elcat, string? code 
+        public async Task<IEnumerable<SelectError_Model>> spu_tipi(string tablename,int?uid,int? uid_sup, bool? elcat, string? code 
             ,  string? codeend, string? nomination, string? description, string? description1, string? description2, int? user_uid)
         {
 
@@ -143,7 +143,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 }
 
 
-                return await sql.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
 

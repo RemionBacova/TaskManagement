@@ -22,17 +22,17 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             this.tableName = tableName;
         }
         [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
-        public async Task spi_Tip(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+        public async Task<IEnumerable<SelectError_Model>> spi_Tip(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spi_Tipi(tableName,uid_sup,elcat,code,codeend,nomination,description,description1,description2,user_uid);
+           return await _repository.spi_Tipi(tableName,uid_sup,elcat,code,codeend,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut("{uid_sup}/{elcat}/{code}/{nomination}")]
-        public async Task spu_Tip(int? uid, int? uid_sup, bool? elcat, string? code,  string? codeend, string? nomination, string? description
+        [HttpPut("{uid}/{elcat}/{code}/{nomination}")]
+        public async Task<IEnumerable<SelectError_Model>> spu_Tip(int? uid, int? uid_sup, bool? elcat, string? code,  string? codeend, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
-            await _repository.spu_tipi(tableName,uid, uid_sup, elcat, code,codeend, nomination, description, description1, description2, user_uid);
+          return await _repository.spu_tipi(tableName,uid, uid_sup, elcat, code,codeend, nomination, description, description1, description2, user_uid);
         }
 
         [HttpGet]
