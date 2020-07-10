@@ -15,3 +15,6 @@ C:\Users\User\Documents\GitHub\TaskManagement\DataBase\obj\Debug\DataBase.usqldb
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
+C:\Users\remio\source\repos\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
+C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
+C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
