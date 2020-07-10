@@ -1456,23 +1456,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administration\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\remio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "projectUniqueName": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
       "projectName": "WebApiTaskManagement",
-      "projectPath": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
-      "packagesPath": "C:\\Users\\Administration\\.nuget\\packages\\",
-      "outputPath": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\obj\\",
+      "projectPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Administration\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1480,7 +1476,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/k2X3xoSiHiMDrHCudUyD361ibryGTpEJJQpq8atUd6VTkrqO5k/api": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

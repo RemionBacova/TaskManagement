@@ -1,8 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-<<<<<<< HEAD
   <ContentRoot BasePath="_content/Blazored.Modal" Path="C:\Users\remio\.nuget\packages\blazored.modal\4.1.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\remio\.nuget\packages\syncfusion.blazor\18.1.0.56\build\..\staticwebassets\" />
-=======
-  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\Admin\.nuget\packages\syncfusion.blazor\18.1.0.56\build\..\staticwebassets\" />
->>>>>>> eea5457b7210f1700a0e9a47a23e0a36a8354c02
 </StaticWebAssets>
