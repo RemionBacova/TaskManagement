@@ -42,9 +42,18 @@ namespace WebApiTaskManagement.Repository
                 }
 
             }
-    
 
-
+        public async Task<IEnumerable<Machines1>> SelectActiveMachines()
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveMachines";
+                return await db.QueryAsync<Machines1>(readSp, commandType: CommandType.StoredProcedure);
+            }
         }
+
+
+
+    }
     }
 

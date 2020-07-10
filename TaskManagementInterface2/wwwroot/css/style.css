@@ -1,0 +1,72 @@
+.navbar-collapse {
+    background: #f0f0f0;
+}
+
+.boxes{
+    display: flex;
+    padding: 15px;
+}
+.boxes .box{
+    margin: 0px 14px;
+    cursor: pointer;
+}
+.box{
+    width: 180px;
+    height:72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0px 15px;
+    color: white;
+    border: none !important;
+    transition: all .3s;
+}
+.box:focus{
+    transform: scale(1.2);
+    transform-origin : top;
+    outline: none !important;
+}
+.box i {
+    font-size: 65px;
+    opacity: 0.2;
+}
+.sales {
+    background: #007bff;
+}
+.service {
+    background: #6610f2;
+}
+.marketing {
+    background: #dc3545;
+}
+.reports {
+    background: #fd7e14;
+}
+.help-center {
+    background: #17a2b8;
+}
+
+.service-content{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 16px;
+    display: flex;
+}
+
+.service-content > div {
+    margin-right: 35px
+}
+
+.menu-content a {
+    font-size: 14px;
+    color: rgba(0,0,0,0.54);
+    line-height: 24px;
+}
+app > div.content.px-4 select {
+    outline: none !important;
+    box-shadow: none;
+    border: 1px solid grey
+}
+
+span.e-tbar-btn-text {
+    margin: 16px 0px;
+}

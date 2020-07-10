@@ -1,0 +1,22 @@
+﻿@inject HttpClient http
+@using TaskManagementInterface.Data 
+@using TaskManagementInterface.Services.Categories
+    <div style="width:250px">
+        <label style="font-weight:bold">@ErrorName</label><br/>
+       <label><a href="/my/link/location/">@Id</a></label>
+                                <br/>
+        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+    </div>
+
+
+
+@code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    CategoryServices CategoryServices = new CategoryServices();
+    private tbl_TABLE_CATEGORY kategoriModel = new tbl_TABLE_CATEGORY();
+
+    [Parameter] public string ErrorName { get; set; }
+    [Parameter] public int Id { get; set; }
+
+    void Cancel() => BlazoredModal.Cancel();
+   
+    }

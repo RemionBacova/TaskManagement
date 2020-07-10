@@ -73,6 +73,27 @@ using TaskManagementInterface.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 10 "C:\Users\remio\source\repos\TaskManagement\TaskManagementInterface2\_Imports.razor"
+using Blazored;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\remio\source\repos\TaskManagement\TaskManagementInterface2\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\remio\source\repos\TaskManagement\TaskManagementInterface2\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\remio\source\repos\TaskManagement\TaskManagementInterface2\Pages\EditoTipe.razor"
 using Newtonsoft.Json;
 

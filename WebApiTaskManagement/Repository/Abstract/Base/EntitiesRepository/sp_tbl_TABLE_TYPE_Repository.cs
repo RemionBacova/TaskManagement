@@ -23,8 +23,33 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
 
 
         #region SPI_TYPE
+        public async Task<IEnumerable<SelectError_Model>> spi_Tipi2(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+            , string? description1, string? description2, int? user_uid,int? cat_uid)
+        {
+            using (IDbConnection sql = new SqlConnection(_constring))
+            {
+
+                string readSp = "spI_tbl_" + tablename + "_TYPE2";
+                var queryParameters = new DynamicParameters();
+
+                queryParameters.Add("@uid_sup", uid_sup);
+                queryParameters.Add("@elcat", elcat);
+                queryParameters.Add("@code", code);
+                queryParameters.Add("@codeend", codeend);
+                queryParameters.Add("@nomination", nomination);
+                queryParameters.Add("@description", description);
+                queryParameters.Add("@description1", description1);
+                queryParameters.Add("@description2", description2);
+                queryParameters.Add("@user_uid", user_uid);
+                queryParameters.Add("@category_uid", cat_uid);
+
+                return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
         public async Task<IEnumerable<SelectError_Model>> spi_Tipi(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+           , string? description1, string? description2, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -41,12 +66,13 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 queryParameters.Add("@description1", description1);
                 queryParameters.Add("@description2", description2);
                 queryParameters.Add("@user_uid", user_uid);
+                
 
                 return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
 
             }
         }
-    
+
 
         #endregion
 
@@ -174,7 +200,26 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-        public async Task<Boolean> DeleteRow(string tableName, string UID)
+
+        #region SP_SelectActiveTypeByCategory
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> SelectActiveTypeByCategory(string tableName, string? category_uid)
+        {
+
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveTypesByCategory";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", tableName);
+                queryParameters.Add("@category_uid", category_uid);
+
+                return await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+        #endregion
+
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -182,8 +227,8 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@TABLE", "tbl_" + tableName + "_TYPE");
                 queryParameters.Add("@UID", UID);
-                await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                return true;
+               return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                
             }
         }
         public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> SelectActiveRecByParameters(string tableName, string? uid_sup, string? nomination, string? description)
@@ -222,6 +267,45 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        #region SP_SelectAllActivByParent
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model1>> SelectAllActiveRecWithParent(string tableName)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveRecWithParent";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName + "_TYPE");
+                return await db.QueryAsync<tbl_TABLE_TYPE_Model1>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
+
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> spGetTree(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "GetTree";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@TABLE", "tbl_" + tableName + "_TYPE");
+                queryParameters.Add("@UID", UID);
+                return await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> GetPossibleParents(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "GetPossibleParents";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@TABLE", "tbl_" + tableName + "_TYPE");
+                queryParameters.Add("@UID", UID);
+                return await db.QueryAsync<tbl_TABLE_TYPE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
 
 
     }

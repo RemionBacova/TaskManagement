@@ -1,0 +1,233 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data.Models
+@using TaskManagementInterface.Services.Types
+
+
+
+
+    <div class="modal-body" style="width:650px">
+
+
+
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">Parent Name:</label>
+                <input class="form-control col-md-6" type="text" value=@ParentName />
+                <button class="form-control col-md-1" @onclick="ButtonParent">...</button>
+
+            </div>
+        </div>
+
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">Nomination:</label>
+                <input class="form-control  col-md-6" type="text"
+                       @bind="TypeModel.nomination" />
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5" style="justify-content: left">Code:</label>
+                <input class="form-control col-md-6" type="text"
+                       @bind="TypeModel.code" />
+            </div>
+        </div>
+
+
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">Code actual:</label>
+                <input class="form-control  col-md-6" type="text"
+                       @bind="TypeModel.codeactual" />
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">codebegin:</label>
+                <input class="form-control  col-md-6" type="text"
+                       @bind="TypeModel.codebegin" />
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">Code end:</label>
+                <input class="form-control  col-md-6" type="text"
+                       @bind="TypeModel.codeend" />
+            </div>
+        </div>
+
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content:left">Description:</label>
+                <input class="form-control  col-md-6" type="text"
+                       @bind="TypeModel.description" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <label class="col-md-5 " style="justify-content: left">Contains Elements:</label>
+                <input style="justify-content: left" type="checkbox" class="col-md-6"
+                       placeholder="Elcat"
+                       @bind="TypeModel.elcat" />
+            </div>
+        </div>
+
+        <br />
+
+
+
+
+
+
+        <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
+        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+    </div>
+
+
+
+            @code {
+                [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+                private tbl_TABLE_TYPE TypeModel = new tbl_TABLE_TYPE();
+                TypeServices typeServices = new TypeServices();
+                [Parameter] public bool addOrEdit { get; set; }
+                [Parameter] public string tableName { get; set; }
+                [Parameter] public int uid { get; set; }
+                [Parameter] public string uid_sup { get; set; }
+                [Parameter] public string CategoryUID { get; set; }
+
+                private string returnValue = "";
+                public string ParentName = "";
+                public string ParentID = "";
+
+                protected async void OnLoad()
+                {
+
+
+                    if (!addOrEdit)
+                    {
+
+                        TypeModel = await typeServices.SelectRecById(tableName, uid.ToString());
+
+                        if (TypeModel.uid_sup != null)
+                        {
+                            ParentID = TypeModel.uid_sup.ToString();
+                            ParentName = (await typeServices.SelectRecById(tableName, TypeModel.uid_sup.ToString())).nomination;
+
+                        }
+                        else
+                        {
+                            ParentID = "";
+                            ParentName = "";
+                        }
+
+
+                    }
+                    StateHasChanged();
+                }
+
+                protected override void OnInitialized() => OnLoad();
+
+                void SubmitForm() => Save();
+                void Cancel() => BlazoredModal.Cancel();
+
+                protected async Task Save()
+                {
+
+                    TaskManagementInterface.Data.Error errorModel = new TaskManagementInterface.Data.Error();
+                    string parameters;
+                    if (ParentID == "")
+                    {
+
+                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeend=" + TypeModel.codeend;
+                    }
+                    else
+                    {
+                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual" + TypeModel.codeactual;
+                    }
+
+                    if (!addOrEdit)
+                    {
+
+                        errorModel =  await typeServices.Update(TypeModel, tableName, parameters);
+                        var parametersError = new ModalParameters();
+
+                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+
+                    }
+                    else
+                    {
+                        errorModel=  await typeServices.Add(TypeModel, tableName,CategoryUID, parameters);
+                        var parametersError = new ModalParameters();
+                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+
+
+
+                        var result = await messageForm.Result;
+
+
+                    }
+                    StateHasChanged();
+                    BlazoredModal.Close(ModalResult.Ok(returnValue));
+                }
+
+                async Task ButtonParent()
+                {
+                    var parameters2 = new ModalParameters();
+
+                    parameters2.Add(nameof(ParentTypeModal.tableName), tableName);
+                    parameters2.Add(nameof(ParentTypeModal.uid), uid);
+                    var messageForm = Modal.Show<ParentTypeModal>("Select Parent", parameters2);
+
+
+
+                    var result = await messageForm.Result;
+                    /// do mar result dhe do e vej tek text box
+
+                    if (result.Data is null)
+                    {
+                        ParentID = "";
+                    }
+                    else
+                    {
+                        ParentID = result.Data.ToString();
+                    }
+
+
+                    if (ParentID != "")
+                    {
+
+                        ParentName = (await typeServices.SelectRecById(tableName,ParentID)).nomination;
+
+                    }
+                    else
+                    {
+                        ParentName = "";
+                    }
+
+                }
+
+
+                }

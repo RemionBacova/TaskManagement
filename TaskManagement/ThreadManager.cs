@@ -53,7 +53,7 @@ namespace TaskManagement
 
         public void ThreadManagetStop()
         {
-           
+
             wsWriter = null;
             functions = null;
         }
@@ -83,7 +83,7 @@ namespace TaskManagement
                 // TimeDifference of writing new data
 
               
-                Thread.Sleep(1000);
+                Thread.Sleep(10000);
             }
         }
 

@@ -1,11 +1,12 @@
 ﻿@inherits LayoutComponentBase
 @using TaskManagementInterface.Data
 @inject AuthenticationStateProvider AuthenticationStateProvider
-<div class="sidebar">
-    <NavMenu />
-</div>
+@using Blazored.Modal
 
-<div class="main" style="background-color:#f7f7f9">
+<NavMenu />
+<BlazoredModal />
+
+@*<div class="main" style="background-color:#f7f7f9">
     <div class="top-row px-4">
         <AuthorizeView>
             <Authorized>
@@ -17,12 +18,12 @@
             </NotAuthorized>
         </AuthorizeView>
         <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
+    </div>*@
 
-    <div class="content px-4">
-        @Body
-    </div>
+<div class="content px-4">
+    @Body
 </div>
+
 @code{
     public void Logout()
     {

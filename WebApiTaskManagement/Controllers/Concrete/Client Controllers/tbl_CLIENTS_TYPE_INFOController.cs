@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
 
-namespace WebApiTaskManagement.Controllers.Client_Controllers
+namespace WebApiTaskManagement.Controllers.Clients_Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

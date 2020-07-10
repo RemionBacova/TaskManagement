@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "B1GkyIK6qtaArU8suHQqBXXVg/5NeJD2YtlOotaRCVUJQ9Jbl688I/JSRxP6HQi1eaut7MxxmLk0lgdMU2t+vQ==",
+  "dgSpecHash": "7t2PFK/QnoB20Wq2z3UAu+MmXJMmRxCtSnYLs0BkipK1YXvL6KblrzdRxlaN/EcqFOay8WeGYPWl3LGa0Pht2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+  "projectFilePath": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\TaskManagementInterface.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\remio\\.nuget\\packages\\blazored.localstorage\\2.1.6\\blazored.localstorage.2.1.6.nupkg.sha512",
+    "C:\\Users\\remio\\.nuget\\packages\\blazored.modal\\4.1.0\\blazored.modal.4.1.0.nupkg.sha512",
     "C:\\Users\\remio\\.nuget\\packages\\blazored.sessionstorage\\1.0.12\\blazored.sessionstorage.1.0.12.nupkg.sha512",
     "C:\\Users\\remio\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.4\\microsoft.aspnetcore.authorization.3.1.4.nupkg.sha512",
     "C:\\Users\\remio\\.nuget\\packages\\microsoft.aspnetcore.blazor.httpclient\\3.2.0-preview3.20168.3\\microsoft.aspnetcore.blazor.httpclient.3.2.0-preview3.20168.3.nupkg.sha512",

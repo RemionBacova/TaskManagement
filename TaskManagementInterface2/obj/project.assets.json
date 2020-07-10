@@ -15,6 +15,26 @@
           "lib/netstandard2.0/Blazored.LocalStorage.dll": {}
         }
       },
+      "Blazored.Modal/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.2",
+          "Microsoft.AspNetCore.Components.Web": "3.1.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Blazored.Modal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Blazored.Modal.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.Modal.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.Modal.props": {}
+        }
+      },
       "Blazored.SessionStorage/1.0.12": {
         "type": "package",
         "dependencies": {
@@ -2077,6 +2097,24 @@
         "blazored.localstorage.2.1.6.nupkg.sha512",
         "blazored.localstorage.nuspec",
         "lib/netstandard2.0/Blazored.LocalStorage.dll"
+      ]
+    },
+    "Blazored.Modal/4.1.0": {
+      "sha512": "p3lyk3vt4HDHSqronUQtuX7oDNPWJrTcfkui4UwU5i03P93rAv8n6tlS4AOUPd15vR+Q606+PSsRWOnBQ1in/w==",
+      "type": "package",
+      "path": "blazored.modal/4.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.modal.4.1.0.nupkg.sha512",
+        "blazored.modal.nuspec",
+        "build/Blazored.Modal.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazored.Modal.props",
+        "buildTransitive/Blazored.Modal.props",
+        "icon.png",
+        "lib/netstandard2.0/Blazored.Modal.dll",
+        "staticwebassets/blazored-modal.css"
       ]
     },
     "Blazored.SessionStorage/1.0.12": {
@@ -6801,6 +6839,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Blazored.LocalStorage >= 2.1.6",
+      "Blazored.Modal >= 4.1.0",
       "Blazored.SessionStorage >= 1.0.12",
       "Microsoft.AspNetCore.Blazor.HttpClient >= 3.2.0-preview3.20168.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.3",
@@ -6813,11 +6852,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+      "projectUniqueName": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\TaskManagementInterface.csproj",
       "projectName": "TaskManagementInterface",
-      "projectPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+      "projectPath": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\TaskManagementInterface.csproj",
       "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagementInterface2\\obj\\",
+      "outputPath": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6828,7 +6867,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/k2X3xoSiHiMDrHCudUyD361ibryGTpEJJQpq8atUd6VTkrqO5k/api": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -6847,6 +6887,10 @@
           "Blazored.LocalStorage": {
             "target": "Package",
             "version": "[2.1.6, )"
+          },
+          "Blazored.Modal": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           },
           "Blazored.SessionStorage": {
             "target": "Package",
@@ -6883,7 +6927,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

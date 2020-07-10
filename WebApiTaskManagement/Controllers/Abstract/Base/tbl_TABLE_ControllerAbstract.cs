@@ -37,7 +37,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
         }
 
-        [HttpPut("{uid}/{uid_sup}/{type_uid}/{code}/{nomination}")]
+        [HttpPut("{uid}/{type_uid}/{code}/{nomination}")]
 
         public async Task<IEnumerable<SelectError_Model>> spu_tbl_table(int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
@@ -60,9 +60,9 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow(tbl_TABLE_Model modelName, string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string UID)
         {
-            return await _repository.DeleteRow(tableName, UID);
+            return await _repository.DeleteRow(tableName,UID);
 
         }
 
@@ -101,11 +101,25 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpGet("GetTyperByCategory")]
-        public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveTypeByCategory(string? category_uid)
+       
+        [HttpGet("SelectAllActiveRecWithParent")]
+        public async Task<IEnumerable<tbl_TABLE_Model1>> SelectAllActiveRecWithParent()
         {
-            return await _repository.SelectActiveTypeByCategory(tableName, category_uid);
 
+            return await _repository.SelectAllActiveRecWithParent(tableName);
+
+        }
+
+        [HttpGet("GetTREE")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> GetTREE(string UID)
+        {
+            return await _repository.spGetTree(tableName, UID);
+        }
+
+        [HttpGet("GetPossibleParents")]
+        public async Task<IEnumerable<tbl_TABLE_Model>> GetParents( string UID)
+        {
+            return await _repository.GetPossibleParents(tableName, UID);
         }
 
 

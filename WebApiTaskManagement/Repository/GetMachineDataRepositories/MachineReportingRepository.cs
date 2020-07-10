@@ -30,21 +30,34 @@ namespace WebApiTaskManagement.Repository
                 string readSp = "spi_tbl_MachineReporting";
                 var queryParameters = new DynamicParameters();
 
-                
-                    queryParameters.Add("@ProcessName", machinerep.ProcessName);
-                    queryParameters.Add("@ApplicationName", machinerep.ApplicationName);
-                    queryParameters.Add("@TotalSecond", machinerep.TotalSeconds);
-                    queryParameters.Add("@MachineHash", machinerep.MachineHash);
-                    queryParameters.Add("@SessionID", machinerep.GUID);
+
+                queryParameters.Add("@ProcessName", machinerep.ProcessName);
+                queryParameters.Add("@ApplicationName", machinerep.ApplicationName);
+                queryParameters.Add("@TotalSecond", machinerep.TotalSeconds);
+                queryParameters.Add("@MachineHash", machinerep.MachineHash);
+                queryParameters.Add("@SessionID", machinerep.GUID);
 
                 return await sql.QueryAsync<MachineReporting>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
 
-            }
+        }
 
+        public async Task<IEnumerable<MachineReporting2>> SelectMachineReportingByUID(string uid, string dateBegin , string dateEnd)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveMachineReporting";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@machineUID", uid);
+                queryParameters.Add("@dateBegin", dateBegin);
+                queryParameters.Add("@dateEnd", dateEnd);
+            
+                return await db.QueryAsync<MachineReporting2>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
 
 
         }
     }
+}
 
 

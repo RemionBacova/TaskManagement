@@ -170,7 +170,7 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
         #endregion
 
         #region SP_DeleteRow
-        public async Task<Boolean> DeleteRow(string tableName, string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -178,8 +178,8 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@TABLE", "tbl_" + tableName + "_CATEGORY");
                 queryParameters.Add("@UID", UID);
-                await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                return true;
+               return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+              
             }
         }
         #endregion
@@ -226,6 +226,47 @@ namespace WebApiTaskManagemenk.Repository.Base.EntitiesRepository
 
 
         #endregion
+
+        #region SP_SelectAllActivByParent
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model1>> SelectAllActiveRecWithParent(string tableName)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveRecWithParent";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName + "_CATEGORY");
+                return await db.QueryAsync<tbl_TABLE_CATEGORY_Model1>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #endregion
+
+
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> spGetTree(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "GetTree";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@TABLE", "tbl_" + tableName + "_CATEGORY");
+                queryParameters.Add("@UID", UID);
+                return await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> GetPossibleParents(string tableName, string UID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "GetPossibleParents";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@TABLE","tbl_"+ tableName +"_CATEGORY");
+                queryParameters.Add("@UID", UID);
+                return await db.QueryAsync<tbl_TABLE_CATEGORY_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
 
 
     }

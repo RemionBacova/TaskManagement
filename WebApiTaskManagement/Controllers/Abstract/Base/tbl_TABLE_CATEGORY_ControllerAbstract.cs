@@ -23,14 +23,14 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
-        [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
+        [HttpPost("{code}/{nomination}")]
         public async Task<IEnumerable<SelectError_Model>> spi_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName, */int? uid_sup, bool? elcat, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
            return await _repository.spi_Kateogria( tableName,uid_sup,elcat,code,nomination,description,description1,description2,user_uid);
         }
 
-        [HttpPut("{uid}/{uid_sup}/{elcat}/{code}/{nomination}")]
+        [HttpPut("{uid}/{code}/{nomination}")]
 
 
         public async Task<IEnumerable<SelectError_Model>> spu_Kateogria(/*[FromBody] tbl_TABLE_CATEGORY_Model modelName*/int?uid, int? uid_sup, bool? elcat, string? code, string? nomination, string? description
@@ -56,7 +56,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow(string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string UID)
         {
             return await _repository.DeleteRow(tableName, UID);
 
@@ -69,6 +69,25 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         }
 
+        [HttpGet("SelectAllActiveRecWithParent")]
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model1>> SelectAllActiveRecWithParent()
+        {
+
+            return await _repository.SelectAllActiveRecWithParent(tableName);
+
+        }
+
+        [HttpGet("GetTREE")]
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> GetTREE( string UID)
+        {
+            return await _repository.spGetTree(tableName, UID);
+        }
+
+        [HttpGet("GetPossibleParents")]
+        public async Task<IEnumerable<tbl_TABLE_CATEGORY_Model>> GetParents( string UID)
+        {
+            return await _repository.GetPossibleParents(tableName, UID);
+        }
 
 
     }

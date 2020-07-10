@@ -23,14 +23,14 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
             }
 
-            [HttpPost("{uid_sup}/{element_uid}/{type_info_uid}/{nomination}")]
+            [HttpPost("{element_uid}/{type_info_uid}/{nomination}")]
             public async Task<IEnumerable<SelectError_Model>> spi_Info(int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
             {
                return await _repository.spi_Info( tableName,uid_sup,element_uid,type_info_uid,nomination,description,description1,description2,user_uid);
             }
 
-            [HttpPut("{uid}/{uid_sup}/{element_uid}/{type_info_uid}/{nomination}")]
+            [HttpPut("{uid}/{element_uid}/{type_info_uid}/{nomination}")]
             public async Task<IEnumerable<SelectError_Model>> spu_Info(int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
             {

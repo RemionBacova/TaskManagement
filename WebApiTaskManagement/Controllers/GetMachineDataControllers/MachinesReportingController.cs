@@ -28,9 +28,12 @@ namespace WebApiTaskManagement.Controllers
             await _repository.spi_tbl_MachineReporting(machinerep);
         
         
-        
-        
-        
           }
+
+        [HttpGet("GetAll_MachineRecordingByUID")]
+        public async Task<IEnumerable<MachineReporting2>> SelectMachineReportingByUID(string uid, string dateBegin, string dateEnd)
+        {
+            return await _repository.SelectMachineReportingByUID(uid,dateBegin,dateEnd);
+        }
     }
 }

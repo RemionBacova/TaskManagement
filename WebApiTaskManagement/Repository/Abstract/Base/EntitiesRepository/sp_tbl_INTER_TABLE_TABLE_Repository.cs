@@ -15,6 +15,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
     {
         private readonly string _constring;
         private int error_id;
+   
         public sp_tbl_INTER_TABLE_TABLE_Repository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
@@ -174,6 +175,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #endregion
 
+     
     }
 }
 

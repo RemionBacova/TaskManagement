@@ -15,11 +15,12 @@ namespace WebApiTaskManagement.Controllers
     public class tbl_INTER_TABLE_TABLEController : ControllerBase
     {
         private sp_tbl_INTER_TABLE_TABLE_Repository _repository;
+        private string tableName = "";
 
         public tbl_INTER_TABLE_TABLEController(sp_tbl_INTER_TABLE_TABLE_Repository repository)
         {
             this._repository = repository;
-
+            this.tableName = tableName;
         }
 
         [HttpPost]
@@ -73,7 +74,11 @@ namespace WebApiTaskManagement.Controllers
         {
             return await _repository.SelectAllActiveConnections_TABLE1_TABLE2_Table2_UID(table1, table2, table2_uid);
         }
-    
+
+
+      
+
+
     }
 }
 

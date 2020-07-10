@@ -1,16 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Net.Http.Headers;
-using System;
-using System.Net.Http;
 using WebApiTaskManagemenk.Repository.Base.EntitiesRepository;
 using WebApiTaskManagement.Repository;
 using WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository;
+using Microsoft.AspNetCore.Mvc.Abstractions;
 using WebApiTaskManagement.Repository.Base.EntitiesRepository;
+using Microsoft.Net.Http.Headers;
+using System.Net.Http;
 using WebApiTaskManagement.Repository.Concrete;
+using WebApiTaskManagement.Repository;
+
+using WebApiTaskManagement.Installer;
 
 namespace WebApiTaskManagement
 {
@@ -23,22 +31,11 @@ namespace WebApiTaskManagement
 
         public void ConfigureServices(IServiceCollection services)
         {
-           
-            
-            services.AddScoped<MachinesRepository>();
-            services.AddScoped<MachineReportingRepository>();
-            services.AddTransient<sp_tbl_TABLE_CATEGORY_Repository>();
-            services.AddTransient<sp_tbl_TABLE_Repository>();
-            services.AddTransient<sp_tbl_TABLE_TYPE_INFO_Repository>();
-            services.AddTransient<sp_tbl_TABLE_TYPE_INFO_CH_Repository>();
-            services.AddTransient<sp_tbl_TABLE_TYPE_Repository>();
-            services.AddTransient<sp_tbl_TABLE_INFO_Repository>();
-            services.AddScoped<sp_tbl_INTER_TABLE_TABLE_Repository>();
-            services.AddTransient<tbl_ENTITIES_Repository>();
-            services.AddTransient<Login_Repository>();
-            services.AddTransient<tbl_MENU_Repository>();
-            services.AddSingleton<HttpClient>();
 
+
+           
+            //Calling the extension method that calls all the scoped services
+            services.InstallServicesInAssembly(Configuration);
 
 
 
@@ -78,7 +75,7 @@ namespace WebApiTaskManagement
 
             //Add cors
             app.UseCors(policy =>
-            policy.WithOrigins("http://192.168.1.118:80")
+            policy.WithOrigins("http://192.168.1.109:80")
             .AllowAnyMethod()
             .WithHeaders(HeaderNames.ContentType));
 

@@ -27,5 +27,11 @@ namespace WebApiTaskManagement.Controllers
         {
             await _repository.spi_tbl_Machines(machines);
         }
+
+        [HttpGet("GetAll_Machines")]
+        public async Task<IEnumerable<Machines1>> SelectActiveMachines()
+        {
+            return await _repository.SelectActiveMachines();
+        }
     }
 }

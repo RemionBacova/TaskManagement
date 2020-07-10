@@ -1,51 +1,158 @@
 ﻿@page "/Test"
-
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Navigations
 @using TaskManagementInterface.Data
-@inject WeatherForecastService ForecastService
+@using Newtonsoft.Json
+@using Syncfusion.Blazor.Data
+@inject HttpClient http
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Calendars
 
-<h1>Weather forecast</h1>
+@inject WeatherForecastService ForecastService
+@inject NavigationManager NavigationManager
+@inject HttpClient http
+@inject IJSRuntime jsRunTime
+
+<h3> Reporting</h3>
 <style>
 
-    .sf-license-warning{
-        display:none !important;
+    .sf-license-warning {
+        display: none !important;
+    }
+
+    #wrapper {
+        max-width: 300px;
+        margin: 0px auto;
+        padding-top: 20px
     }
 </style>
-<p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
 
-@code {
-    private WeatherForecast[] forecasts;
+
+
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="date">1.Select Machine:</label>
+            <select class="custom-select" @onchange="@EntitieClicked">
+                <option value="">-- Select Machine --</option>
+                @if (machines != null)
+                {
+                    @foreach (var mach in machines)
+                    {
+                        <option value="@mach.uid">@mach.machineName</option>
+
+                    }
+                }
+                else
+                {
+
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <label for="date">2.Pick Data Range:</label>
+                <SfDateRangePicker @bind-StartDate="@StartValue" @bind-EndDate="@EndValue"></SfDateRangePicker>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <br />
+    <div>
+
+        <button class="btn btn-primary col-md-12" @onclick="MachineReporting">Get Report</button>
+    </div>
+    <br />
+    <div>
+        <SfGrid TValue="MachineReporting2" DataSource="@machreps" AllowPaging="true" AllowSorting="true">
+
+            <GridPageSettings PageSize="10"></GridPageSettings>
+            <GridColumns>
+                <GridColumn Field=@nameof(MachineReporting2.hoursSpend) HeaderText="Hours Active" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+                <GridColumn Field=@nameof(MachineReporting2.applicationName) HeaderText="Application Name" Width="80"></GridColumn>
+
+            </GridColumns>
+
+
+
+        </SfGrid>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@code{
+
+    public class Machines
+    {
+        public int uid { get; set; }
+        public string machineName { get; set; }
+    }
+
+    public class MachineReporting2
+    {
+        public float hoursSpend { get; set; }
+        public string applicationName { get; set; }
+    }
+
+    public List<Machines> machines = new List<Machines>();
+    public List<MachineReporting2> machreps = new List<MachineReporting2>();
+
+    string selectedMachine;
+    string selectedMachineId;
+    string machine;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        machines = await http.GetJsonAsync<List<Machines>>("http://192.168.1.118/api/Machines/GetAll_Machines");
     }
+
+    private async Task MachineReporting()
+    {
+        string machid = selectedMachine;
+        string s = "http://192.168.1.118/api/MachinesReporting/GetAll_MachineRecordingByUID?uid=" + machid + "&dateBegin=" + StartValue?.ToString("MM-dd-yyyy") + "&dateEnd=" + EndValue?.ToString("MM-dd-yyyy");
+        machreps = await http.GetJsonAsync<List<MachineReporting2>>(s);
+    }
+
+    void EntitieClicked(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        string value = e.Value.ToString();
+        selectedMachine = value;
+        StateHasChanged();
+
+    }
+
+    public DateTime? StartValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 01, 01, 01);
+    public DateTime? EndValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

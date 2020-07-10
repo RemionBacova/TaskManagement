@@ -1456,19 +1456,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\remio\\.nuget\\packages\\": {}
+    "C:\\Users\\Administration\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "projectUniqueName": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
       "projectName": "WebApiTaskManagement",
-      "projectPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
-      "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\WebApiTaskManagement\\obj\\",
+      "projectPath": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\WebApiTaskManagement.csproj",
+      "packagesPath": "C:\\Users\\Administration\\.nuget\\packages\\",
+      "outputPath": "D:\\TaskManagement\\TaskManagement-master\\WebApiTaskManagement\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administration\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1531,7 +1535,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

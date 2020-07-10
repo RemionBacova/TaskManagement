@@ -14,6 +14,7 @@ using TaskManagementInterface.Data;
 using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Components.Authorization;
 using Blazored.SessionStorage;
+using Blazored.Modal;
 
 namespace TaskManagementInterface
 {
@@ -30,14 +31,14 @@ namespace TaskManagementInterface
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBlazoredModal();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<HttpClient>();
            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddBlazoredSessionStorage();
             services.AddHttpClient<IUserService,UserService>(x =>{
-                x.BaseAddress = new Uri("http://192.168.1.118/api/Auth/");
+                x.BaseAddress = new Uri("http://192.168.1.109/api/Auth/");
                 x.DefaultRequestHeaders.Add("User-Agent", "BlazorServer");
             });
             services.AddSyncfusionBlazor();
@@ -46,7 +47,7 @@ namespace TaskManagementInterface
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjc4ODIzQDMxMzgyZTMxMmUzMEtwa3k4RUpKVGIrcWltaU8wN1lpbFluVE9CL0oxMnhnUnZJdGJ3R2xmd1E9");
                 
             if (env.IsDevelopment())
             {

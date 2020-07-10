@@ -1,0 +1,326 @@
+﻿@page "/configCategory"
+@inject HttpClient http;
+@using Newtonsoft.Json;
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Data
+@using TaskManagementInterface.Data
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Grids;
+@using Syncfusion.Blazor.DropDowns
+
+
+@{
+    List<CommandModel> commands = new List<CommandModel>();
+    commands.Add(new CommandModel() { ButtonOption = new CommandButtonOptions() { IconCss = "e-icons e-edit", CssClass = "e-flat" }, Type = CommandButtonType.Edit });
+    commands.Add(new CommandModel() { ButtonOption = new CommandButtonOptions() { IconCss = "e-icons e-delete", CssClass = "e-flat" }, Type = CommandButtonType.Delete });
+    commands.Add(new CommandModel() { ButtonOption = new CommandButtonOptions() { IconCss = "e-icons e-update", CssClass = "e-flat" }, Type = CommandButtonType.Save });
+    commands.Add(new CommandModel() { ButtonOption = new CommandButtonOptions() { IconCss = "e-icons e-cancel-icon", CssClass = "e-flat" }, Type = CommandButtonType.Cancel });
+}
+
+
+@if (deleteConfirmation)
+{
+
+    <div class="modal" tabindex="-1" style="display:block;position:center;" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <label>Are you sure that you want to delete this item ?</label><br />
+                    <button class="btn btn-primary" type="button" @onclick="DeleteRecord">Delete</button>
+                    <button class="btn btn-primary" type="button" @onclick="Cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<div class="row">
+    <div class=" col-md-4">
+        @if (ShowPopup)
+        {
+            <EditForm Model="@kategoriPopUp" OnValidSubmit="Save">
+                <!-- This is the popup to create or edit a forecast -->
+                <div class="modal" tabindex="-1" style="display:block" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title"> Category </h3>
+                                <!-- Button to close the popup -->
+                                <button type="button" class="close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
+                            </div>
+                            <!-- Edit form for the current forecast -->
+                            <div class="modal-body">
+                                <label class="text-black-50">ID:</label>
+                                <input class="form-control" type="text"
+                                       placeholder="Element Id "
+                                       @bind="kategoriPopUp.ElementId" readonly="readonly" /> <br />
+                                <label class="text-black-50">Nomination:</label>
+
+                                <input class="form-control" type="text"
+                                       placeholder="Nomination"
+                                       @bind="kategoriPopUp.Nomination" /><br />
+                                <label class="text-black-50">Parent:</label>
+                                @if (kategoriPopUp.PrindiId.Count() != 0)
+                                {
+
+                                    <select class="form-control" style="border-radius:7px" @bind="kategoriPopUp.ParentId">
+                                        <option value="">-- Parent --</option>
+                                        @if (kategoriPopUp.PrindiId != null)
+                                        {
+                                            @foreach (var cnt in kategoriPopUp.PrindiId)
+                                            {
+                                                <option value="@cnt.uid">@cnt.nomination</option>
+                                            }
+                                        }
+                                    </select> <br />
+                                }
+                                <label class="text-black-50">Description:</label>
+                                <input class="form-control" type="text"
+                                       placeholder="Description"
+                                       @bind="kategoriPopUp.Description" /> <br />
+                                <label class="text-black-50">Code:</label>
+                                <input class="form-control" type="text"
+                                       placeholder="Code"
+                                       @bind="kategoriPopUp.Code" /><br />
+                                <label class="ftext-black-50">Elcat:</label>
+                                <input class="text-black-50" type="checkbox"
+                                       placeholder="Code"
+                                       @bind="kategoriPopUp.Elcat" /><br />
+
+                                <br />
+                                <!-- Button to save the forecast -->
+                                <button class="btn btn-primary" type="submit">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        }
+        <select class="form-control" style="width: 15em; border-radius: 7px" @onchange="@EntitieClicked">
+            <option value="">-- Select Entitie --</option>
+            @if (Entities != null)
+            {
+                @foreach (var entitet in Entities)
+                {
+                    <option value="@entitet.nomination">@entitet.nomination</option>
+
+                }
+            }
+
+            else
+            {
+
+            }
+        </select>
+    </div>
+</div>
+<div class="row">
+    <br />
+    <br />
+    <div>
+        @if (TreeData.Count() > 0)
+        {
+            <SfTreeGrid DataSource="@TreeData" IdMapping="ElementId" ParentIdMapping="ParentId" TreeColumnIndex="1" Toolbar="@(new List<string>() { "Add" })" AllowPaging="true" AllowSorting="true">
+                <TreeGridEvents TValue="BusinessObject"
+                                OnActionBegin="OnActionBegin">
+                </TreeGridEvents>
+                <TreeGridEditSettings AllowEditing="true" AllowAdding="true" AllowDeleting="true">
+                </TreeGridEditSettings>
+
+                <TreeGridColumns>
+                    <TreeGridColumn Field="ElementId" HeaderText="ElementId" Width="0" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+                    <TreeGridColumn Field="Code" HeaderText="Code" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+                    <TreeGridColumn Field="Nomination" HeaderText="Nomination" Width="160"></TreeGridColumn>
+                    <TreeGridColumn Field="Description" HeaderText="Description" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+                    <TreeGridColumn Field="Elcat" HeaderText="Elcat" DisplayAsCheckBox="true" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+                    <TreeGridColumn HeaderText="Manage Records" Width="150" Commands="@commands"></TreeGridColumn>
+
+                </TreeGridColumns>
+            </SfTreeGrid>
+        }
+        else
+        {
+
+        }
+    </div>
+</div>
+
+@code {
+    int idSup;
+    bool ShowPopup = false;
+    private List<tbl_TABLE_Model> Entities = new List<tbl_TABLE_Model>();
+    private string SelectedTable;
+    Kategorite cat = new Kategorite();
+    public List<BusinessObject> TreeGridData { get; set; }
+    public List<BusinessObject> TreeData = new List<BusinessObject>();
+    private List<Kategorite> kategori = new List<Kategorite>();
+    private BusinessObject kategoriPopUp = new BusinessObject();
+    public bool deleteConfirmation = false;
+
+    private async void DeleteRecord()
+    {
+       await DeleteCategory(kategoriPopUp);
+        deleteConfirmation = false;
+        await    FillDataToTable();
+        StateHasChanged();
+
+    }
+    private void Cancel()
+    {
+        deleteConfirmation = false;
+
+
+    }
+
+    void Disablepopup()
+    {
+        ShowPopup = false;
+    }
+    public async Task Save(EditContext obj)
+    {
+        BusinessObject model = (BusinessObject)(obj.Model);
+
+        if (model.ElementId > 0)
+        {
+            string parameters = "?description=" + model.Description;
+            string url = "http://192.168.1.118/api/tbl_CLIENTS_CATEGORY/" + model.ElementId + "/" + model.ParentId + "/" + model.Elcat + "/" + model.Code + "/" + model.Nomination + parameters;
+            await http.PutJsonAsync(url, "");
+            ShowPopup = false;
+            await FillDataToTable();
+            StateHasChanged();
+        }
+        else
+        {
+            string urltypkategori = "http://192.168.1.118/api/tbl_CLIENTS_CATEGORY/" + model.ParentId + "/" + model.Elcat + "/" + model.Code + "/" + model.Nomination;
+            await http.PostJsonAsync(urltypkategori, "");
+            ShowPopup = false;
+            await FillDataToTable();
+            StateHasChanged();
+
+        }
+    }
+    private void Prind(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        idSup = Convert.ToInt32(e.Value.ToString());
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Entities = await http.GetJsonAsync<List<tbl_TABLE_Model>>("http://192.168.1.118/GetAll_Entities");
+    }
+
+   async void EntitieClicked(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        string value = e.Value.ToString();
+        SelectedTable = value;
+       await this.FillDataToTable();
+    }
+
+
+    public class BusinessObject
+    {
+        public int ElementId { get; set; }
+        public string Nomination { get; set; }
+        public string Description { get; set; }
+        public int Progress { get; set; }
+        public string Code { get; set; }
+        public int? ParentId { get; set; }
+        public bool? Elcat { get; set; }
+        public string ParentName { get; set; }
+        public List<Kategorite> PrindiId { get; set; }
+    }
+
+
+    protected async Task FillDataToTable()
+    {
+
+        string url = "http://192.168.1.118/api/tbl_" + SelectedTable + "_CATEGORY";
+        kategori = await http.GetJsonAsync<List<Kategorite>>(url);
+        TreeData.Clear();
+        foreach (var element in kategori)
+        {
+
+            BusinessObject item = new BusinessObject();
+            if (element.uid_sup == -1)
+            {
+                item.ParentId = null;
+            }
+
+            else
+
+            {
+                item.ParentName = element.nomination;
+
+                item.ParentId = element.uid_sup;
+            }
+
+
+            item.ElementId = element.uid;
+            item.Nomination = element.nomination;
+            item.Description = element.description;
+            item.Elcat = element.elcat;
+            item.Code = element.code;
+
+            TreeData.Add(item);
+
+
+        }
+        TreeGridData = TreeData.ToList();
+        StateHasChanged();
+    }
+
+    public  void OnActionBegin(ActionEventArgs<BusinessObject> args)
+    {
+        string a = null;
+        if (args.RequestType.ToString() == "BeginEdit")
+        {
+            kategoriPopUp = (BusinessObject)(args.RowData);
+            ShowPopup = true;
+            kategoriPopUp.PrindiId = kategori;
+            StateHasChanged();
+            //SaveNewCategory(newCategory);
+        }
+        else if (args.RequestType.ToString() == "Add")
+        {
+            kategoriPopUp = (BusinessObject)(args.Data);
+            kategoriPopUp.PrindiId = kategori;
+            ShowPopup = true;
+
+
+        }
+
+
+        else if (args.RequestType.ToString() == "Delete")
+        {
+            kategoriPopUp = (BusinessObject)(args.Data);
+            deleteConfirmation = true;
+
+        }
+
+    }
+    private async Task DeleteCategory(BusinessObject newCategory)
+    {
+        string url = "http://192.168.1.118/api/tbl_CLIENTS_Category/" + newCategory.ElementId;
+        await http.DeleteAsync(url);
+        StateHasChanged();
+
+    }
+    private async Task SaveEditedCategory(BusinessObject newCategory)
+    {
+
+
+        string parameters = "?uid_sup=" + newCategory.ParentId + "&description=" + newCategory.Description;
+        string url = "http://192.168.1.118/api/tbl_CLIENTS_CATEGORY/" + newCategory.ElementId + "/" + newCategory.ParentId + "/" + newCategory.Elcat + "/" + newCategory.Code + "/" + newCategory.Nomination + parameters;
+        await http.PostJsonAsync(url,"");
+
+    }
+
+}

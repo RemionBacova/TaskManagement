@@ -22,7 +22,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             this.tableName = tableName;
         }
 
-        [HttpPost("{uid_sup}/{nomination}/{property}")]
+        [HttpPost("{nomination}/{property}")]
         public async Task<IEnumerable<SelectError_Model>> spi_Tip_Info(int? uid_sup, int? type_uid, string? nomination, string? description
             , string? description1, string? description2, int? property, bool? mandatory, int? db, bool? file, int? user_uid)
         {
@@ -30,7 +30,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             , description1,  description2,  property,  mandatory,  db,  file,  user_uid);
         }
 
-        [HttpPut("{uid}/{uid_sup}/{type_uid}/{nomination}/{property}")]
+        [HttpPut("{uid}/{type_uid}/{nomination}/{property}")]
         public async Task<IEnumerable<SelectError_Model>> spu_Tip_Info( int? uid, int? uid_sup, int? type_uid, string? nomination, string? description
             , string? description1, string? description2, int? property, bool? mandatory, float? queue, bool? file, int? user_uid)
         {

@@ -1,0 +1,198 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.Categories
+
+
+
+
+    <div class="modal-body" style="width:650px">
+
+
+     
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                    <label class="col-md-5 " style="justify-content: left">Parent Name:</label> 
+                    <input class="form-control col-md-6" type="text" value=@ParentName  />
+                    <button class="form-control col-md-1" @onclick="ButtonParent">...</button>
+
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-inline">
+                <div class="form-group col-md-12">
+                    <label class="col-md-5" style="justify-content: left" >Code:</label>
+                    <input class="form-control col-md-6" type="text"
+                           @bind="kategoriModel.code" />
+            </div>
+        </div>
+
+
+        <br />
+        <div class="form-inline">
+                <div class="form-group col-md-12">
+                    <label class="col-md-5 " style="justify-content: left">Nomination:</label>
+                    <input class="form-control  col-md-6" type="text"
+                           @bind="kategoriModel.nomination" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-inline">
+                <div class="form-group col-md-12">
+                    <label class="col-md-5 " style="justify-content:left">Description:</label>
+                    <input class="form-control  col-md-6" type="text"
+                           @bind="kategoriModel.description" />
+                </div>
+        </div>
+
+        <br />
+
+        <div class="form-inline">
+                <div class="form-group col-md-12">
+                    <label class="col-md-5 " style="justify-content: left">Contains Elements:</label>
+                    <input style="justify-content: left" type="checkbox" class="col-md-6"
+                           placeholder="Elcat"
+                           @bind="kategoriModel.elcat" />
+                </div>
+        </div>
+
+        <br />
+
+
+
+
+
+
+        <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
+        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+    </div>
+
+
+
+            @code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+                private tbl_TABLE_CATEGORY kategoriModel = new tbl_TABLE_CATEGORY();
+                CategoryServices categoryServices = new CategoryServices();
+                [Parameter] public bool addOrEdit { get; set; }
+                [Parameter] public string tableName { get; set; }
+                [Parameter] public int uid { get; set; }
+                [Parameter] public string uid_sup { get; set; }
+                private string returnValue = "";
+                public string ParentName = "";
+                public string ParentID = "";
+
+                protected async void OnLoad()
+                {
+
+
+                    if (!addOrEdit)
+                    {
+
+                        kategoriModel = (await categoryServices.SelectAllActiveRecById(tableName, uid.ToString())).FirstOrDefault();
+
+                        if (kategoriModel.uid_sup != null)
+                        {
+                            ParentID = kategoriModel.uid_sup.ToString();
+                            ParentName = (await categoryServices.SelectAllActiveRecById(tableName, kategoriModel.uid_sup.ToString())).FirstOrDefault().nomination;
+
+                        }
+                        else
+                        {
+                            ParentID = "";
+                            ParentName = "";
+                        }
+
+
+                    }
+                    StateHasChanged();
+                }
+
+                protected override void OnInitialized() => OnLoad();
+
+                void SubmitForm() => Save();
+                void Cancel() => BlazoredModal.Cancel();
+
+                protected async Task Save()
+                {
+
+                    Error errorModel = new Error();
+                    string parameters;
+                    if (ParentID == "")
+                    {
+
+                        parameters = "?description=" + kategoriModel.description + "&elcat=" + kategoriModel.elcat.ToString();
+                    }
+                    else
+                    {
+                        parameters = "?uid_sup=" + ParentID + "&description=" + kategoriModel.description + "&elcat=" + kategoriModel.elcat.ToString();
+                    }
+
+                    if (!addOrEdit)
+                    {
+
+                        errorModel =  await categoryServices.Update(kategoriModel, tableName, parameters);
+                        var parametersResult = new ModalParameters();
+
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+                    }
+                    else
+                    {
+                        errorModel=  await categoryServices.Add(kategoriModel, tableName, parameters);
+                        var parametersResult = new ModalParameters();
+
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+
+
+                        var result = await messageForm.Result;
+
+
+                    }
+                    StateHasChanged();
+                    BlazoredModal.Close(ModalResult.Ok(returnValue));
+                }
+
+                async Task ButtonParent()
+                {
+                    var parameters2 = new ModalParameters();
+
+                    parameters2.Add(nameof(ParentModal.tableName), tableName);
+                    parameters2.Add(nameof(ParentModal.uid), uid);
+                    var messageForm = Modal.Show<ParentModal>("Select Parent", parameters2);
+
+
+
+                    var result = await messageForm.Result;
+                    /// do mar result dhe do e vej tek text box
+
+                    if (result.Data is null)
+                    {
+                        ParentID = "";
+                    }
+                    else
+                    {
+                        ParentID = result.Data.ToString();
+                    }
+
+
+                    if (ParentID != "")
+                    {
+                        ParentName= (await categoryServices.SelectAllActiveRecById(tableName,ParentID)).FirstOrDefault().nomination;
+
+                    }
+                    else
+                    {
+                        ParentName = "";
+                    }
+
+                } }

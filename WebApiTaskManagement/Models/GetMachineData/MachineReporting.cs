@@ -13,4 +13,11 @@ namespace WebApiTaskManagement.Models
         public string MachineHash { get; set; }
         public string GUID { get; set; }
     }
+
+    public partial class MachineReporting2
+    {
+        public float HoursSpend { get; set; }
+        public string ApplicationName { get; set; }
+        
+    }
 }

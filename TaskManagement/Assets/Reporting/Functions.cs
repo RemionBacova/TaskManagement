@@ -54,7 +54,8 @@ namespace TaskManagement.Models
             {
                 if (string.IsNullOrEmpty(fingerPrint))
                 {
-                    fingerPrint = GetHash(GetCPUID() + GetHDDUID());
+                    fingerPrint = GetHash(GetCPUID() + GetHDDUID() + Environment.MachineName + Environment.OSVersion.ToString()+ Environment.MachineName + Environment.Version.ToString());
+
                 }
                 return fingerPrint;
             }
@@ -296,7 +297,7 @@ namespace TaskManagement.Models
        //Get machine data from environment
 
              MachineName = Environment.MachineName;
-            Osversion = Environment.MachineName;
+            Osversion = Environment.OSVersion.ToString();
             UserDomainName = Environment.UserDomainName;
             UserName = Environment.UserName;
             Version = Environment.Version.ToString();

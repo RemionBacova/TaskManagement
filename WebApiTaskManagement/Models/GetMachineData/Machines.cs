@@ -15,5 +15,11 @@ namespace WebApiTaskManagement.Models
         public string MachineHash { get; set; }
     }
 
+    public partial class Machines1
+    {
+        public int UID { get; set; }
+        public string MachineName { get; set; }
+       
+    }
 
 }

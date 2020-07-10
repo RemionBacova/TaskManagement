@@ -21,11 +21,17 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             _repository = repository;
             this.tableName = tableName;
         }
-        [HttpPost("{uid_sup}/{elcat}/{code}/{nomination}")]
-        public async Task<IEnumerable<SelectError_Model>> spi_Tip(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+        [HttpPost("{elcat}/{code}/{nomination}")]
+        public async Task<IEnumerable<SelectError_Model>> spi_Tipi(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
             , string? description1, string? description2, int? user_uid)
         {
            return await _repository.spi_Tipi(tableName,uid_sup,elcat,code,codeend,nomination,description,description1,description2,user_uid);
+        }
+        [HttpPost("Spi_TYPE2/{code}/{nomination}/{cat_uid}")]
+        public async Task<IEnumerable<SelectError_Model>> spi_Tipi2(int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
+           , string? description1, string? description2, int? user_uid, int? cat_uid)
+        {
+            return await _repository.spi_Tipi2(tableName, uid_sup, elcat, code, codeend, nomination, description, description1, description2, user_uid, cat_uid);
         }
 
         [HttpPut("{uid}/{elcat}/{code}/{nomination}")]
@@ -50,7 +56,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow(string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string UID)
         {
             return await _repository.DeleteRow(tableName, UID);
 
@@ -62,6 +68,33 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
 
         }
+
+        [HttpGet("SelectAllActiveRecWithParent")]
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model1>> SelectAllActiveRecWithParent()
+        {
+
+            return await _repository.SelectAllActiveRecWithParent(tableName);
+
+        }
+
+        [HttpGet("GetTREE")]
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> GetTREE( string UID)
+        {
+            return await _repository.spGetTree(tableName, UID);
+        }
+
+        [HttpGet("GetPossibleParents")]
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> GetParents( string UID)
+        {
+            return await _repository.GetPossibleParents(tableName, UID);
+        }
+        [HttpGet("GetTypeByCategory")]
+        public async Task<IEnumerable<tbl_TABLE_TYPE_Model>> SelectActiveTypeByCategory(string? category_uid)
+        {
+            return await _repository.SelectActiveTypeByCategory(tableName, category_uid);
+
+        }
+
 
     }
 }
