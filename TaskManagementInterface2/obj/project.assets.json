@@ -6847,19 +6847,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\remio\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\TaskManagementInterface.csproj",
       "projectName": "TaskManagementInterface",
       "projectPath": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\TaskManagementInterface.csproj",
       "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\remio\\OneDrive\\Desktop\\TaskManagementInterface2\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+      "projectName": "TaskManagementInterface",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\obj\\",
+>>>>>>> eea5457b7210f1700a0e9a47a23e0a36a8354c02
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
