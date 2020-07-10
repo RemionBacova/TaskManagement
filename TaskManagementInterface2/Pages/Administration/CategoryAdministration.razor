@@ -1,4 +1,4 @@
-﻿@page "/CateogryAdministration"
+﻿@page "/CategoryAdministration"
 @using Syncfusion.Blazor.TreeGrid
 @using Syncfusion.Blazor.Grids
 @using TaskManagementInterface.Data
@@ -14,8 +14,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <select class="form-control" @onchange="@EntitieClicked" >
-            <option value="-1">-- Select Entitie --</option>
+        <select title="-- Select Entitie --" class="form-control" @onchange="@EntitieClicked">
+            <option value="" disabled hidden selected>Select an entitie</option>
             @if (Entities != null)
             {
                 @foreach (var entitet in Entities)
@@ -48,7 +48,7 @@ else
             <SfTreeGrid DataSource="@TreeData" TValue="tbl_TABLE_CATEGORY" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
                 <TreeGridEvents TValue="tbl_TABLE_CATEGORY"> </TreeGridEvents>
                 <TreeGridPageSettings PageSize="100"></TreeGridPageSettings>
-          
+                <TreeGridEditSettings AllowEditing="true" AllowAdding="true" AllowDeleting="true" Mode="Syncfusion.Blazor.TreeGrid.EditMode.Dialog" ShowDeleteConfirmDialog="true"></TreeGridEditSettings>
                 <TreeGridColumns>
                     <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
                     <TreeGridColumn Field="code" HeaderText="CODE" Width="10%" TextAlign="TextAlign.Left"></TreeGridColumn>
@@ -81,9 +81,9 @@ else
     public List<TaskManagementInterface.Data.tbl_TABLE_CATEGORY> TreeData = new List<tbl_TABLE_CATEGORY>();
     private List<TaskManagementInterface.Data.tbl_TABLE_Model> Entities = new List<Data.tbl_TABLE_Model>();
 
-
-
-
+    private string SelectedTable;
+    bool deleteConfirmation = false;
+    bool _addOrEdit = false;
     string _tablename = "";
     CategoryServices categoryServices = new CategoryServices();
     EntitetService entitetService = new EntitetService();

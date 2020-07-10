@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-8">
                 <select title="-- Select Entitie --" class="form-control" @onchange="@EntitieClicked">
-                    <option value="-1">-- Select Entitie --</option>
+                    <option value="" disabled hidden selected>Select an entitie</option>
                     @if (Entities != null)
                     {
                         @foreach (var entitet in Entities)
@@ -92,7 +92,7 @@
     {
         Entities = await entitetservice.SelectEntities();
     }
-    private  void EntitieClicked(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    private async Task EntitieClicked(Microsoft.AspNetCore.Components.ChangeEventArgs e)
     {
         string value = e.Value.ToString();
         if (value != "-1")

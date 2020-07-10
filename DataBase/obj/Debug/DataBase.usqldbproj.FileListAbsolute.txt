@@ -16,5 +16,6 @@ C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\bin\Debug\D
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\xhova\Desktop\Sitel Task Management\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
 C:\Users\remio\source\repos\TaskManagement\DataBase\bin\Debug\DataBase.usqldbpack
+C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbprojAssemblyReference.cache
 C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbproj.CoreCompileInputs.cache
 C:\Users\remio\source\repos\TaskManagement\DataBase\obj\Debug\DataBase.usqldbpack
