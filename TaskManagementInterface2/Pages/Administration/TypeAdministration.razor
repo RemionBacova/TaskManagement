@@ -14,7 +14,7 @@
 
     <div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <select title="-- Select Entitie --" class="form-control" @onchange="@EntitieClicked">
                     <option value="" disabled hidden selected>Select an entitie</option>
                     @if (Entities != null)
@@ -31,10 +31,18 @@
                 </select>
             </div>
         </div>
-
-        <div class="col-md-5">
-            <button @onclick="ShowKategori">...</button>
+        <br/>
+        <div class="row">
+            <div class="col-md-11">
+                <input type="text" class="form-control" @bind="CategoryName" />
+            </div>
+            <div class="col-md-1">
+                <button @onclick="ShowKategori">...</button>
+            </div>
         </div>
+        <br/>
+        @if (CategoryUID!="")
+        {
         <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="ShowModalAdd">
             <span class="e-btn-icon e-add e-icons e-icon-left">
             </span><span class="e-tbar-btn-text">Add</span>
@@ -71,7 +79,7 @@
                 </div>
             </div>
         </div>
-
+                                        }
     </div>
 
                               
@@ -82,6 +90,7 @@
     private List<TaskManagementInterface.Data.tbl_TABLE_Model> Entities = new List<Data.tbl_TABLE_Model>();
     EntitetService entitetservice = new EntitetService();
     TypeServices TypeServices = new TypeServices();
+    public string CategoryName = "";
     public string selectedTable="";
     public string CategoryUID="";
     private List<tbl_TABLE_TYPE> Tree = new List<tbl_TABLE_TYPE>();
@@ -100,6 +109,7 @@
             _tablename = "tbl_" + value + "_Category";
             selectedTable = "tbl_" + value+ "_Type";
         }
+        CategoryName = "";
 
     }
 
@@ -155,6 +165,7 @@
         CategoryUID = result.Data.ToString();
 
         Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, result.Data.ToString());
+        CategoryName = (await TypeServices.SelectCurrentCageory(_tablename, CategoryUID)).nomination;
 
     }
 
