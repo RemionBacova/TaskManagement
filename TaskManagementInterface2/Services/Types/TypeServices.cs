@@ -36,6 +36,8 @@ namespace TaskManagementInterface.Services.Types
         {
             return await http.GetJsonAsync<List<tbl_TABLE_CATEGORY>>("http://192.168.1.109/api/" + _tablename);
         }
+
+      
         public async Task<tbl_TABLE_CATEGORY> SelectCurrentCageory(string table, string id)
         {
             return (await http.GetJsonAsync<List<tbl_TABLE_CATEGORY>>("http://192.168.1.109/api/"+table+"/" + id)).FirstOrDefault();

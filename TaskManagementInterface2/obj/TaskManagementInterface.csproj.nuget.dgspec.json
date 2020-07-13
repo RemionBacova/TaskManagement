@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj": {}
+    "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj": {
+    "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+        "projectUniqueName": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
         "projectName": "TaskManagementInterface",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Sitel\\TaskManagement\\TaskManagementInterface2\\obj\\",
+        "projectPath": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagementInterface2\\TaskManagementInterface.csproj",
+        "packagesPath": "C:\\Users\\Administration\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagementInterface2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administration\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

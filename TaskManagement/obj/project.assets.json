@@ -1687,19 +1687,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\remio\\.nuget\\packages\\": {}
+    "C:\\Users\\Administration\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+      "projectUniqueName": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
       "projectName": "TaskManagement",
-      "projectPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
-      "packagesPath": "C:\\Users\\remio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\remio\\source\\repos\\TaskManagement\\TaskManagement\\obj\\",
+      "projectPath": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagement\\TaskManagement.csproj",
+      "packagesPath": "C:\\Users\\Administration\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administration\\Documents\\GitHub\\TaskManagement\\TaskManagement\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\remio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administration\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1707,8 +1711,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.devexpress.com/k2X3xoSiHiMDrHCudUyD361ibryGTpEJJQpq8atUd6VTkrqO5k/api": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
