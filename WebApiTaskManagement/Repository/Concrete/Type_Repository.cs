@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTaskManagement.Models.Concrete;
 
 namespace WebApiTaskManagement.Repository.Concrete
 {
@@ -18,12 +19,12 @@ namespace WebApiTaskManagement.Repository.Concrete
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task<IEnumerable<Type>> SelectEntitites()
+        public async Task<IEnumerable<Type_Model>> SelectEntitites()
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
                 string readSp = "SelectType";
-                return await db.QueryAsync<Type>(readSp, commandType: CommandType.StoredProcedure);
+                return await db.QueryAsync<Type_Model>(readSp, commandType: CommandType.StoredProcedure);
             }
         }
     }

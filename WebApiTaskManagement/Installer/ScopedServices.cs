@@ -28,6 +28,7 @@ namespace WebApiTaskManagement.Installer
             services.AddTransient<tbl_MENU_Repository>();
             services.AddTransient<spi_getTree_Repository>();
             services.AddSingleton<HttpClient>();
+            services.AddTransient<Type_Repository>();
 
         }
     }
