@@ -1,0 +1,35 @@
+﻿@inject HttpClient http
+@inject IModalService Modal  
+@using TaskManagementInterface.Data 
+@using TaskManagementInterface.Services.Categories
+<div>
+
+    <button @onclick="SubmitForm" class="btn btn-primary">Delete</button>
+    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+</div>
+
+
+
+@code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    TaskManagementInterface.Services.TypeInfo.TypeInfoServices typeServicesInfo = new Services.TypeInfo.TypeInfoServices();
+
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public int uid { get; set; }
+    private string returnValue = "";
+
+
+
+    void SubmitForm() =>  DeleteTypes();
+    void Cancel() => BlazoredModal.Cancel();
+    private async Task DeleteTypes()
+    {
+        Error errorModel = new Error();
+        errorModel = await typeServicesInfo.Delete(uid.ToString(), tableName);
+        var parametersError = new ModalParameters();
+
+        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+        parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+        BlazoredModal.Close(ModalResult.Ok(returnValue));
+    }
+    }

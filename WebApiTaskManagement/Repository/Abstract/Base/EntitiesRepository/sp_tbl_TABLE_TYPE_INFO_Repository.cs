@@ -192,7 +192,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
 
         #region Delete Row
-        public async Task<Boolean> DeleteRow(string tableName, string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -200,8 +200,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@TABLE", "tbl_" + tableName + "_TYPE_INFO");
                 queryParameters.Add("@UID", UID);
-                await db.QueryAsync<tbl_TABLE_TYPE_INFO_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                return true;
+              return  await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+             
             }
         }
         #endregion

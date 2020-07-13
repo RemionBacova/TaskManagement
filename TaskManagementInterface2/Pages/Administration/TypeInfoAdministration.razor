@@ -10,6 +10,8 @@
 @using TaskManagementInterface.Services.Categories
 @using TaskManagementInterface.Services.Entitet
 @using TaskManagementInterface.Services.Types
+@using TaskManagementInterface.Shared.TypeInfo
+
 
 
     <div>
@@ -73,10 +75,10 @@
                                     <Template>
                                         @{
                                             <div>
-                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalEdit(context as tbl_TABLE_TYPE))">
+                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalEdit(context as tbl_TABLE_TYPE_INFO))">
                                                     <span class="e-btn-icon e-icons e-edit "></span>
                                                 </button>
-                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => ShowModalDelete(context as tbl_TABLE_TYPE))">
+                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => ShowModalDelete(context as tbl_TABLE_TYPE_INFO))">
                                                     <span class="e-btn-icon e-icons e-delete "></span>
                                                 </button>
                                             </div>
@@ -132,49 +134,48 @@
     async Task ShowModalAdd()
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(AddOrEditType.addOrEdit), true);
-        parameters.Add(nameof(AddOrEditType.tableName), selectedTable);
-        parameters.Add(nameof(AddOrEditType.uid), 0);
-        parameters.Add(nameof(AddOrEditType.CategoryUID), CategoryUID);
-        var messageForm = Modal.Show<AddOrEditType>("Add Category", parameters);// tittle parameters
+        parameters.Add(nameof(AddOrEditTypeInfo.addOrEdit), true);
+        parameters.Add(nameof(AddOrEditTypeInfo.tableName), selectedTypeTable);
+        parameters.Add(nameof(AddOrEditTypeInfo.uid), 0);
+        var messageForm = Modal.Show<AddOrEditTypeInfo>("Add Category", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
-        //Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, CategoryUID);
+        Tree = await typeinfoservice.SelectAllActiveRecByType(selectedTypeTable, TypeUID);
 
     }
 
-    private async Task ShowModalEdit(tbl_TABLE_TYPE modeltype)
+    private async Task ShowModalEdit(tbl_TABLE_TYPE_INFO modeltype)
     {
 
         var parameters = new ModalParameters();
-        parameters.Add(nameof(AddOrEditType.addOrEdit), false);
-        parameters.Add(nameof(AddOrEditType.tableName), selectedTable);
-        parameters.Add(nameof(AddOrEditType.uid), modeltype.uid);
-        var messageForm = Modal.Show<AddOrEditType>("Edit Type", parameters);// tittle parameters
+        parameters.Add(nameof(AddOrEditTypeInfo.addOrEdit), false);
+        parameters.Add(nameof(AddOrEditTypeInfo.tableName), selectedTypeTable);
+        parameters.Add(nameof(AddOrEditTypeInfo.uid), modeltype.uid);
+        var messageForm = Modal.Show<AddOrEditTypeInfo>("Edit Type", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
-        //Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, CategoryUID);
+        Tree = await typeinfoservice.SelectAllActiveRecByType(selectedTypeTable, TypeUID);
     }
 
-    private async Task ShowModalDelete(tbl_TABLE_TYPE test)
+    private async Task ShowModalDelete(tbl_TABLE_TYPE_INFO test)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(DeleteType.tableName), selectedTable);
-        parameters.Add(nameof(DeleteType.uid), test.uid);
-        var messageForm = Modal.Show<DeleteType>("Delete Type", parameters);// tittle parameters
+        parameters.Add(nameof(TaskManagementInterface.Shared.TypeInfo.DeleteTypeInfo.tableName), selectedTypeTable);
+        parameters.Add(nameof(TaskManagementInterface.Shared.TypeInfo.DeleteTypeInfo.uid), test.uid);
+        var messageForm = Modal.Show<TaskManagementInterface.Shared.TypeInfo.DeleteTypeInfo>("Delete Type", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
-        //Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, CategoryUID);
+        Tree = await typeinfoservice.SelectAllActiveRecByType(selectedTypeTable, TypeUID);
     }
     private async Task ShowKategori()
     {
         var parameters = new ModalParameters();
 
-        parameters.Add(nameof(ChooseCategoryModal.tableName), _tablename);
-        var messageForm = Modal.Show<ChooseCategoryModal>("Choose", parameters);
+        parameters.Add(nameof(TaskManagementInterface.Shared.TypeInfo.ChooseCategoryModal.tableName), _tablename);
+        var messageForm = Modal.Show<TaskManagementInterface.Shared.TypeInfo.ChooseCategoryModal>("Choose", parameters);
 
         var result = await messageForm.Result;
         //Select All Types By Category ID

@@ -53,7 +53,7 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow(string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string UID)
         {
             return await _repository.DeleteRow(tableName, UID);
 

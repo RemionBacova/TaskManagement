@@ -1,0 +1,204 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data.Models
+@using TaskManagementInterface.Services.Types
+@using TaskManagementInterface.Services.TypeInfo
+
+
+
+
+<div class="modal-body" style="width:650px">
+
+    <div class="form-inline">
+        <div class="form-group col-md-12">
+            <label class="col-md-5 " style="justify-content: left">Nomination:</label>
+            <input class="form-control  col-md-6" type="text"
+                   @bind="TypeModel.nomination" />
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="form-inline">
+        <div class="form-group col-md-12">
+            <label class="col-md-5" style="justify-content: left">description:</label>
+            <input class="form-control col-md-6" type="text"
+                   @bind="TypeModel.description" />
+        </div>
+    </div>
+
+
+    <br />
+    <div class="form-inline">
+        <div class="form-group col-md-12">
+            <label class="col-md-5 " style="justify-content: left">description1:</label>
+            <input class="form-control  col-md-6" type="text"
+                   @bind="TypeModel.description1" />
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="form-inline">
+        <div class="form-group col-md-12">
+            <label class="col-md-5 " style="justify-content: left">mandatory:</label>
+            <input class="form-control  col-md-6"type="checkbox"
+                   @bind="TypeModel.mandatory" />
+        </div>
+    </div>
+
+    <br />
+
+
+
+
+    <div class="form-inline">
+        <div class="form-group col-md-12">
+            <label class="col-md-5 " style="justify-content: left">file:</label>
+            <input style="justify-content: left" type="checkbox" class="col-md-6"
+                   placeholder="Elcat"
+                   @bind="TypeModel.file" />
+        </div>
+    </div>
+
+    <br />
+
+
+
+
+
+
+    <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
+    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+</div>
+
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    private tbl_TABLE_TYPE_INFO TypeModel = new tbl_TABLE_TYPE_INFO();
+
+    TypeInfoServices typeInfoServices = new TypeInfoServices();
+    [Parameter] public bool addOrEdit { get; set; }
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public int uid { get; set; }
+    [Parameter] public string uid_sup { get; set; }
+    [Parameter] public string CategoryUID { get; set; }
+
+    private string returnValue = "";
+    public string ParentName = "";
+    public string ParentID = "";
+
+    protected async void OnLoad()
+    {
+
+
+        if (!addOrEdit)
+        {
+
+            TypeModel = await typeInfoServices.SelectRecById(tableName, uid.ToString());
+
+            if (TypeModel.uid_sup != null)
+            {
+                ParentID = TypeModel.uid_sup.ToString();
+                ParentName = (await typeInfoServices.SelectRecById(tableName, TypeModel.uid_sup.ToString())).nomination;
+
+            }
+            else
+            {
+                ParentID = "";
+                ParentName = "";
+            }
+
+
+        }
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized() => OnLoad();
+
+    void SubmitForm() => Save();
+    void Cancel() => BlazoredModal.Cancel();
+
+    protected async Task Save()
+    {
+
+        TaskManagementInterface.Data.Error errorModel = new TaskManagementInterface.Data.Error();
+        string parameters;
+
+        //Type_uid per tu rregulluar
+
+
+        if (!addOrEdit)
+        {
+            parameters = "?description=" + TypeModel.description + "&description1=" + TypeModel.description1 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+
+            errorModel = await typeInfoServices.Update(TypeModel, tableName, parameters);
+            var parametersError = new ModalParameters();
+
+            parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+            parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+            var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+
+        }
+        else
+        {
+            parameters = "?type_uid=1&description=" + TypeModel.description + "&description1=" + TypeModel.description1 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+
+
+            errorModel = await typeInfoServices.Add(TypeModel, tableName, parameters);
+            var parametersError = new ModalParameters();
+            parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+            parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+            var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+
+
+
+            var result = await messageForm.Result;
+
+
+        }
+        StateHasChanged();
+        BlazoredModal.Close(ModalResult.Ok(returnValue));
+    }
+
+    //async Task ButtonParent()
+    //{
+    //    var parameters2 = new ModalParameters();
+
+    //    parameters2.Add(nameof(ParentTypeModal.tableName), tableName);
+    //    parameters2.Add(nameof(ParentTypeModal.uid), uid);
+    //    var messageForm = Modal.Show<ParentTypeModal>("Select Parent", parameters2);
+
+
+
+    //    var result = await messageForm.Result;
+    //    /// do mar result dhe do e vej tek text box
+
+    //    if (result.Data is null)
+    //    {
+    //        ParentID = "";
+    //    }
+    //    else
+    //    {
+    //        ParentID = result.Data.ToString();
+    //    }
+
+
+    //    if (ParentID != "")
+    //    {
+
+    //        ParentName = (await typeServices.SelectRecById(tableName, ParentID)).nomination;
+
+    //    }
+    //    else
+    //    {
+    //        ParentName = "";
+    //    }
+
+    //}
+
+
+}
