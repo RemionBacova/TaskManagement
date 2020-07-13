@@ -22,7 +22,7 @@
 
     <div class="form-inline">
         <div class="form-group col-md-12">
-            <label class="col-md-5" style="justify-content: left">description:</label>
+            <label class="col-md-5" style="justify-content: left">Description:</label>
             <input class="form-control col-md-6" type="text"
                    @bind="TypeModel.description" />
         </div>
@@ -32,9 +32,22 @@
     <br />
     <div class="form-inline">
         <div class="form-group col-md-12">
-            <label class="col-md-5 " style="justify-content: left">description1:</label>
-            <input class="form-control  col-md-6" type="text"
-                   @bind="TypeModel.description1" />
+            <label class="col-md-5 " style="justify-content: left">Type:</label>
+            <select @bind="TypeModel.description2" title="-- Select Type--" class="form-control">
+                    <option value="" disabled hidden selected>Select an entitie</option>
+                    @if (getTypes != null)
+                    {
+                        @foreach (var entitet in getTypes)
+                        {
+                            <option value="@entitet.name">@entitet.name</option>
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                </select>
+                
         </div>
     </div>
 
@@ -79,6 +92,7 @@
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
 
     private tbl_TABLE_TYPE_INFO TypeModel = new tbl_TABLE_TYPE_INFO();
+    private List<TaskManagementInterface.Data.Models.Type.GetTypes> getTypes = new List<TaskManagementInterface.Data.Models.Type.GetTypes>();
 
     TypeInfoServices typeInfoServices = new TypeInfoServices();
     [Parameter] public bool addOrEdit { get; set; }
@@ -93,7 +107,7 @@
 
     protected async void OnLoad()
     {
-
+        getTypes = await typeInfoServices.SelectTypes();
 
         if (!addOrEdit)
         {
@@ -133,7 +147,7 @@
 
         if (!addOrEdit)
         {
-            parameters = "?description=" + TypeModel.description + "&description1=" + TypeModel.description1 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+            parameters = "?description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
 
             errorModel = await typeInfoServices.Update(TypeModel, tableName, parameters);
             var parametersError = new ModalParameters();
@@ -145,7 +159,7 @@
         }
         else
         {
-            parameters = "?type_uid=1&description=" + TypeModel.description + "&description1=" + TypeModel.description1 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+            parameters = "?type_uid=1&description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
 
 
             errorModel = await typeInfoServices.Add(TypeModel, tableName, parameters);
@@ -164,41 +178,10 @@
         BlazoredModal.Close(ModalResult.Ok(returnValue));
     }
 
-    //async Task ButtonParent()
-    //{
-    //    var parameters2 = new ModalParameters();
-
-    //    parameters2.Add(nameof(ParentTypeModal.tableName), tableName);
-    //    parameters2.Add(nameof(ParentTypeModal.uid), uid);
-    //    var messageForm = Modal.Show<ParentTypeModal>("Select Parent", parameters2);
 
 
 
-    //    var result = await messageForm.Result;
-    //    /// do mar result dhe do e vej tek text box
 
-    //    if (result.Data is null)
-    //    {
-    //        ParentID = "";
-    //    }
-    //    else
-    //    {
-    //        ParentID = result.Data.ToString();
-    //    }
-
-
-    //    if (ParentID != "")
-    //    {
-
-    //        ParentName = (await typeServices.SelectRecById(tableName, ParentID)).nomination;
-
-    //    }
-    //    else
-    //    {
-    //        ParentName = "";
-    //    }
-
-    //}
 
 
 }

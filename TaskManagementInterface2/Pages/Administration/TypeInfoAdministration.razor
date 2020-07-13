@@ -66,11 +66,12 @@
                             <TreeGridPageSettings PageSize="100"></TreeGridPageSettings>
                             <TreeGridEditSettings AllowEditing="true" AllowAdding="true" AllowDeleting="true" Mode="Syncfusion.Blazor.TreeGrid.EditMode.Dialog" ShowDeleteConfirmDialog="true"></TreeGridEditSettings>
                             <TreeGridColumns>
-                                <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
-                                @*<TreeGridColumn Field="code" HeaderText="CODE" Width="10%" TextAlign="TextAlign.Left"></TreeGridColumn>*@
+                                <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>               
                                 <TreeGridColumn Field="nomination" HeaderText="Nomination" Width="20%"></TreeGridColumn>
                                 <TreeGridColumn Field="description" HeaderText="Description" Width="20%"></TreeGridColumn>
-                                <TreeGridColumn Field="mandatory" HeaderText="Contains Elements" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
+                                <TreeGridColumn Field="description2" HeaderText="Types" Width="20%"></TreeGridColumn>
+                                <TreeGridColumn Field="mandatory" HeaderText="Mandatory" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
+                                <TreeGridColumn Field="file" HeaderText="File" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
                                 <TreeGridColumn HeaderText="Edit" Field="uid" Width="200">
                                     <Template>
                                         @{

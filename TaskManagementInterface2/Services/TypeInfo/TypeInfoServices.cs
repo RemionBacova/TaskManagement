@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using TaskManagementInterface.Data;
 using TaskManagementInterface.Data.Models;
+using TaskManagementInterface.Data.Models.Type;
 
 namespace TaskManagementInterface.Services.TypeInfo
 {
@@ -91,6 +92,11 @@ namespace TaskManagementInterface.Services.TypeInfo
             return (await http.GetJsonAsync<List<tbl_TABLE_TYPE_INFO>>("http://192.168.1.109/api/" + _tablename + "/" + uid)).FirstOrDefault();
         }
 
+
+        public async Task<List<GetTypes>> SelectTypes()
+        {
+            return await http.GetJsonAsync<List<GetTypes>>("http://192.168.1.109/GetAll_Types");
+        }
 
     }
 }
