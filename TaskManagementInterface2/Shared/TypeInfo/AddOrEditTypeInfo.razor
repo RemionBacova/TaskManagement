@@ -147,7 +147,9 @@
 
         if (!addOrEdit)
         {
-            parameters = "?description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+
+
+            parameters = "?description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file + "&queue=" +TypeModel.uid;
 
             errorModel = await typeInfoServices.Update(TypeModel, tableName, parameters);
             var parametersError = new ModalParameters();
