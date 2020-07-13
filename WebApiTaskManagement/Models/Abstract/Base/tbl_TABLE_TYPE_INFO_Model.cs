@@ -15,8 +15,8 @@ namespace WebApiTaskManagement.Models.Abstract.Base
         public int ?   type_uid { get; set; }
         public string nomination { get; set; }
         public string description { get; set; }
-        public string description1 { get; set; }
         public string description2 { get; set; }
+        public string description3 { get; set; }
         public int? property { get; set; }
         public bool? mandatory { get; set; }
         public float? queue{ get; set; }

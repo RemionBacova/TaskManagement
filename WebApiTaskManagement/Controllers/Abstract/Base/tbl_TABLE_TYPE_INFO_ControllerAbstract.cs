@@ -24,18 +24,18 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         [HttpPost("{nomination}/{property}")]
         public async Task<IEnumerable<SelectError_Model>> spi_Tip_Info(int? uid_sup, int? type_uid, string? nomination, string? description
-            , string? description1, string? description2, int? property, bool? mandatory, int? db, bool? file, int? user_uid)
+            , string? description2, string? description3, int? property, bool? mandatory, int? db, bool? file, int? user_uid)
         {
           return  await _repository.spi_Tip_Info( tableName, uid_sup,  type_uid,  nomination,  description
-            , description1,  description2,  property,  mandatory,  db,  file,  user_uid);
+            , description2,  description3,  property,  mandatory,  db,  file,  user_uid);
         }
 
         [HttpPut("{uid}/{type_uid}/{nomination}/{property}")]
         public async Task<IEnumerable<SelectError_Model>> spu_Tip_Info( int? uid, int? uid_sup, int? type_uid, string? nomination, string? description
-            , string? description1, string? description2, int? property, bool? mandatory, float? queue, bool? file, int? user_uid)
+            , string? description2, string? description3, int? property, bool? mandatory, float? queue, bool? file, int? user_uid)
         {
            return await _repository.spu_Tip_Info( tableName,uid, uid_sup, type_uid, nomination, description
-            , description1, description2, property, mandatory, queue, file, user_uid);
+            , description2, description3, property, mandatory, queue, file, user_uid);
         }
 
         [HttpGet]
