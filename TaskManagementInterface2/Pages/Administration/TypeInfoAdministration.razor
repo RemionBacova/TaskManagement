@@ -181,6 +181,8 @@
     }
     private async Task ShowKategori()
     {
+        TypeName = "";
+        Tree.Clear();
         var parameters = new ModalParameters();
 
         parameters.Add(nameof(TaskManagementInterface.Shared.TypeInfo.ChooseCategoryModal.tableName), _tablename);
@@ -198,6 +200,8 @@
 
     private async Task ShowType()
     {
+        TypeName = "";
+        Tree.Clear();
         var parameters = new ModalParameters();
 
         parameters.Add(nameof(TaskManagementInterface.Shared.TypeInfo.ChooseTypeModal.tableName), selectedTable);
