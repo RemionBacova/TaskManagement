@@ -42,9 +42,9 @@
         </button>
         <button class="box service"
                 data-toggle="collapse"
-                data-target="#technologies"
-                aria-controls="technologies">
-            <p>Technologies</p>
+                data-target="#hr"
+                aria-controls="hr">
+            <p>HR</p>
             <i class="fa fa-user-md"></i>
         </button>
         <button class="box marketing"
@@ -58,7 +58,7 @@
                 data-toggle="collapse"
                 data-target="#services"
                 aria-controls="services">
-            <p>HR</p>
+            <p>Technologies</p>
             <i class="fa fa-user-md"></i>
         </button>
         <button class="box marketing"
@@ -145,31 +145,90 @@
             </div>
         </div>
 
-        <div class="collapse" id="technologies" data-parent="#menu-content">
+        <div class="collapse" id="hr" data-parent="#menu-content">
 
             <div class="dropdown-content">
                 <div class="my-work">
-                    <h4 class="text-primary">Knowledge Path according to Roles</h4>
+                    <h4 class="text-primary">Workforce</h4>
                     <div class="d-flex">
-                        <a class="my-auto">Test1</a>
+                        <a class="my-auto">Actions</a>
                     </div>
                     <div class="d-flex">
-                        <a class="my-auto">Test2</a>
+                        <a class="my-auto">Details</a>
                     </div>
                     <div class="d-flex">
-                        <a class="my-auto">Test2</a>
+                        <a class="my-auto">Documents</a>
                     </div>
                 </div>
                 <div class="customers">
-                    <h4 class="text-primary">Project Technologies</h4>
+                    <h4 class="text-primary">Calendar</h4>
                     <div class="d-flex">
-                        <p class="my-auto">Test</p>
+                        <p class="my-auto">DayOff</p>
                     </div>
                     <div class="d-flex">
-                        <p class="my-auto">Test</p>
+                        <p class="my-auto">Reasons</p>
                     </div>
                     <div class="d-flex">
-                        <p class="my-auto">Test</p>
+                        <p class="my-auto">
+                            Absences
+                        </p>
+                    </div>
+
+                </div>
+                <div class="services">
+                    <h4 class="text-primary">Reports</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Individual Reporting</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Group Reporting</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Project Reporting</p>
+                    </div>
+                </div>
+                <div class="collaterall">
+                    <h4 class="text-primary">Engagment</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Projects</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Clients</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Actions</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="collapse" id="marketing" data-parent="#menu-content">
+
+            <div class="dropdown-content">
+                <div class="my-work">
+                    <h4 class="text-primary">Configuration</h4>
+                    <div class="d-flex">
+                        <a class="my-auto" href="configCategory">Category</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto" href="edittypes">Type</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto" href="typeinfo">Type Info</a>
+                    </div>
+                </div>
+                <div class="customers">
+                    <h4 class="text-primary">Users</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Administration</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryUser</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryUser</p>
                     </div>
 
                 </div>
@@ -203,264 +262,206 @@
 
             </div>
         </div>
-    </div>
 
+        <div class="collapse" id="reports" data-parent="#menu-content">
 
-
-    <div class="collapse" id="marketing">
-
-        <div class="dropdown-content">
-            <div class="my-work">
-                <h4 class="text-primary">Configuration</h4>
-                <div class="d-flex">
-                    <a class="my-auto" href="configCategory">Category</a>
+            <div class="dropdown-content">
+                <div class="my-work">
+                    <h4 class="text-primary">Configuration</h4>
+                    <div class="d-flex">
+                        <a class="my-auto" href="configCategory">Category</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto" href="edittypes">Type</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto" href="typeinfo">Type Info</a>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto" href="edittypes">Type</a>
+                <div class="customers">
+                    <h4 class="text-primary">Users</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Administration</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryUser</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryUser</p>
+                    </div>
+
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto" href="typeinfo">Type Info</a>
+                <div class="services">
+                    <h4 class="text-primary">SubCategoryTest</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest1</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest2</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest3</p>
+                    </div>
                 </div>
+                <div class="collaterall">
+                    <h4 class="text-primary">SubCategoryTest2</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest1</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest2</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest3</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest4</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="customers">
-                <h4 class="text-primary">Users</h4>
-                <div class="d-flex">
-                    <p class="my-auto">Administration</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryUser</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryUser</p>
-                </div>
-
-            </div>
-            <div class="services">
-                <h4 class="text-primary">SubCategoryTest</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-            </div>
-            <div class="collaterall">
-                <h4 class="text-primary">SubCategoryTest2</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest4</p>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <div class="collapse" id="reports">
+        <div class="collapse" id="projects" data-parent="#menu-content">
 
-        <div class="dropdown-content">
-            <div class="my-work">
-                <h4 class="text-primary">Configuration</h4>
-                <div class="d-flex">
-                    <a class="my-auto" href="configCategory">Category</a>
+            <div class="dropdown-content">
+                <div class="my-work">
+                    <h4 class="text-primary">Document Management for the project</h4>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto" href="edittypes">Type</a>
+                <div class="customers">
+                    <h4 class="text-primary">Project Management</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
+
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto" href="typeinfo">Type Info</a>
+                <div class="services">
+                    <h4 class="text-primary">Task Reporting</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest1</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest2</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest3</p>
+                    </div>
                 </div>
-            </div>
-            <div class="customers">
-                <h4 class="text-primary">Users</h4>
-                <div class="d-flex">
-                    <p class="my-auto">Administration</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryUser</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryUser</p>
+                <div class="collaterall">
+                    <h4 class="text-primary">PC Reporting ( Automatic Reporting )</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest1</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest2</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest3</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">SubCategoryTest4</p>
+                    </div>
                 </div>
 
             </div>
-            <div class="services">
-                <h4 class="text-primary">SubCategoryTest</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-            </div>
-            <div class="collaterall">
-                <h4 class="text-primary">SubCategoryTest2</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest4</p>
-                </div>
-            </div>
-
         </div>
-    </div>
+        <div class="collapse" id="assets" data-parent="#menu-content">
 
-    <div class="collapse" id="projects">
+            <div class="dropdown-content">
+                <div class="my-work">
+                    <h4 class="text-primary">Asset Registration </h4>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
+                    <div class="d-flex">
+                        <a class="my-auto">Test</a>
+                    </div>
+                </div>
+                <div class="customers">
+                    <h4 class="text-primary">Asset Distribution</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="my-auto">Test</p>
+                    </div>
 
-        <div class="dropdown-content">
-            <div class="my-work">
-                <h4 class="text-primary">Document Management for the project</h4>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
-                </div>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
-                </div>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
-                </div>
-            </div>
-            <div class="customers">
-                <h4 class="text-primary">Project Management</h4>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
                 </div>
 
-            </div>
-            <div class="services">
-                <h4 class="text-primary">Task Reporting</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-            </div>
-            <div class="collaterall">
-                <h4 class="text-primary">PC Reporting ( Automatic Reporting )</h4>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest1</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest2</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest3</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">SubCategoryTest4</p>
-                </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-    <div class="collapse" id="assets">
+        <div class="collapse" id="services" data-parent="#menu-content">
+            <div class="dropdown-content">
+                <div class="my-work">
+                    <h4 class="text-primary">Workforce</h4>
+                    <div class="d-flex">
+                        <p class="my-auto">Personel</p>
+                    </div>
+                    <div class="d-flex">
 
-        <div class="dropdown-content">
-            <div class="my-work">
-                <h4 class="text-primary">Asset Registration </h4>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
+                        <p class="my-auto">Interns</p>
+                    </div>
+                    <div class="d-flex">
+
+                        <p class="my-auto">Possible resources</p>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
+                <div class="customers">
+                    <h4 class="text-primary">Performance</h4>
+                    <div class="d-flex">
+
+                        <p class="my-auto">Group Performance</p>
+                    </div>
+                    <div class="d-flex">
+
+                        <p class="my-auto">Personal Performance</p>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <a class="my-auto">Test</a>
+                <div class="services">
+                    <h4 class="text-primary">Payroll</h4>
+                    <div class="d-flex">
+
+                        <p class="my-auto">Payroll</p>
+                    </div>
+                    <div class="d-flex">
+
+                        <p class="my-auto">Vocations</p>
+                    </div>
+
                 </div>
-            </div>
-            <div class="customers">
-                <h4 class="text-primary">Asset Distribution</h4>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
-                </div>
-                <div class="d-flex">
-                    <p class="my-auto">Test</p>
-                </div>
+
 
             </div>
 
 
         </div>
     </div>
-    <div class="collapse" id="services">
-        <div class="dropdown-content">
-            <div class="my-work">
-                <h4 class="text-primary">Workforce</h4>
-                <div class="d-flex">
-                    <p class="my-auto">Personel</p>
-                </div>
-                <div class="d-flex">
-
-                    <p class="my-auto">Interns</p>
-                </div>
-                <div class="d-flex">
-
-                    <p class="my-auto">Possible resources</p>
-                </div>
-            </div>
-            <div class="customers">
-                <h4 class="text-primary">Performance</h4>
-                <div class="d-flex">
-
-                    <p class="my-auto">Group Performance</p>
-                </div>
-                <div class="d-flex">
-
-                    <p class="my-auto">Personal Performance</p>
-                </div>
-            </div>
-            <div class="services">
-                <h4 class="text-primary">Payroll</h4>
-                <div class="d-flex">
-
-                    <p class="my-auto">Payroll</p>
-                </div>
-                <div class="d-flex">
-
-                    <p class="my-auto">Vocations</p>
-                </div>
-
-            </div>
-
-
-        </div>
-
-
     </div>
-</div>
+
+
+
 
 
 @code {

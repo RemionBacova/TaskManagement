@@ -85,3 +85,7 @@ span.e-tbar-btn-text {
         outline: none ;
         width:118px;
     }
+
+.e-plus-icon::before {
+    content: '\e823';
+}
