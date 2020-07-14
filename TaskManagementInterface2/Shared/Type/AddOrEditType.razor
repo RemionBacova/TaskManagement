@@ -157,11 +157,11 @@
                     if (ParentID == "")
                     {
 
-                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeend=" + TypeModel.codeend;
+                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeactual=" + TypeModel.codeactual;
                     }
                     else
                     {
-                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual" + TypeModel.codeactual;
+                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual=" + TypeModel.codeactual;
                     }
 
                     if (!addOrEdit)
@@ -177,7 +177,7 @@
                     }
                     else
                     {
-                        errorModel=  await typeServices.Add(TypeModel, tableName,CategoryUID, parameters);
+                        errorModel =  await typeServices.Add(TypeModel, tableName,CategoryUID, parameters);
                         var parametersError = new ModalParameters();
                         parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
                         parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);

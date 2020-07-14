@@ -140,7 +140,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 }
                 else
                 {
-                    queryParameters.Add("@DESCRTIPTION",description);
+                    queryParameters.Add("@DESCRIPTION",description);
                 }
                 if (description1 is null)
                 {
