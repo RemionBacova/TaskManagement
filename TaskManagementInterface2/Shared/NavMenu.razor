@@ -61,7 +61,6 @@
             <p>HR</p>
             <i class="fa fa-user-md"></i>
         </button>
-
         <button class="box marketing"
                 data-toggle="collapse"
                 data-target="#assets"
@@ -87,50 +86,46 @@
     </div>
 </div>
 
-<!-- sales section -->
-<div class="menu-content">
-    <div class="collapse" id="sales">
+<div class="menu-content" id="menu-content">
 
-        <div class="service-content">
+    <div class="collapse" id="sales" data-parent="#menu-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <p class="text-primary">Configuration</p>
                 <div class="d-flex align-items-center">
-                    <i class="fa fa-cog mr-2"></i>
-                    <a href="CategoryAdministration">Categories</a>
+                    <button data-toggle="collapse" data-target=".collapse.show" onclick="" class="action-button"> <i class="fa fa-cog mr-2"></i>Categories</button>
                 </div>
                 <div class="d-flex align-items-center">
-                    <i class="fa fa-text-height mr-2"></i>
-                    <a class="my-auto" href="TypeAdministration">Types</a>
+                    <button data-toggle="collapse" data-target=".collapse.show" onclick="" class="action-button"><i class="fa fa-text-height mr-2"></i>Types</button>
                 </div>
                 <div class="d-flex align-items-center">
-                    <i class="fa fa-search-plus mr-2"></i>
-                    <a href="typeinfo">Type Info</a>
+                    <button data-toggle="collapse" data-target=".collapse.show" onclick="" class="action-button"><i class="fa fa-list mr-2"></i>Type Info</button>
                 </div>
             </div>
             <div class="customers">
                 <p class="text-primary">Users</p>
-                    <div class="d-flex align-items-center">
-                        <a>Administration</a>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <a >SubCategoryUser</a>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <a>SubCategoryUser</a>
-                    </div>
+                <div class="d-flex align-items-center">
+                    <a>Administration</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a>SubCategoryUser</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a>SubCategoryUser</a>
+                </div>
 
             </div>
             <div class="services">
                 <p class="text-primary">SubCategoryTest</p>
-                    <div class="d-flex">
-                        <a class="my-auto">SubCategoryTest1</a>
-                    </div>
-                    <div class="d-flex">
-                        <a class="my-auto">SubCategoryTest2</a>
-                    </div>
-                    <div class="d-flex">
-                        <a class="my-auto">SubCategoryTest3</a>
-                    </div>
+                <div class="d-flex">
+                    <a class="my-auto">SubCategoryTest1</a>
+                </div>
+                <div class="d-flex">
+                    <a class="my-auto">SubCategoryTest2</a>
+                </div>
+                <div class="d-flex">
+                    <a class="my-auto">SubCategoryTest3</a>
+                </div>
             </div>
             <div class="collaterall">
                 <p class="text-primary">SubCategoryTest2</p>
@@ -151,9 +146,9 @@
         </div>
     </div>
 
-    <div class="collapse" id="technologies">
+    <div class="collapse" id="technologies" data-parent="#menu-content">
 
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Knowledge Path according to Roles</h4>
                 <div class="d-flex">
@@ -212,7 +207,7 @@
 
     <div class="collapse" id="marketing">
 
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Configuration</h4>
                 <div class="d-flex">
@@ -271,7 +266,7 @@
 
     <div class="collapse" id="reports">
 
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Configuration</h4>
                 <div class="d-flex">
@@ -330,7 +325,7 @@
 
     <div class="collapse" id="projects">
 
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Document Management for the project</h4>
                 <div class="d-flex">
@@ -386,11 +381,9 @@
 
         </div>
     </div>
-
-
     <div class="collapse" id="assets">
 
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Asset Registration </h4>
                 <div class="d-flex">
@@ -420,10 +413,8 @@
 
         </div>
     </div>
-
-    <!-- services section -->
     <div class="collapse" id="services">
-        <div class="service-content">
+        <div class="dropdown-content">
             <div class="my-work">
                 <h4 class="text-primary">Workforce</h4>
                 <div class="d-flex">

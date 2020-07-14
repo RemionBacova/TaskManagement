@@ -46,13 +46,13 @@
     background: #17a2b8;
 }
 
-.service-content{
+.dropdown-content {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 16px;
     display: flex;
 }
 
-.service-content > div {
+.dropdown-content > div {
     margin-right: 35px
 }
 
@@ -70,3 +70,18 @@ app > div.content.px-4 select {
 span.e-tbar-btn-text {
     margin: 16px 0px;
 }
+
+.action-button {
+    border: none;
+    background: none;
+    width
+    margin-bottom: 6px;
+}
+.action-button:hover{
+    background:rgb(239, 239, 239);
+    width:118px;
+}
+    .action-button:focus {
+        outline: none ;
+        width:118px;
+    }
