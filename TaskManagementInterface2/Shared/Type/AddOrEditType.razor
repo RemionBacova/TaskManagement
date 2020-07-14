@@ -6,26 +6,25 @@
 
 
 
-    <div class="modal-body" style="width:650px">
+    <div class="modal-body" style="width:500px">
 
 
 
-
+       
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">Parent Name:</label>
-                <input class="form-control col-md-6" type="text" value=@ParentName />
-                <button class="form-control col-md-1" @onclick="ButtonParent">...</button>
-
+            <div class="col-md-11">
+                <SfTextBox Readonly="true" Placeholder='Select Parent' FloatLabelType='@FloatLabelType.Auto' @bind-Value="ParentName"></SfTextBox>
+            </div>
+                <div class="col-md-1">
+                    <SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true" @onclick="ButtonParent"></SfButton>
+               
             </div>
         </div>
 
         <br />
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">Nomination:</label>
-                <input class="form-control  col-md-6" type="text"
-                       @bind="TypeModel.nomination" />
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Nomination' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.nomination"></SfTextBox>
             </div>
         </div>
 
@@ -33,60 +32,62 @@
         <br />
 
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5" style="justify-content: left">Code:</label>
-                <input class="form-control col-md-6" type="text"
-                       @bind="TypeModel.code" />
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Code' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.code"></SfTextBox>
+
             </div>
         </div>
 
 
         <br />
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">Code actual:</label>
-                <input class="form-control  col-md-6" type="text"
-                       @bind="TypeModel.codeactual" />
+            <div class="form-group col-md-11">
+                <SfNumericTextBox Placeholder='Code Actual' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.codeactual"/>
+
+
             </div>
         </div>
 
         <br />
         <br />
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">codebegin:</label>
-                <input class="form-control  col-md-6" type="text"
-                       @bind="TypeModel.codebegin" />
+            <div class="form-group col-md-11">
+                <SfNumericTextBox Placeholder='Code Begin' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.codebegin"></SfNumericTextBox>
+
             </div>
         </div>
 
         <br />
         <br />
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">Code end:</label>
-                <input class="form-control  col-md-6" type="text"
-                       @bind="TypeModel.codeend" />
+            <div class="form-group col-md-11">
+                <SfNumericTextBox Placeholder='Code End' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.codeend"></SfNumericTextBox>
+
+
             </div>
         </div>
 
         <br />
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content:left">Description:</label>
-                <input class="form-control  col-md-6" type="text"
-                       @bind="TypeModel.description" />
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Description' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.description"></SfTextBox>
+
             </div>
         </div>
 
         <br />
 
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                <label class="col-md-5 " style="justify-content: left">Contains Elements:</label>
-                <input style="justify-content: left" type="checkbox" class="col-md-6"
-                       placeholder="Elcat"
-                       @bind="TypeModel.elcat" />
+            <div class="form-group col-md-11">
+                @if (TypeModel.elcat)
+                {
+                    <SfCheckBox Label="Contains Elements" @bind-Checked="TypeModel.elcat"></SfCheckBox>
+                }
+                else
+                {
+                    <SfCheckBox Label="Contains Elements" @bind-Checked="TypeModel.elcat"></SfCheckBox>
+                }
+
             </div>
         </div>
 
@@ -95,10 +96,10 @@
 
 
 
+        <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+        <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
 
-
-        <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
-        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+     
     </div>
 
 

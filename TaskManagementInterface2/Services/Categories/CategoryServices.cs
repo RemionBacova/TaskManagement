@@ -33,7 +33,7 @@ namespace TaskManagementInterface.Services.Categories
         public async Task<Error> Add(tbl_TABLE_CATEGORY kategoriModel, string tableName, string parameters)
         {
 
-            string url = "http://192.168.1.109/api/" + tableName +   "/"  + kategoriModel.nomination + parameters;
+            string url = "http://192.168.1.109/api/" + tableName +   "/"  + kategoriModel.code + "/" + kategoriModel.nomination + parameters;
             try
             {
               List<Error> list= await http.PostJsonAsync<List<Error>>(url,"");

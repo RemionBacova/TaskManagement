@@ -9,7 +9,7 @@ namespace TaskManagementInterface.Data
     {
         public int uid { get; set; }
         public int? uid_sup { get; set; }
-        public bool? elcat { get; set; }
+        public bool elcat { get; set; }
         public string code { get; set; }
         public string nomination { get; set; }
         public string description { get; set; }

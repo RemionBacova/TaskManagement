@@ -9,7 +9,7 @@ namespace TaskManagementInterface.Data.Models
     {
         public int uid { get; set; }
         public int? uid_sup { get; set; }
-        public bool? elcat { get; set; }
+        public bool elcat { get; set; }
         public string code { get; set; }
         public int? codebegin { get; set; }
         public int? codeend { get; set; }

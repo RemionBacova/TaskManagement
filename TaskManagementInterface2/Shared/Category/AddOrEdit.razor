@@ -6,59 +6,63 @@
 
 
 
-    <div class="modal-body" style="width:650px">
+    <div class="modal-body" style="width:450px">
 
 
-     
+
+
+        <div class="row">
+            <div class="col-md-11">
+                <SfTextBox Readonly="true" Placeholder='Select Category' FloatLabelType='@FloatLabelType.Auto' @bind-Value="ParentName"></SfTextBox>
+            </div>
+            <div class="col-md-1">
+
+                <SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true" @onclick="ButtonParent"></SfButton>
+
+            </div>
+        </div>
+
+
+
+        <br />
 
         <div class="form-inline">
-            <div class="form-group col-md-12">
-                    <label class="col-md-5 " style="justify-content: left">Parent Name:</label> 
-                    <input class="form-control col-md-6" type="text" value=@ParentName  />
-                    <button class="form-control col-md-1" @onclick="ButtonParent">...</button>
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Code' FloatLabelType='@FloatLabelType.Auto' @bind-Value="kategoriModel.code"></SfTextBox>
 
+            </div>
+        </div>
+
+
+        <br />
+        <div class="form-inline">
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Nomination' FloatLabelType='@FloatLabelType.Auto' @bind-Value="kategoriModel.nomination"></SfTextBox>
             </div>
         </div>
 
         <br />
 
         <div class="form-inline">
-                <div class="form-group col-md-12">
-                    <label class="col-md-5" style="justify-content: left" >Code:</label>
-                    <input class="form-control col-md-6" type="text"
-                           @bind="kategoriModel.code" />
-            </div>
-        </div>
-
-
-        <br />
-        <div class="form-inline">
-                <div class="form-group col-md-12">
-                    <label class="col-md-5 " style="justify-content: left">Nomination:</label>
-                    <input class="form-control  col-md-6" type="text"
-                           @bind="kategoriModel.nomination" />
+            <div class="form-group col-md-11">
+                <SfTextBox Placeholder='Description' FloatLabelType='@FloatLabelType.Auto' @bind-Value="kategoriModel.description"></SfTextBox>
             </div>
         </div>
 
         <br />
 
         <div class="form-inline">
-                <div class="form-group col-md-12">
-                    <label class="col-md-5 " style="justify-content:left">Description:</label>
-                    <input class="form-control  col-md-6" type="text"
-                           @bind="kategoriModel.description" />
-                </div>
-        </div>
+            <div class="form-group col-md-11">
+                @if (kategoriModel.elcat)
+                {
+                    <SfCheckBox Label="Contains Elements" @bind-Checked="kategoriModel.elcat"></SfCheckBox>
+                }
+                else
+                {
+                    <SfCheckBox Label="Contains Elements" @bind-Checked="kategoriModel.elcat"></SfCheckBox>
+                }
 
-        <br />
-
-        <div class="form-inline">
-                <div class="form-group col-md-12">
-                    <label class="col-md-5 " style="justify-content: left">Contains Elements:</label>
-                    <input style="justify-content: left" type="checkbox" class="col-md-6"
-                           placeholder="Elcat"
-                           @bind="kategoriModel.elcat" />
-                </div>
+            </div>
         </div>
 
         <br />
@@ -68,8 +72,10 @@
 
 
 
-        <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
-        <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+        <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+        <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
+
+      
     </div>
 
 

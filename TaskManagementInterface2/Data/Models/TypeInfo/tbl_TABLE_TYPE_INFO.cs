@@ -15,10 +15,10 @@ namespace TaskManagementInterface.Data.Models
         public string description1 { get; set; }
         public string description2 { get; set; }
         public int? property { get; set; }
-        public bool? mandatory { get; set; }
+        public bool mandatory { get; set; }
         public float? queue { get; set; }
         public int? db { get; set; }
-        public bool? file { get; set; }
+        public bool file { get; set; }
         public bool? active { get; set; }
         public int? user_uid { get; set; }
     }

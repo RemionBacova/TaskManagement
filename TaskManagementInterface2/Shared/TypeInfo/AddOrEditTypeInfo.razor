@@ -3,88 +3,80 @@
 @using TaskManagementInterface.Data.Models
 @using TaskManagementInterface.Services.Types
 @using TaskManagementInterface.Services.TypeInfo
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Data.Models.Type 
 
 
 
+    <div class="modal-body" style="width:450px">
 
-<div class="modal-body" style="width:650px">
+        <div class="form-inline">
+            <div class="form-group col-md-12">
 
-    <div class="form-inline">
-        <div class="form-group col-md-12">
-            <label class="col-md-5 " style="justify-content: left">Nomination:</label>
-            <input class="form-control  col-md-6" type="text"
-                   @bind="TypeModel.nomination" />
+                <SfTextBox Placeholder='Nomination' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.nomination"></SfTextBox>
+            </div>
         </div>
-    </div>
 
-    <br />
-    <br />
 
-    <div class="form-inline">
-        <div class="form-group col-md-12">
-            <label class="col-md-5" style="justify-content: left">Description:</label>
-            <input class="form-control col-md-6" type="text"
-                   @bind="TypeModel.description" />
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+                <SfTextBox Placeholder='Description' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.description"></SfTextBox>
+            </div>
         </div>
-    </div>
+
+        <br />
+
+        <div class="form-inline">
+
+            <div class="form-group col-md-12">
+
+                <SfDropDownList TValue="string" Placeholder="Select Entitie" TItem="GetTypes" @bind-Value="TypeModel.description2" DataSource="@getTypes">
+                    <DropDownListEvents TValue="string"></DropDownListEvents>
+                    <DropDownListFieldSettings Value="name"></DropDownListFieldSettings>
+                </SfDropDownList>
+             </div>
+         </div>
+
+        <br />
+            
+            <div class="form-inline">
+                @if (TypeModel.mandatory)
+                {
+                    <SfCheckBox Label="Manatory" @bind-Checked="TypeModel.mandatory"></SfCheckBox>
+                }
+                else
+                {
+                    <SfCheckBox Label="Manatory" @bind-Checked="TypeModel.mandatory"></SfCheckBox>
+                }
+            </div>
+
+          <br />
 
 
-    <br />
-    <div class="form-inline">
-        <div class="form-group col-md-12">
-            <label class="col-md-5 " style="justify-content: left">Type:</label>
-            <select @bind="TypeModel.description2" title="-- Select Type--" class="form-control">
-                    <option value="" disabled hidden selected>Select an entitie</option>
-                    @if (getTypes != null)
-                    {
-                        @foreach (var entitet in getTypes)
-                        {
-                            <option value="@entitet.name">@entitet.name</option>
-                        }
-                    }
-                    else
-                    {
 
-                    }
-                </select>
-                
+
+            <div class="form-inline">
+                @if (TypeModel.file)
+                {
+                    <SfCheckBox Label="File" @bind-Checked="TypeModel.file"></SfCheckBox>
+                }
+                else
+                {
+                    <SfCheckBox Label="File" @bind-Checked="TypeModel.file"></SfCheckBox>
+                }
+            </div>
+
+            <br />
+
+
+
+
+
+
+            <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+            <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
         </div>
-    </div>
-
-    <br />
-    <br />
-    <div class="form-inline">
-        <div class="form-group col-md-12">
-            <label class="col-md-5 " style="justify-content: left">mandatory:</label>
-            <input class="form-control  col-md-6"type="checkbox"
-                   @bind="TypeModel.mandatory" />
-        </div>
-    </div>
-
-    <br />
-
-
-
-
-    <div class="form-inline">
-        <div class="form-group col-md-12">
-            <label class="col-md-5 " style="justify-content: left">file:</label>
-            <input style="justify-content: left" type="checkbox" class="col-md-6"
-                   placeholder="Elcat"
-                   @bind="TypeModel.file" />
-        </div>
-    </div>
-
-    <br />
-
-
-
-
-
-
-    <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
-    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
-</div>
 
 
 
