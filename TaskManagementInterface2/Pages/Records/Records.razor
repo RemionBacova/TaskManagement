@@ -14,19 +14,6 @@
 @inject HttpClient http
 @inject IJSRuntime jsRunTime
 
-<h3> Reporting</h3>
-<style>
-
-    .sf-license-warning {
-        display: none !important;
-    }
-
-    #wrapper {
-        max-width: 300px;
-        margin: 0px auto;
-        padding-top: 20px
-    }
-</style>
 
 
 
@@ -34,26 +21,15 @@
 <div class="container py-3">
     <div class="row">
         <div class="col-md-6">
-            <label for="date">1.Select Machine:</label>
-            <select class="custom-select" @onchange="@EntitieClicked">
-                <option value="">-- Select Machine --</option>
-                @if (machines != null)
-                {
-                    @foreach (var mach in machines)
-                    {
-                        <option value="@mach.uid">@mach.machineName</option>
-
-                    }
-                }
-                else
-                {
-
-                }
-            </select>
+            <label for="date">Select Machine:</label>
+            <SfDropDownList TValue="string" Placeholder="Select Machine" TItem="Machines" DataSource="@machines">
+                <DropDownListEvents TValue="string" ValueChange="EntitieClicked"></DropDownListEvents>
+                <DropDownListFieldSettings Value="uid" Text="machineName"></DropDownListFieldSettings>
+            </SfDropDownList>
         </div>
         <div class="col-md-6">
             <div>
-                <label for="date">2.Pick Data Range:</label>
+                <label for="date">Pick Data Range:</label>
                 <SfDateRangePicker @bind-StartDate="@StartValue" @bind-EndDate="@EndValue"></SfDateRangePicker>
 
             </div>
@@ -63,9 +39,9 @@
 
     </div>
     <br />
-    <div>
-
-        <button class="btn btn-primary col-md-12" @onclick="MachineReporting">Get Report</button>
+    <div class="col-md-12"
+        
+        <SfButton @onclick="MachineReporting" CssClass="e-primary">Get Report</SfButton>
     </div>
     <br />
     <div>
@@ -130,7 +106,7 @@
         machreps = await http.GetJsonAsync<List<MachineReporting2>>(s);
     }
 
-    void EntitieClicked(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    void EntitieClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
     {
         string value = e.Value.ToString();
         selectedMachine = value;

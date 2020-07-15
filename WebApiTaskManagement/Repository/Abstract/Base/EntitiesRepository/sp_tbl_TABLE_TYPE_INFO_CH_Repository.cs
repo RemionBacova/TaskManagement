@@ -26,7 +26,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #region SPI_TABLE
         public async Task<IEnumerable<SelectError_Model>> spi_Tip_Info_Ch(string tablename, int? uid_sup, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
 
             using (IDbConnection sql = new SqlConnection(_constring))
@@ -39,8 +39,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 queryParameters.Add("@type_info_uid", type_info_uid);
                 queryParameters.Add("@nomination", nomination);
                 queryParameters.Add("@description", description);
-                queryParameters.Add("@description1", description1);
                 queryParameters.Add("@description2", description2);
+                queryParameters.Add("@description3", description3);
                 queryParameters.Add("@user_uid", user_uid);
 
                 return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
@@ -51,7 +51,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #region SPU_TABLE
         public async Task<IEnumerable<SelectError_Model>> spu_Tip_Info_Ch( string tablename, int?uid,int? uid_sup, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -94,21 +94,21 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     {
                        queryParameters.Add("@DESCRIPTION",description);
                     }
-                    if (description1 is null)
+                    if (description2 is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION2", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@DESCRIPTION2",description1);
+                       queryParameters.Add("@DESCRIPTION2",description2);
                     }
-                    if (description2 is null)
+                    if (description3 is null)
                     {
                        queryParameters.Add("@CONSIDERNULL_DESCRIPTION3", 1);
                     }
                     else
                     {
-                       queryParameters.Add("@DESCRIPTION3",description2);
+                       queryParameters.Add("@DESCRIPTION3",description3);
                     }
 
                     if (user_uid is null)
@@ -155,7 +155,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         #endregion
 
         #region SP_DeleteRow
-        public async Task<Boolean> DeleteRow(string tableName, string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -163,8 +163,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@TABLE", "tbl_"+tableName+"_TYPE_INFO_CH");
                 queryParameters.Add("@UID", UID);
-                 await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
-                return true;
+               return  await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                
             }
         }
         #endregion
@@ -210,7 +210,17 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         }
         #endregion
 
-
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByTypeInfo(string tableName, string type_info_uid)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveRecByTypeInfo";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table", "tbl_" + tableName + "_TYPE_INFO_CH");
+                queryParameters.Add("@type_info_uid", type_info_uid);
+                return await db.QueryAsync<tbl_TABLE_TYPE_INFO_CH_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 
 }

@@ -1,0 +1,82 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data.Models
+@using TaskManagementInterface.Services.Types
+@using TaskManagementInterface.Services.TypeInfoCh
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Data.Models.Type_Info_Ch
+
+
+
+    <div class="modal-body" style="width:450px">
+
+        <div class="form-inline">
+            <div class="form-group col-md-12">
+
+                <SfTextBox Placeholder='Nomination' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.nomination"></SfTextBox>
+            </div>
+        </div>
+       <br />
+
+        <div>
+            <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+            <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
+        </div>
+     </div>
+
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    private tbl_TABLE_TYPE_INFO_CH TypeModel = new tbl_TABLE_TYPE_INFO_CH();
+
+    TypeInfoChServices typeInfoServices = new TypeInfoChServices();
+    [Parameter] public bool addOrEdit { get; set; }
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public string type_info_uid { get; set; }
+
+    private string returnValue = "";
+
+    protected async void OnLoad()
+    {
+
+
+
+        StateHasChanged();
+    }
+
+
+    protected override void OnInitialized() => OnLoad();
+
+    void SubmitForm() => Save();
+    void Cancel() => BlazoredModal.Cancel();
+
+    protected async Task Save()
+    {
+
+        TaskManagementInterface.Data.Error errorModel = new TaskManagementInterface.Data.Error();
+        string parameters;
+
+
+        TypeModel.type_info_uid = Convert.ToInt32(type_info_uid);
+        errorModel = await typeInfoServices.Add(TypeModel, tableName);
+        var parametersError = new ModalParameters();
+        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+        parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
+
+        var result = await messageForm.Result;
+
+        StateHasChanged();
+        BlazoredModal.Close(ModalResult.Ok(returnValue));
+       
+    }
+    }
+
+
+
+
+
+
+

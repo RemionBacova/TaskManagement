@@ -24,17 +24,17 @@ namespace WebApiTaskManagement.Controllers.Abstract
 
         [HttpPost("{type_info_uid}/{nomination}")]
         public async Task<IEnumerable<SelectError_Model>> spi_Info(int? uid_sup, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
-           return await _repository.spi_Tip_Info_Ch( tableName,uid_sup,type_info_uid,nomination,description,description1,description2,user_uid);
+           return await _repository.spi_Tip_Info_Ch( tableName,uid_sup,type_info_uid,nomination,description,description2,description3,user_uid);
         }
 
         [HttpPut("{uid}/{type_info_uid}/{nomination}")]
         public async Task<IEnumerable<SelectError_Model>> spu_Info(int? uid, int? uid_sup, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
            return await _repository.spu_Tip_Info_Ch( tableName,  uid,  uid_sup,  type_info_uid,  nomination, description
-            ,  description1,  description2,  user_uid);
+            ,  description2,  description3,  user_uid);
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace WebApiTaskManagement.Controllers.Abstract
         }
 
         [HttpDelete("{UID}")]
-        public async Task<Boolean> DeleteRow(string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string UID)
         {
             return await _repository.DeleteRow(tableName, UID);
 
@@ -62,6 +62,13 @@ namespace WebApiTaskManagement.Controllers.Abstract
         public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByParameters(string? uid_sup, string? nomination, string? description)
         {
             return await _repository.SelectActiveRecByParameters(tableName, uid_sup, nomination, description);
+
+        }
+
+        [HttpGet("GetByTypeUid")]
+        public async Task<IEnumerable<tbl_TABLE_TYPE_INFO_CH_Model>> SelectActiveRecByTypeInfoCh(string type_info_uid)
+        {
+            return await _repository.SelectActiveRecByTypeInfo(tableName, type_info_uid);
 
         }
 

@@ -31,9 +31,9 @@
 
             <div class="form-group col-md-12">
 
-                <SfDropDownList TValue="string" Placeholder="Select Entitie" TItem="GetTypes" @bind-Value="TypeModel.description2" DataSource="@getTypes">
+                <SfDropDownList TValue="string" Placeholder="Select Entitie" TItem="GetTypes" @bind-Value="TypeModel.description2"  DataSource="@getTypes">
                     <DropDownListEvents TValue="string"></DropDownListEvents>
-                    <DropDownListFieldSettings Value="name"></DropDownListFieldSettings>
+                    <DropDownListFieldSettings Value="uid" Text="name"></DropDownListFieldSettings>
                 </SfDropDownList>
              </div>
          </div>

@@ -1,0 +1,100 @@
+﻿@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Grids
+@using TaskManagementInterface.Data
+@inject IModalService ModalService
+@inject HttpClient http
+@using TaskManagementInterface.Data.Models.Type_Info_Ch 
+@using TaskManagementInterface.Services.TypeInfoCh
+
+
+
+    <div class="content-wrapper" style="width:350px">
+        <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="Add">
+            <span class="e-btn-icon e-add e-icons e-icon-left">
+            </span><span class="e-tbar-btn-text">Add</span>
+        </button>
+        <SfGrid TValue="tbl_TABLE_TYPE_INFO_CH" DataSource="@TreeData" AllowPaging="true" AllowSorting="true">
+
+            <GridPageSettings PageSize="5"></GridPageSettings>
+            <GridColumns>
+               
+                <GridColumn Field=@nameof(tbl_TABLE_TYPE_INFO_CH.nomination) HeaderText="nomination" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+               
+                <GridColumn HeaderText="Remove" Field="uid" Width="80" TextAlign="TextAlign.Right" >
+
+
+                    <Template>
+
+                        
+                            <div>
+                               
+                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => Delete(context as tbl_TABLE_TYPE_INFO_CH))">
+                                    <span class="e-btn-icon e-icons e-delete "></span>
+                                </button>
+                            </div>
+                       
+                    </Template>
+
+                </GridColumn>
+            </GridColumns>
+        </SfGrid>
+
+    </div>
+
+
+
+
+
+
+
+@code {
+
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+
+
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public int uid { get; set; }
+    string _returnMessage = "";
+
+    TypeInfoChServices typeInfoChServices = new TypeInfoChServices();
+
+    public List<tbl_TABLE_TYPE_INFO_CH> TreeData = new List<tbl_TABLE_TYPE_INFO_CH>();
+
+
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        TreeData = await typeInfoChServices.SelectRecByTypeInfoUid(tableName, uid.ToString());
+        StateHasChanged();
+    }
+    private   async Task Add()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(AddOrEditTypeInfoCh.addOrEdit), true);
+        parameters.Add(nameof(AddOrEditTypeInfoCh.tableName), tableName);
+        parameters.Add(nameof(AddOrEditTypeInfoCh.type_info_uid), uid.ToString());
+        var messageForm = ModalService.Show<AddOrEditTypeInfoCh>("Add Type Info Ch", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        TreeData = await typeInfoChServices.SelectRecByTypeInfoUid(tableName, uid.ToString());
+    }
+    private  async Task Delete(tbl_TABLE_TYPE_INFO_CH model)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(DeleteTypeInfoCh.tableName), tableName);
+        parameters.Add(nameof(DeleteTypeInfoCh.uid), model.uid);
+        var messageForm = ModalService.Show<DeleteTypeInfoCh>("Delete", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        TreeData = await typeInfoChServices.SelectRecByTypeInfoUid(tableName, uid.ToString());
+
+    }
+ 
+}

@@ -89,3 +89,12 @@ span.e-tbar-btn-text {
 .e-plus-icon::before {
     content: '\e823';
 }
+
+label {
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif", "-apple-system", "BlinkMacSystemFont";
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.e-search:before {
+    content: '\e993';
+}
