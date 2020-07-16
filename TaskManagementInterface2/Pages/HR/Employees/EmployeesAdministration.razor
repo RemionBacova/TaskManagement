@@ -1,0 +1,45 @@
+﻿@using Syncfusion.Blazor.Grids
+@page "/EmoloyeesAdministration"
+@using TaskManagementInterface.Data.EMPLOYEES
+@using TaskManagementInterface.Services.Employees
+
+<SfGrid TValue="tbl_Employee" DataSource="@Employees">
+    <GridColumns>
+        <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="80">
+                <Template>
+                    @{
+
+                        <div class="image">
+                            <img src="@($"https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png")" />
+                        </div>
+                            }
+
+
+                    </Template>
+            </GridColumn>
+        <GridColumn Field=@nameof(tbl_Employee.uid) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(tbl_Employee.nomination) HeaderText="Name" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(tbl_Employee.description) HeaderText="Title" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(tbl_Employee.code) HeaderText="Code" Format="d" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+
+
+
+
+
+@code{
+    public List<tbl_Employee> Employees = new List<tbl_Employee>();
+
+    EmployeeServices employeeServices = new EmployeeServices();
+
+
+
+    protected override async void OnInitialized()
+    {
+        Employees = await employeeServices.SelectAllActiveRec();
+    }
+
+
+}
