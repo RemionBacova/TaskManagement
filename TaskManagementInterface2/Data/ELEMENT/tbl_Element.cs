@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace TaskManagementInterface.Data.ELEMENT
     {
         public int uid { get; set; }
         public int? uid_sup { get; set; }
+
+        [Required]
         public int? type_uid { get; set; }
         public string code { get; set; }
         public string nomination { get; set; }

@@ -45,7 +45,7 @@
 
         <br />
 
-
+        <label > @errorType</label>
 
         <br />
 
@@ -68,6 +68,7 @@
                 ElementServices elementServices = new ElementServices();
                 string typeName = "";
                 string typeId = "";
+                string errorType = "";
                 [Parameter] public bool addOrEdit { get; set; }
                 [Parameter] public string tableName { get; set; }
                 [Parameter] public int uid { get; set; }
@@ -97,43 +98,51 @@
 
                 protected async Task Save()
                 {
-
-                    Error errorModel = new Error();
-                    string parameters;
-                    // http://192.168.1.109/api/tbl_EMPLOYEES/Add?type_uid=11&code=50&nomination=Nomini&description=des&description1=des&description2=desc&user_uid=1&category=14&complex=true
-
-                    parameters = "?description=" + elementModel.description;
-                    elementModel.category = Convert.ToInt32(Category);
-
-                    if (!addOrEdit)
+                    if( typeId!="")
                     {
 
+                        Error errorModel = new Error();
+                        string parameters;
+                        // http://192.168.1.109/api/tbl_EMPLOYEES/Add?type_uid=11&code=50&nomination=Nomini&description=des&description1=des&description2=desc&user_uid=1&category=14&complex=true
 
-                        errorModel = await elementServices.Update(elementModel, tableName, parameters);
-                        var parametersResult = new ModalParameters();
+                        parameters = "?description=" + elementModel.description;
+                        elementModel.category = Convert.ToInt32(Category);
 
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
-                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+                        if (!addOrEdit)
+                        {
 
+
+                            errorModel = await elementServices.Update(elementModel, tableName, parameters);
+                            var parametersResult = new ModalParameters();
+
+                            parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+                            parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                            var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+                        }
+                        else
+                        {
+                            errorModel = await elementServices.Add(elementModel, tableName, parameters);
+                            var parametersResult = new ModalParameters();
+
+                            parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+                            parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                            var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+
+
+                            var result = await messageForm.Result;
+
+
+                        }
+
+                        StateHasChanged();
+                        BlazoredModal.Close(ModalResult.Ok(returnValue));
                     }
                     else
                     {
-                        errorModel = await elementServices.Add(elementModel, tableName, parameters);
-                        var parametersResult = new ModalParameters();
-
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
-                        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
-
-
-
-                        var result = await messageForm.Result;
-
-
+                        errorType = "To save the new records , you choose select a type";
                     }
-                    StateHasChanged();
-                    BlazoredModal.Close(ModalResult.Ok(returnValue));
                 }
                 async Task ButtonType()
                 {
@@ -161,12 +170,15 @@
 
                     if (typeId != "")
                     {
+                        errorType = "";
 
                         typeName = (await elementServices.SelectTypeById(tableName,typeId)).nomination;
 
                     }
                     else
                     {
+                        errorType = "To save the new records , you choose select a type";
+
                         typeName = "";
                     }
 
