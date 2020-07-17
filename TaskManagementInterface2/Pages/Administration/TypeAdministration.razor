@@ -41,8 +41,6 @@
 
         <br />
 
-        @if (CategoryUID != "")
-        {
             <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="ShowModalAdd">
                 <span class="e-btn-icon e-add e-icons e-icon-left">
                 </span><span class="e-tbar-btn-text">Add</span>
@@ -79,7 +77,7 @@
                     </div>
                 </div>
             </div>
-        }
+        
     </div>
 
                               
@@ -162,10 +160,17 @@
 
         var result = await messageForm.Result;
         //Select All Types By Category ID
-        CategoryUID = result.Data.ToString();
+        try
+        {
+            CategoryUID = result.Data.ToString();
+            CategoryName = (await TypeServices.SelectCurrentCageory(_tablename, CategoryUID)).nomination;
+            Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, result.Data.ToString());
 
-        Tree = await TypeServices.SelectAllActiveTypesByCategory(selectedTable, result.Data.ToString());
-        CategoryName = (await TypeServices.SelectCurrentCageory(_tablename, CategoryUID)).nomination;
+        }
+        catch(Exception ex)
+        {
+
+        }
 
     }
 

@@ -158,11 +158,11 @@
                     if (ParentID == "")
                     {
 
-                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeactual=" + TypeModel.codeactual;
+                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeactual=" + TypeModel.codeactual+"&elcat="+TypeModel.elcat;
                     }
                     else
                     {
-                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual=" + TypeModel.codeactual;
+                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual=" + TypeModel.codeactual+"&elcat=" + TypeModel.elcat;
                     }
 
                     if (!addOrEdit)

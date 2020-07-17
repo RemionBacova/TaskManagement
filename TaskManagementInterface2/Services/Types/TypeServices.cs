@@ -24,7 +24,8 @@ namespace TaskManagementInterface.Services.Types
 
         public async Task<List<tbl_TABLE_TYPE>> SelectAllActiveTypesByCategory(string _tablename,string uid)
         {
-            return await http.GetJsonAsync<List<tbl_TABLE_TYPE>>("http://192.168.1.109/api/"+ _tablename+"/GetTypeByCategory?category_uid="  + uid); 
+            string url = "http://192.168.1.109/api/" + _tablename + "/GetTypeByCategory?category_uid=" + uid;
+            return await http.GetJsonAsync<List<tbl_TABLE_TYPE>>(url); 
         }
 
         public async Task<tbl_TABLE_TYPE> SelectRecById(string _tablename,string uid)
@@ -40,6 +41,8 @@ namespace TaskManagementInterface.Services.Types
       
         public async Task<tbl_TABLE_CATEGORY> SelectCurrentCageory(string table, string id)
         {
+        http://192.168.1.109/api/tbl_EMPLOYEES_TYPE/GetTypeByCategory?category_uid=14
+
             return (await http.GetJsonAsync<List<tbl_TABLE_CATEGORY>>("http://192.168.1.109/api/"+table+"/" + id)).FirstOrDefault();
         }
         public async Task<Error> Add(tbl_TABLE_TYPE TypeModel, string tableName,string categoryId, string parameters)

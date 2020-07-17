@@ -1,0 +1,74 @@
+﻿@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Grids
+@using TaskManagementInterface.Data
+@inject IModalService ModalService
+@inject HttpClient http
+@using TaskManagementInterface.Data.Models
+@using TaskManagementInterface.Services.Element 
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <SfTreeGrid DataSource="@TreeData" TValue="tbl_TABLE_TYPE" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
+            <TreeGridEvents TValue="tbl_TABLE_TYPE"> </TreeGridEvents>
+            <TreeGridPageSettings PageSize="100"></TreeGridPageSettings>
+            <TreeGridColumns>
+                <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
+                <TreeGridColumn Field="code" HeaderText="CODE" Width="10%" TextAlign="TextAlign.Left"></TreeGridColumn>
+                <TreeGridColumn Field="nomination" HeaderText="Nomination" Width="20%"></TreeGridColumn>
+                <TreeGridColumn Field="description" HeaderText="Description" Width="20%"></TreeGridColumn>
+                <TreeGridColumn Field="elcat" HeaderText="Contains Elements" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
+                <TreeGridColumn HeaderText="Select" Field="uid" Width="200">
+                    <Template>
+                        @{
+                                                    <div>
+                                                        <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(()=>SelectParent(context as tbl_TABLE_TYPE))">
+                                                            <span class="e-btn-icon e-icons e-edit "></span>
+                                                        </button>
+
+                                                    </div> 
+                         }
+                    </Template>
+                </TreeGridColumn>
+            </TreeGridColumns>
+        </SfTreeGrid>
+    </div>
+</div>
+
+
+
+
+
+
+
+@code { 
+
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    //SelectAllActiveTypesByCategory
+
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public string CategoryId { get; set; }
+
+    ElementServices elementService = new ElementServices();
+    public List<tbl_TABLE_TYPE> TreeData = new List<tbl_TABLE_TYPE>();
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        TreeData = await elementService.SelectAllActiveTypesByCategory(tableName,CategoryId);
+        StateHasChanged();
+    }
+
+
+    private void SelectParent(tbl_TABLE_TYPE e)
+    {
+
+        string value = e.uid.ToString();
+        BlazoredModal.Close(ModalResult.Ok(value));
+
+    }
+ }

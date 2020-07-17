@@ -1,45 +1,136 @@
 ﻿@using Syncfusion.Blazor.Grids
-@page "/EmoloyeesAdministration"
-@using TaskManagementInterface.Data.EMPLOYEES
-@using TaskManagementInterface.Services.Employees
+@page "/ElementAdministration"
+@page "/ElementAdministration/{tablename}"
+@using TaskManagementInterface.Data.ELEMENT
+@using TaskManagementInterface.Services.Element
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Shared.Elements
+@inject IModalService Modal
 
-<SfGrid TValue="tbl_Employee" DataSource="@Employees">
-    <GridColumns>
-        <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="80">
+
+
+<div class="row">
+    <div class="col-md-11">
+        <SfDropDownList TValue="string" Placeholder="Select Category" TItem="tbl_TABLE_CATEGORY" DataSource="@CategoryDropDown">
+            <DropDownListEvents TValue="string" ValueChange="EntitieClicked"></DropDownListEvents>
+            <DropDownListFieldSettings Value="uid" Text="nomination"></DropDownListFieldSettings>
+        </SfDropDownList>
+    </div>
+</div>
+<div>
+    <br />
+    <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="(() => ShowModalAdd())" >
+        <span class="e-btn-icon e-add e-icons e-icon-left">
+        </span><span class="e-tbar-btn-text">Add</span>
+    </button>
+
+    <SfGrid TValue="tbl_Element" DataSource="@Element">
+        <GridColumns>
+            <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="80">
                 <Template>
                     @{
 
                         <div class="image">
                             <img src="@($"https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png")" />
                         </div>
-                            }
+                    }
 
 
-                    </Template>
+                </Template>
             </GridColumn>
-        <GridColumn Field=@nameof(tbl_Employee.uid) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-        <GridColumn Field=@nameof(tbl_Employee.nomination) HeaderText="Name" Width="130"></GridColumn>
-        <GridColumn Field=@nameof(tbl_Employee.description) HeaderText="Title" Width="120"></GridColumn>
-        <GridColumn Field=@nameof(tbl_Employee.code) HeaderText="Code" Format="d" TextAlign="TextAlign.Right" Width="150"></GridColumn>
-    </GridColumns>
-</SfGrid>
-
+            <GridColumn Field=@nameof(tbl_Element.type) HeaderText="Type" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(tbl_Element.uid) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="80"></GridColumn>
+            <GridColumn Field=@nameof(tbl_Element.code) HeaderText="Code" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(tbl_Element.nomination) HeaderText="Name" Width="130"></GridColumn>
+            <GridColumn Field=@nameof(tbl_Element.description) HeaderText="Title" Width="120"></GridColumn>
+            <GridColumn HeaderText="Edit" Field="@nameof(tbl_Element.uid)" Width="200">
+                <Template>
+                    @{
+                        <div>
+                            <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalEdit(context as tbl_Element))">
+                                <span class="e-btn-icon e-icons e-edit "></span>
+                            </button>
+                            <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => ShowModalDelete(context as tbl_Element))">
+                                <span class="e-btn-icon e-icons e-delete "></span>
+                            </button>
+                        </div>
+                    }
+                </Template>
+            </GridColumn>
+        </GridColumns>
+    </SfGrid>
+</div>
 
 
 
 
 
 @code{
-    public List<tbl_Employee> Employees = new List<tbl_Employee>();
 
-    EmployeeServices employeeServices = new EmployeeServices();
+    [Parameter] public string tablename { get; set; }
+    string _returnMessage = "";
+    string Category = "";
+    public List<tbl_Element> Element = new List<tbl_Element>();
+    public List<tbl_TABLE_CATEGORY> CategoryDropDown = new List<tbl_TABLE_CATEGORY>();
 
+    ElementServices elementServices = new ElementServices();
 
-
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Employees = await employeeServices.SelectAllActiveRec();
+        CategoryDropDown = await elementServices.SelectAllActiveRecCategory(tablename);
+    }
+    private async Task ShowModalAdd()
+    {
+
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(AddOrEditElement.addOrEdit), true);
+        parameters.Add(nameof(AddOrEditElement.tableName), tablename);
+        parameters.Add(nameof(AddOrEditElement.uid),0);
+        parameters.Add(nameof(AddOrEditElement.Category), Category);
+        var messageForm = Modal.Show<AddOrEditElement>("Edit Element", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        Element = await elementServices.SelectAllActiveRec(Category, tablename);
     }
 
+
+    private async Task EntitieClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        string value = e.Value.ToString();
+        Element = await elementServices.SelectAllActiveRec(value, tablename);
+        Category = value;
+        StateHasChanged();
+
+
+    }
+
+    private async Task ShowModalEdit(tbl_Element model)
+    {
+
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(AddOrEditElement.addOrEdit), false);
+        parameters.Add(nameof(AddOrEditElement.tableName), tablename);
+        parameters.Add(nameof(AddOrEditElement.uid), model.uid);
+        parameters.Add(nameof(AddOrEditElement.Category), Category);
+        var messageForm = Modal.Show<AddOrEditElement>("Edit Element", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        Element = await elementServices.SelectAllActiveRec(Category,tablename);
+    }
+    private async Task ShowModalDelete(tbl_Element model)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(DeleteElement.tableName), tablename);
+        parameters.Add(nameof(DeleteElement.uid), model.uid);
+        var messageForm = Modal.Show<DeleteElement> ("Delete", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+      
+        Element = await elementServices.SelectAllActiveRec(Category, tablename);
+    }
 
 }

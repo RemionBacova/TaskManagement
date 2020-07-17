@@ -334,8 +334,22 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
+        public async Task<IEnumerable<tbl_TABLE_Model2>> SelectAllActiveRecPlusType(string tableName,string category)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllActiveRecPlusType";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table",  tableName);
+                queryParameters.Add("@category",category);
+                return await db.QueryAsync<tbl_TABLE_Model2>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
 
     }
+
+
 
 
 

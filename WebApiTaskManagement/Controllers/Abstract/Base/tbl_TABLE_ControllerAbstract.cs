@@ -30,14 +30,14 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
 
 
-        [HttpPost("Add")]
+        [HttpPost("{type_uid}/{code}/{nomination}/{category}")]
         public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
         {
             return await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
         }
 
-        [HttpPut("{uid}/{type_uid}/{code}/{nomination}")]
+        [HttpPut("{uid}/{type_uid}/{code}/{nomination}/{category}")]
 
         public async Task<IEnumerable<SelectError_Model>> spu_tbl_table(int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
             , string? description1, string? description2, int? user_uid, int? category, bool? complex)
@@ -49,6 +49,13 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectAllActiveRec()
         {
             return await _repository.SelectAllActiveRec(tableName);
+
+        }
+
+        [HttpGet("SelectAllwithType")]
+        public async Task<IEnumerable<tbl_TABLE_Model2>> SelectAllActiveRecPlusType(string category)
+        {
+            return await _repository.SelectAllActiveRecPlusType(tableName,category);
 
         }
 

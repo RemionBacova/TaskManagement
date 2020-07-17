@@ -24,7 +24,12 @@
             </div>
         </div>
 
-
+        <div>
+            <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="ShowModalAdd">
+                <span class="e-btn-icon e-add e-icons e-icon-left">
+                </span><span class="e-tbar-btn-text">Add</span>
+            </button>
+        </div>
         @if (TreeData.Count == 0)
         {
             <br />
@@ -33,10 +38,7 @@
         else
         {
             <br />
-            <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="ShowModalAdd">
-                <span class="e-btn-icon e-add e-icons e-icon-left">
-                </span><span class="e-tbar-btn-text">Add</span>
-            </button>
+            
             <div class="col-lg-12 control-section">
                 <div class="content-wrapper">
                     <div class="row">
