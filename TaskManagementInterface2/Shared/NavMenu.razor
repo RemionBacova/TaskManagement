@@ -165,7 +165,7 @@
                 <div class="customers">
                     <h4 class="text-primary">Calendar</h4>
                     <div class="d-flex">
-                        <p class="my-auto">DayOff</p>
+                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendar" class="action-button"> <i class="fa fa-cog mr-2"></i>Action</button>
                     </div>
                     <div class="d-flex">
                         <p class="my-auto">Reasons</p>
@@ -498,7 +498,11 @@
         NavigationManager.NavigateTo("/CategoryAdministration");
 
     }
+    public void RedirectToCalendar()
+    {
+        NavigationManager.NavigateTo("/CalendarAdministration/Calendar");
 
+    }
     public void RedirectToTypeAdmin()
     {
         NavigationManager.NavigateTo("/TypeAdministration");

@@ -1,11 +1,11 @@
 ﻿@using Syncfusion.Blazor.Grids
-@page "/ElementAdministration"
-@page "/ElementAdministration/{tablename}"
+@page "/CalendarAdministration"
+@page "/CalendarAdministration/{tablename}"
 @using TaskManagementInterface.Data.ELEMENT
 @using TaskManagementInterface.Services.Element
 @using Syncfusion.Blazor.DropDowns
 @using TaskManagementInterface.Data
-@using TaskManagementInterface.Shared.Elements
+@using TaskManagementInterface.Shared.Calendar
 @inject IModalService Modal
 
 
@@ -27,23 +27,12 @@
 
     <SfGrid TValue="tbl_Element" DataSource="@Element">
         <GridColumns>
-            <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="80">
-                <Template>
-                    @{
-
-                        <div class="image">
-                            <img src="@($"https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png")" />
-                        </div>
-                    }
-
-
-                </Template>
-            </GridColumn>
+            
             <GridColumn Field=@nameof(tbl_Element.type) HeaderText="Type" TextAlign="TextAlign.Right" Width="120"></GridColumn>
             <GridColumn Field=@nameof(tbl_Element.uid) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="80"></GridColumn>
             <GridColumn Field=@nameof(tbl_Element.code) HeaderText="Code" Width="150"></GridColumn>
            
-                <GridColumn Field=@nameof(tbl_Element.nomination) HeaderText="Name" Width="130"></GridColumn>
+                <GridColumn Field=@nameof(tbl_Element.nomination) HeaderText="Date" Width="130"></GridColumn>
             
             <GridColumn Field=@nameof(tbl_Element.description) HeaderText="Title" Width="120"></GridColumn>
             <GridColumn HeaderText="Edit" Field="@nameof(tbl_Element.uid)" Width="200">
@@ -87,11 +76,11 @@
     {
 
         var parameters = new ModalParameters();
-        parameters.Add(nameof(AddOrEditElement.addOrEdit), true);
-        parameters.Add(nameof(AddOrEditElement.tableName), tablename);
-        parameters.Add(nameof(AddOrEditElement.uid),0);
-        parameters.Add(nameof(AddOrEditElement.Category), Category);
-        var messageForm = Modal.Show<AddOrEditElement>("Edit Element", parameters);// tittle parameters
+        parameters.Add(nameof(AddOrEditCalendar.addOrEdit), true);
+        parameters.Add(nameof(AddOrEditCalendar.tableName), tablename);
+        parameters.Add(nameof(AddOrEditCalendar.uid),0);
+        parameters.Add(nameof(AddOrEditCalendar.Category), Category);
+        var messageForm = Modal.Show<AddOrEditCalendar>("Edit Calendar", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
@@ -113,11 +102,11 @@
     {
 
         var parameters = new ModalParameters();
-        parameters.Add(nameof(AddOrEditElement.addOrEdit), false);
-        parameters.Add(nameof(AddOrEditElement.tableName), tablename);
-        parameters.Add(nameof(AddOrEditElement.uid), model.uid);
-        parameters.Add(nameof(AddOrEditElement.Category), Category);
-        var messageForm = Modal.Show<AddOrEditElement>("Edit Element", parameters);// tittle parameters
+        parameters.Add(nameof(AddOrEditCalendar.addOrEdit), false);
+        parameters.Add(nameof(AddOrEditCalendar.tableName), tablename);
+        parameters.Add(nameof(AddOrEditCalendar.uid), model.uid);
+        parameters.Add(nameof(AddOrEditCalendar.Category), Category);
+        var messageForm = Modal.Show<AddOrEditCalendar>("Edit Element", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
@@ -126,9 +115,9 @@
     private async Task ShowModalDelete(tbl_Element model)
     {
         var parameters = new ModalParameters();
-        parameters.Add(nameof(DeleteElement.tableName), tablename);
-        parameters.Add(nameof(DeleteElement.uid), model.uid);
-        var messageForm = Modal.Show<DeleteElement> ("Delete", parameters);// tittle parameters
+        parameters.Add(nameof(DeleteCalendar.tableName), tablename);
+        parameters.Add(nameof(DeleteCalendar.uid), model.uid);
+        var messageForm = Modal.Show<DeleteCalendar> ("Delete", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;

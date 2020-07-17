@@ -1,0 +1,195 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.Element
+@using TaskManagementInterface.Data.ELEMENT
+@using Syncfusion.Blazor.Calendars
+
+
+
+
+<div class="modal-body" style="width:450px">
+
+    <input type="hidden" @bind="elementModel.type_uid" />
+    <div class="form-inline">
+        <div class="col-md-11">
+            <SfTextBox Readonly="true" Placeholder='Select Parent' FloatLabelType='@FloatLabelType.Auto' @bind-Value="typeName"></SfTextBox>
+        </div>
+        <div class="col-md-1">
+            <SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true" @onclick="ButtonType"></SfButton>
+
+        </div>
+    </div>
+    <br />
+    <div class="form-inline">
+        <div class="form-group col-md-11">
+            <SfTextBox Placeholder='Code' FloatLabelType='@FloatLabelType.Auto' @bind-Value="elementModel.code"></SfTextBox>
+
+        </div>
+    </div>
+
+
+    <br />
+    <div class="form-inline">
+        <div class="form-group col-md-11">
+
+            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue"></SfDatePicker>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-inline">
+        <div class="form-group col-md-11">
+            <SfTextBox Placeholder='Description' FloatLabelType='@FloatLabelType.Auto' @bind-Value="elementModel.description"></SfTextBox>
+        </div>
+    </div>
+
+    <br />
+
+    <label> @errorType</label>
+
+    <br />
+
+
+
+
+
+
+    <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+    <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
+
+
+</div>
+
+
+
+@code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    private tbl_Element elementModel = new tbl_Element();
+    ElementServices elementServices = new ElementServices();
+    string typeName = "";
+    string typeId = "";
+    string errorType = "";
+    [Parameter] public bool addOrEdit { get; set; }
+    [Parameter] public string tableName { get; set; }
+    [Parameter] public int uid { get; set; }
+    [Parameter] public string Category { get; set; }
+
+    private string returnValue = "";
+    public DateTime? DateValue { get; set; }
+
+
+    protected async void OnLoad()
+    {
+
+
+        if (!addOrEdit)
+        {
+
+            elementModel = (await elementServices.SelectRecordById(uid.ToString(), tableName));
+            DateValue = DateTime.Parse(elementModel.nomination);
+
+
+
+        }
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized() => OnLoad();
+
+    void SubmitForm() => Save();
+    void Cancel() => BlazoredModal.Cancel();
+
+    protected async Task Save()
+    {
+        if (typeId != "")
+        {
+
+            Error errorModel = new Error();
+            string parameters;
+            // http://192.168.1.109/api/tbl_EMPLOYEES/Add?type_uid=11&code=50&nomination=Nomini&description=des&description1=des&description2=desc&user_uid=1&category=14&complex=true
+
+            parameters = "?description=" + elementModel.description;
+            elementModel.category = Convert.ToInt32(Category);
+            elementModel.nomination = DateValue.Value.Date.ToString("MM-dd-yyyy");
+
+
+
+            if (!addOrEdit)
+            {
+
+
+                errorModel = await elementServices.Update(elementModel, tableName, parameters);
+                var parametersResult = new ModalParameters();
+
+                parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+                parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+            }
+            else
+            {
+                errorModel = await elementServices.Add(elementModel, tableName, parameters);
+                var parametersResult = new ModalParameters();
+
+                parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+                parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+                var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+
+
+                var result = await messageForm.Result;
+
+
+            }
+
+            StateHasChanged();
+            BlazoredModal.Close(ModalResult.Ok(returnValue));
+        }
+        else
+        {
+            errorType = "To save the new records , you choose select a type";
+        }
+    }
+    async Task ButtonType()
+    {
+        var parameters2 = new ModalParameters();
+
+        parameters2.Add(nameof(ChooseTypeModal.tableName), tableName);
+        parameters2.Add(nameof(ChooseTypeModal.CategoryId), Category);
+        var messageForm = Modal.Show<ChooseTypeModal>("Select Type", parameters2);
+
+
+
+        var result = await messageForm.Result;
+        /// do mar result dhe do e vej tek text box
+
+        if (result.Data is null)
+        {
+            typeId = "";
+        }
+        else
+        {
+            typeId = result.Data.ToString();
+            elementModel.type_uid = Convert.ToInt32(typeId);
+        }
+
+
+        if (typeId != "")
+        {
+            errorType = "";
+
+            typeName = (await elementServices.SelectTypeById(tableName, typeId)).nomination;
+
+        }
+        else
+        {
+            errorType = "To save the new records , you choose select a type";
+
+            typeName = "";
+        }
+
+    }
+
+}
