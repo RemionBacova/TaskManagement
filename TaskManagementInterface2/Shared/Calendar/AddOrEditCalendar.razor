@@ -33,7 +33,7 @@
     <div class="form-inline">
         <div class="form-group col-md-11">
 
-            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue"></SfDatePicker>
+            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue" FloatLabelType='@FloatLabelType.Auto' Placeholder="Select date" ></SfDatePicker>
         </div>
     </div>
 
@@ -89,6 +89,8 @@
 
             elementModel = (await elementServices.SelectRecordById(uid.ToString(), tableName));
             DateValue = DateTime.Parse(elementModel.nomination);
+            typeName = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).nomination;
+
 
 
 

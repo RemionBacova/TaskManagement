@@ -85,6 +85,7 @@
                     {
 
                         elementModel = (await elementServices.SelectRecordById(uid.ToString(),tableName));
+                        typeName = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).nomination;
 
 
                     }
