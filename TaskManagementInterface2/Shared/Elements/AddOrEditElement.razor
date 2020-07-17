@@ -12,7 +12,7 @@
         <input type="hidden" @bind="elementModel.type_uid" />
         <div class="form-inline">
             <div class="col-md-11">
-                <SfTextBox Readonly="true" Placeholder='Select Parent' FloatLabelType='@FloatLabelType.Auto' @bind-Value="typeName"></SfTextBox>
+                <SfTextBox Readonly="true" Placeholder='Select Parent' FloatLabelType='@FloatLabelType.Auto' @bind-Value="elementModel.type"></SfTextBox>
             </div>
             <div class="col-md-1">
                 <SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true" @onclick="ButtonType"></SfButton>
@@ -66,8 +66,6 @@
 
                 private tbl_Element elementModel = new tbl_Element();
                 ElementServices elementServices = new ElementServices();
-                string typeName = "";
-                string typeId = "";
                 string errorType = "";
                 [Parameter] public bool addOrEdit { get; set; }
                 [Parameter] public string tableName { get; set; }
@@ -85,7 +83,7 @@
                     {
 
                         elementModel = (await elementServices.SelectRecordById(uid.ToString(),tableName));
-                        typeName = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).nomination;
+                        elementModel.type = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).nomination;
 
 
                     }
@@ -99,7 +97,7 @@
 
                 protected async Task Save()
                 {
-                    if( typeId!="")
+                    if( elementModel.type_uid !=null)
                     {
 
                         Error errorModel = new Error();
@@ -160,27 +158,27 @@
 
                     if (result.Data is null)
                     {
-                        typeId = "";
+                        elementModel.type_uid = null;
                     }
                     else
                     {
-                        typeId = result.Data.ToString();
-                        elementModel.type_uid =Convert.ToInt32(typeId);
+                        elementModel.type_uid = Convert.ToInt32(result.Data.ToString());
+                        elementModel.type_uid =Convert.ToInt32(elementModel.type_uid);
                     }
 
 
-                    if (typeId != "")
+                    if (elementModel.type_uid != null)
                     {
                         errorType = "";
 
-                        typeName = (await elementServices.SelectTypeById(tableName,typeId)).nomination;
+                        elementModel.type = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).ToString();
 
                     }
                     else
                     {
                         errorType = "To save the new records , you choose select a type";
 
-                        typeName = "";
+                        elementModel.type = "";
                     }
 
                 }
