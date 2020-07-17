@@ -144,7 +144,7 @@
                         errorModel =  await categoryServices.Update(kategoriModel, tableName, parameters);
                         var parametersResult = new ModalParameters();
 
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
 
@@ -154,7 +154,7 @@
                         errorModel=  await categoryServices.Add(kategoriModel, tableName, parameters);
                         var parametersResult = new ModalParameters();
 
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
 

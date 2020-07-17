@@ -112,7 +112,7 @@
                         errorModel = await elementServices.Update(elementModel, tableName, parameters);
                         var parametersResult = new ModalParameters();
 
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
 
@@ -122,7 +122,7 @@
                         errorModel = await elementServices.Add(elementModel, tableName, parameters);
                         var parametersResult = new ModalParameters();
 
-                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
 

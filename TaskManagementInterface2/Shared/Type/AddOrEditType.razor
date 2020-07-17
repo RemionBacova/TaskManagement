@@ -171,7 +171,7 @@
                         errorModel =  await typeServices.Update(TypeModel, tableName, parameters);
                         var parametersError = new ModalParameters();
 
-                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
 
@@ -180,7 +180,7 @@
                     {
                         errorModel =  await typeServices.Add(TypeModel, tableName,CategoryUID, parameters);
                         var parametersError = new ModalParameters();
-                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+                        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
                         parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
                         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
 

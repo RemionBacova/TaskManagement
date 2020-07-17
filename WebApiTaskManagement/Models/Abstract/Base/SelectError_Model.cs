@@ -10,7 +10,7 @@ namespace WebApiTaskManagement.Models.Abstract.Base
     {
         public int? UID { get; set; }
         
-        public string? ERRORNAME{ get; set; }
+        public string? ERRORDESCRIPTION { get; set; }
         
 
     }

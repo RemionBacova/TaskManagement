@@ -9,6 +9,6 @@ namespace TaskManagementInterface.Data
     public class Error
     {
         public int UID { get; set; }
-        public string ERRORNAME { get; set; }
+        public string? ERRORDESCRIPTION { get; set; }
     }
 }

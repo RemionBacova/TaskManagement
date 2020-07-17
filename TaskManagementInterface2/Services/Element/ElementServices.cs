@@ -47,7 +47,7 @@ namespace TaskManagementInterface.Services.Element
             catch (Exception ex)
             {
                 Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
             }
         }
@@ -64,7 +64,7 @@ namespace TaskManagementInterface.Services.Element
             catch (Exception ex)
             {
                 Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
 
             }
@@ -84,7 +84,7 @@ namespace TaskManagementInterface.Services.Element
             catch (Exception ex)
             {
                 Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
             }
 

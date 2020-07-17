@@ -62,7 +62,7 @@
         TypeModel.type_info_uid = Convert.ToInt32(type_info_uid);
         errorModel = await typeInfoServices.Add(TypeModel, tableName);
         var parametersError = new ModalParameters();
-        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORNAME);
+        parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
         parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
 
@@ -70,7 +70,7 @@
 
         StateHasChanged();
         BlazoredModal.Close(ModalResult.Ok(returnValue));
-       
+
     }
     }
 

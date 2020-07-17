@@ -42,7 +42,7 @@ namespace TaskManagementInterface.Services.Categories
             catch (Exception ex)
             {
                Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
             }
         }
@@ -59,7 +59,7 @@ namespace TaskManagementInterface.Services.Categories
             catch (Exception ex)
             {
                 Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
 
             }
@@ -78,7 +78,7 @@ namespace TaskManagementInterface.Services.Categories
             catch (Exception ex)
             {
                 Error error = new Error();
-                error.ERRORNAME = ex.ToString();
+                error.ERRORDESCRIPTION = ex.ToString();
                 return error;
             }
         }
