@@ -24,7 +24,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
 
         #region SPI_TYPE
         public async Task<IEnumerable<SelectError_Model>> spi_Tipi2(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid,int? cat_uid)
+            , string? description2, string? description3, int? user_uid,int? cat_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -38,8 +38,8 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 queryParameters.Add("@codeend", codeend);
                 queryParameters.Add("@nomination", nomination);
                 queryParameters.Add("@description", description);
-                queryParameters.Add("@description1", description1);
                 queryParameters.Add("@description2", description2);
+                queryParameters.Add("@description3", description3);
                 queryParameters.Add("@user_uid", user_uid);
                 queryParameters.Add("@category_uid", cat_uid);
 
@@ -49,7 +49,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
         }
 
         public async Task<IEnumerable<SelectError_Model>> spi_Tipi(string tablename, int? uid_sup, bool? elcat, string? code, string? codeend, string? nomination, string? description
-           , string? description1, string? description2, int? user_uid)
+           , string? description2, string? description3, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -63,8 +63,8 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 queryParameters.Add("@codeend", codeend);
                 queryParameters.Add("@nomination", nomination);
                 queryParameters.Add("@description", description);
-                queryParameters.Add("@description1", description1);
                 queryParameters.Add("@description2", description2);
+                queryParameters.Add("@description3", description3);
                 queryParameters.Add("@user_uid", user_uid);
                 
 
@@ -78,7 +78,7 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
 
         #region SPU_TYPE
         public async Task<IEnumerable<SelectError_Model>> spu_tipi(string tablename,int?uid,int? uid_sup, bool? elcat, string? code 
-            ,  string? codeend, string? nomination, string? description, string? description1, string? description2, int? user_uid)
+            ,  string? codeend, string? nomination, string? description, string? description2, string? description3, int? user_uid)
         {
 
 
@@ -142,21 +142,21 @@ namespace WebApiTaskManagement.Repository.Base.EntitiesRepository
                 {
                     queryParameters.Add("@DESCRIPTION",description);
                 }
-                if (description1 is null)
+                if (description2 is null)
                 {
                     queryParameters.Add("@CONSIDERNULL_DESCRIPTION2", 1);
                 }
                 else
                 {
-                    queryParameters.Add("@DESCRTIPTION2",description1);
+                    queryParameters.Add("@DESCRTIPTION2",description2);
                 }
-                if (description2 is null)
+                if (description3 is null)
                 {
                     queryParameters.Add("@CONSIDERNULL_DESCRIPTION3", 1);
                 }
                 else
                 {
-                    queryParameters.Add("@DESCRTIPTION3",description2);
+                    queryParameters.Add("@DESCRTIPTION3",description3);
                 }
 
                 if (user_uid is null)

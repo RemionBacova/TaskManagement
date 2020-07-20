@@ -23,7 +23,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #region SPI_INFO
         public async Task<IEnumerable<SelectError_Model>> spi_Info(string tablename, int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
                 using (IDbConnection sql = new SqlConnection(_constring))
                 {
@@ -36,8 +36,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     queryParameters.Add("@type_info_id", type_info_uid);
                     queryParameters.Add("@nomination", nomination);
                     queryParameters.Add("@description", description);
-                    queryParameters.Add("@description1", description1);
                     queryParameters.Add("@description2", description2);
+                    queryParameters.Add("@description3", description3);
                     queryParameters.Add("@user_uid", user_uid);
 
                     return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
@@ -49,7 +49,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         }
         #region SPU_INFO
             public async Task<IEnumerable<SelectError_Model>> spu_Info( string tablename ,int?uid,int? uid_sup, int? element_uid, int? type_info_uid, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid)
+            , string? description2, string? description3, int? user_uid)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {
@@ -101,21 +101,21 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                     {
                         queryParameters.Add("@DESCRIPTION", description);
                     }
-                    if (description1 is null)
+                    if (description2 is null)
                     {
                         queryParameters.Add("@CONSIDERNULL_DESCRIPTION2", 1);
                     }
                     else
                     {
-                        queryParameters.Add("@DESCRIPTION2", description1);
+                        queryParameters.Add("@DESCRIPTION2", description2);
                     }
-                    if (description2 is null)
+                    if (description3 is null)
                     {
                         queryParameters.Add("@CONSIDERNULL_DESCRIPTION3", 1);
                     }
                     else
                     {
-                        queryParameters.Add("@DESCRIPTION3", description2);
+                        queryParameters.Add("@DESCRIPTION3", description3);
                     }
 
                   

@@ -32,17 +32,17 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
 
         [HttpPost("{type_uid}/{nomination}/{category}")]
         public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(int? uid_sup, int? type_uid, string? code, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid, int? category, bool? complex)
+            , string? description2, string? description3, int? user_uid, int? category, bool? complex)
         {
-            return await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
+            return await _repository.spi_tbl_table(tableName, uid_sup, type_uid, code, nomination, description, description2, description3, user_uid, category, complex);
         }
 
         [HttpPut("{uid}/{type_uid}/{nomination}/{category}")]
 
         public async Task<IEnumerable<SelectError_Model>> spu_tbl_table(int? uid, int? uid_sup, int? type_uid, string? code, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid, int? category, bool? complex)
+            , string? description2, string? description3, int? user_uid, int? category, bool? complex)
         {
-            return await _repository.spu_tbl_table(tableName, uid, uid_sup, type_uid, code, nomination, description, description1, description2, user_uid, category, complex);
+            return await _repository.spu_tbl_table(tableName, uid, uid_sup, type_uid, code, nomination, description, description2, description3, user_uid, category, complex);
         }
 
         [HttpGet]

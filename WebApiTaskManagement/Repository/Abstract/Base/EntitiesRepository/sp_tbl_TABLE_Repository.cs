@@ -23,7 +23,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
 
         #region SPI_TABLE
         public async Task<IEnumerable<SelectError_Model>> spi_tbl_table(string tableName, int? uid_sup, int? type_uid, string?code, string? nomination, string? description
-            , string? description1, string? description2, int? user_uid ,int?category,bool?complex)
+            , string? description2, string? description3, int? user_uid ,int?category,bool?complex)
         {
             using (IDbConnection sql = new SqlConnection(_constring))
             {               
@@ -35,8 +35,8 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 queryParameters.Add("@code",  code);
                 queryParameters.Add("@nomination",  nomination);
                 queryParameters.Add("@description",  description);
-                queryParameters.Add("@description1",  description1);
                 queryParameters.Add("@description2",  description2);
+                queryParameters.Add("@description3",  description3);
                 queryParameters.Add("@user_uid",  user_uid);
                 queryParameters.Add("@category",  category);
                 queryParameters.Add("@complex", complex);

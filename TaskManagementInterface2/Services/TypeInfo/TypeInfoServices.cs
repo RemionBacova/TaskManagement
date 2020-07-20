@@ -36,7 +36,7 @@ namespace TaskManagementInterface.Services.TypeInfo
         public async Task<Error> Add(tbl_TABLE_TYPE_INFO TypeModel, string tableName, string parameters)
         {
             //Property duhet te plotesohet 
-            string url = "http://192.168.1.109/api/" + tableName +  "/" + TypeModel.nomination + "/1"  + parameters;
+            string url = "http://192.168.1.109/api/" + tableName +  "/" + TypeModel.nomination+"/1"   + parameters;
             try
             {
                 List<Error> list = await http.PostJsonAsync<List<Error>>(url, "");
@@ -52,7 +52,7 @@ namespace TaskManagementInterface.Services.TypeInfo
 
         public async Task<Error> Update(tbl_TABLE_TYPE_INFO kategoriModel, string tableName, string parameters)
         {
-            string url = "http://192.168.1.109/api/" + tableName + "/" + kategoriModel.uid+"/"+1 + "/" + kategoriModel.nomination+ "/1"+ parameters;
+            string url = "http://192.168.1.109/api/" + tableName + "/" + kategoriModel.uid+"/"+kategoriModel.type_uid + "/" + kategoriModel.nomination+ "/2"+ parameters;
             try
             {
                 List<Error> list = await http.PutJsonAsync<List<Error>>(url, "");

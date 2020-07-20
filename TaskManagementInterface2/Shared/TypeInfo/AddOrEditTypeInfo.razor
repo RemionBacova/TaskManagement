@@ -92,7 +92,7 @@
     [Parameter] public int uid { get; set; }
     [Parameter] public string uid_sup { get; set; }
     [Parameter] public string CategoryUID { get; set; }
-
+    [Parameter] public string TypeUid { get; set; }
     private string returnValue = "";
     public string ParentName = "";
     public string ParentID = "";
@@ -141,11 +141,10 @@
         {
 
 
-            parameters = "?description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file + "&queue=" +TypeModel.uid;
+            parameters = "?description=" + TypeModel.description + "&type_uid="+TypeUid+ "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file + "&queue=" +TypeModel.uid;
 
             errorModel = await typeInfoServices.Update(TypeModel, tableName, parameters);
             var parametersError = new ModalParameters();
-
             parametersError.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
             parametersError.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
             var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersError);
@@ -153,7 +152,7 @@
         }
         else
         {
-            parameters = "?type_uid=1&description=" + TypeModel.description + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
+            parameters = "?description="+ TypeModel.description  + "&type_uid=" + TypeUid + "&description2=" + TypeModel.description2 + "&mandatory=" + TypeModel.mandatory + "&file=" + TypeModel.file;
 
 
             errorModel = await typeInfoServices.Add(TypeModel, tableName, parameters);

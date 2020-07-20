@@ -18,7 +18,7 @@ namespace TaskManagementInterface.Services.Element
         {
             return await http.GetJsonAsync<List<tbl_Element>>("http://192.168.1.109/api/tbl_" + table + "/SelectAllwithType?category=" + categoryUID);
         }
-        //http://192.168.1.109/api/tbl_EMPLOYEES/10
+       
         public async Task<tbl_Element> SelectRecordById(string ElementUid, string table)
         {
             return (await http.GetJsonAsync<List<tbl_Element>>("http://192.168.1.109/api/tbl_" + table + "/" + ElementUid)).FirstOrDefault();

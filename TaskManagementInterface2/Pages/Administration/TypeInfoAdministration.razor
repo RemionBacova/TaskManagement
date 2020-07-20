@@ -160,6 +160,8 @@
                 parameters.Add(nameof(AddOrEditTypeInfo.addOrEdit), true);
                 parameters.Add(nameof(AddOrEditTypeInfo.tableName), selectedTypeTable);
                 parameters.Add(nameof(AddOrEditTypeInfo.uid), 0);
+                parameters.Add(nameof(AddOrEditTypeInfo.TypeUid), TypeUID);
+
                 var messageForm = Modal.Show<AddOrEditTypeInfo>("Add Category", parameters);// tittle parameters
                 var result = await messageForm.Result;
                 if (!result.Cancelled)
@@ -175,6 +177,8 @@
                 parameters.Add(nameof(AddOrEditTypeInfo.addOrEdit), false);
                 parameters.Add(nameof(AddOrEditTypeInfo.tableName), selectedTypeTable);
                 parameters.Add(nameof(AddOrEditTypeInfo.uid), modeltype.uid);
+                parameters.Add(nameof(AddOrEditTypeInfo.TypeUid), TypeUID);
+
                 var messageForm = Modal.Show<AddOrEditTypeInfo>("Edit Type", parameters);// tittle parameters
                 var result = await messageForm.Result;
                 if (!result.Cancelled)
