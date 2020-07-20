@@ -38,7 +38,7 @@ namespace TaskManagementInterface.Services.Element
         }
         public async Task<Error> Add(tbl_Element Model, string tableName, string parameters)
         {
-            string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.type_uid + "/" + Model.code + "/" + Model.nomination + "/" + Model.category + parameters;
+            string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.type_uid + "/" + Model.nomination + "/" + Model.category + parameters;
             try
             {
                 List<Error> list = await http.PostJsonAsync<List<Error>>(url, "");
@@ -54,7 +54,7 @@ namespace TaskManagementInterface.Services.Element
 
         public async Task<Error> Update(tbl_Element Model, string tableName, string parameters)
         {
-            string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.uid + "/" + Model.type_uid + "/" + Model.code + "/" + Model.nomination + "/" + Model.category + parameters;
+            string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.uid + "/" + Model.type_uid + "/" + Model.nomination + "/" + Model.category + parameters;
             try
             {
                 List<Error> list = await http.PutJsonAsync<List<Error>>(url, "");
@@ -89,5 +89,7 @@ namespace TaskManagementInterface.Services.Element
             }
 
         }
+
+      
     }
 }

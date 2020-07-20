@@ -102,9 +102,9 @@
 
                         Error errorModel = new Error();
                         string parameters;
-                        // http://192.168.1.109/api/tbl_EMPLOYEES/Add?type_uid=11&code=50&nomination=Nomini&description=des&description1=des&description2=desc&user_uid=1&category=14&complex=true
+                     
 
-                        parameters = "?description=" + elementModel.description;
+                        parameters = "?description=" + elementModel.description + "&code=" + elementModel.code;
                         elementModel.category = Convert.ToInt32(Category);
 
                         if (!addOrEdit)
@@ -171,7 +171,7 @@
                     {
                         errorType = "";
 
-                        elementModel.type = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).ToString();
+                        elementModel.type = (await elementServices.SelectTypeById(tableName, elementModel.type_uid.ToString())).nomination.ToString();
 
                     }
                     else
