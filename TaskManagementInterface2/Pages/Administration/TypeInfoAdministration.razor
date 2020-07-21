@@ -133,13 +133,15 @@
             public string CategoryUID = "";
             public string TypeUID = "";
             private List<tbl_TABLE_TYPE_INFO> Tree = new List<tbl_TABLE_TYPE_INFO>();
-            string _returnMessage = "";
 
+            string _returnMessage = "";
             string _tablename = "";
+
             protected override async Task OnInitializedAsync()
             {
                 Entities = await entitetservice.SelectEntities();
             }
+
             private async Task EntitieClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
             {
                 string value = e.Value.ToString();
@@ -197,6 +199,7 @@
                     _returnMessage = result.Data?.ToString() ?? string.Empty;
                 Tree = await typeinfoservice.SelectAllActiveRecByType(selectedTypeTable, TypeUID);
             }
+
             private async Task ShowKategori()
             {
                 TypeName = "";

@@ -27,20 +27,9 @@
 
     <SfGrid TValue="tbl_Element" DataSource="@Element">
         <GridColumns>
-            <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="80">
-                <Template>
-                    @{
-
-                        <div class="image">
-                            <img src="@($"https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png")" />
-                        </div>
-                    }
-
-
-                </Template>
-            </GridColumn>
+           
             <GridColumn Field=@nameof(tbl_Element.type) HeaderText="Type" TextAlign="TextAlign.Right" Width="120"></GridColumn>
-            <GridColumn Field=@nameof(tbl_Element.uid) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="80"></GridColumn>
+            <GridColumn Field=@nameof(tbl_Element.uid) HeaderText="ID" TextAlign="TextAlign.Right" Width="80"></GridColumn>
             <GridColumn Field=@nameof(tbl_Element.code) HeaderText="Code" Width="150"></GridColumn>
            
                 <GridColumn Field=@nameof(tbl_Element.nomination) HeaderText="Name" Width="130"></GridColumn>
@@ -91,7 +80,7 @@
         parameters.Add(nameof(AddOrEditElement.tableName), tablename);
         parameters.Add(nameof(AddOrEditElement.uid),0);
         parameters.Add(nameof(AddOrEditElement.Category), Category);
-        var messageForm = Modal.Show<AddOrEditElement>("Edit Element", parameters);// tittle parameters
+        var messageForm = Modal.Show<AddOrEditElement>("Add Element", parameters);// tittle parameters
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
