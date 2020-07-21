@@ -111,7 +111,7 @@
                         <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendarType" class="action-button"> <i class="fa fa-cog mr-2"></i>Types</button>
                     </div>
                     <div class="d-flex align-items-center">
-                        <a>SubCategoryUser</a>
+                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendarTypeInfo" class="action-button"><i class="fa fa-list mr-2"></i>Type Info</button>
                     </div>
 
                 </div>
@@ -498,9 +498,16 @@
         NavigationManager.NavigateTo("/CategoryAdministration");
 
     }
+
     public void RedirectToCalendarType()
     {
         NavigationManager.NavigateTo("/CalendarAdministration/Calendar");
+
+    }
+
+    public void RedirectToCalendarTypeInfo()
+    {
+        NavigationManager.NavigateTo("/TypeInfoAdministrationCalendar");
 
     }
 
