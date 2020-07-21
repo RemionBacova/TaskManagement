@@ -103,12 +103,12 @@
                     </div>
                 </div>
                 <div class="customers">
-                    <p class="text-primary">Users</p>
+                    <p class="text-primary">Calendar Administration</p>
                     <div class="d-flex align-items-center">
-                        <a>Administration</a>
+                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendarCategory" class="action-button"> <i class="fa fa-cog mr-2"></i>Categories</button>
                     </div>
                     <div class="d-flex align-items-center">
-                        <a>SubCategoryUser</a>
+                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendarType" class="action-button"> <i class="fa fa-cog mr-2"></i>Types</button>
                     </div>
                     <div class="d-flex align-items-center">
                         <a>SubCategoryUser</a>
@@ -165,7 +165,7 @@
                 <div class="customers">
                     <h4 class="text-primary">Calendar</h4>
                     <div class="d-flex">
-                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToCalendar" class="action-button"> <i class="fa fa-cog mr-2"></i>Action</button>
+                     
                     </div>
                     <div class="d-flex">
                         <p class="my-auto">Reasons</p>
@@ -498,9 +498,15 @@
         NavigationManager.NavigateTo("/CategoryAdministration");
 
     }
-    public void RedirectToCalendar()
+    public void RedirectToCalendarType()
     {
         NavigationManager.NavigateTo("/CalendarAdministration/Calendar");
+
+    }
+
+    public void RedirectToCalendarCategory()
+    {
+        NavigationManager.NavigateTo("/CategoryAdministrationCalendar");
 
     }
     public void RedirectToTypeAdmin()

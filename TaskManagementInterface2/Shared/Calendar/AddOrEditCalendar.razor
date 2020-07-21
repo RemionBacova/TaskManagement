@@ -25,8 +25,8 @@
     <br />
     <div class="form-inline">
         <div class="form-group col-md-11">
-
-            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue" FloatLabelType='@FloatLabelType.Auto' Placeholder="Select date" ></SfDatePicker>
+            <SfTextBox Placeholder='Nomination' FloatLabelType='@FloatLabelType.Auto' @bind-Value="elementModel.nomination"></SfTextBox>
+            @*<SfDatePicker TValue="DateTime?" @bind-Value="@DateValue" FloatLabelType='@FloatLabelType.Auto' Placeholder="Select date"></SfDatePicker>*@
         </div>
     </div>
 
@@ -104,7 +104,7 @@
 
             parameters = "?description=" + elementModel.description;
             elementModel.category = Convert.ToInt32(Category);
-            elementModel.nomination = DateValue.Value.Date.ToString("MM-dd-yyyy");
+            //elementModel.nomination = DateValue.Value.Date.ToString("MM-dd-yyyy");
 
 
 

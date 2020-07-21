@@ -1,0 +1,143 @@
+﻿@page "/CategoryAdministrationCalendar"
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Grids
+@using TaskManagementInterface.Data
+@inject HttpClient http
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Components
+@inject IModalService Modal
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Shared.Category
+@using TaskManagementInterface.Services.Categories
+@using TaskManagementInterface.Services.Entitet
+
+
+
+
+    <div>
+        
+
+        <div>
+            <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="ShowModalAdd">
+                <span class="e-btn-icon e-add e-icons e-icon-left">
+                </span><span class="e-tbar-btn-text">Add</span>
+            </button>
+        </div>
+        @if (TreeData.Count == 0)
+        {
+            <br />
+            <label>Please Select a value from dropdown</label>
+        }
+        else
+        {
+            <br />
+            
+            <div class="col-lg-12 control-section">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <SfTreeGrid DataSource="@TreeData" TValue="tbl_TABLE_CATEGORY" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
+                            <TreeGridEvents TValue="tbl_TABLE_CATEGORY"> </TreeGridEvents>
+                            <TreeGridPageSettings PageSize="100"></TreeGridPageSettings>
+
+                            <TreeGridColumns>
+                                <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
+                                <TreeGridColumn Field="code" HeaderText="CODE" Width="10%" TextAlign="TextAlign.Left"></TreeGridColumn>
+                                <TreeGridColumn Field="nomination" HeaderText="Nomination" Width="20%"></TreeGridColumn>
+                                <TreeGridColumn Field="description" HeaderText="Description" Width="20%"></TreeGridColumn>
+                                <TreeGridColumn Field="elcat" HeaderText="Contains Elements" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
+                                <TreeGridColumn HeaderText="Edit" Field="uid" Width="200">
+                                    <Template>
+                                        @{
+                                            <div>
+                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalEdit(context as tbl_TABLE_CATEGORY))">
+                                                    <span class="e-btn-icon e-icons e-edit "></span>
+                                                </button>
+                                                <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => ShowModalDelete(context as tbl_TABLE_CATEGORY))">
+                                                    <span class="e-btn-icon e-icons e-delete "></span>
+                                                </button>
+                                            </div>
+                                        }
+                                    </Template>
+                                </TreeGridColumn>
+                            </TreeGridColumns>
+                        </SfTreeGrid>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+@code{
+
+
+    public List<TaskManagementInterface.Data.tbl_TABLE_CATEGORY> TreeData = new List<tbl_TABLE_CATEGORY>();
+
+
+    private string SelectedTable;
+    bool deleteConfirmation = false;
+    bool _addOrEdit = false;
+    string _tablename = "tbl_Calendar_Category";
+    CategoryServices categoryServices = new CategoryServices();
+    EntitetService entitetService = new EntitetService();
+
+    string _returnMessage = "";
+   
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FillDataIntoTable();
+    }
+
+    private async Task FillDataIntoTable()
+    {
+        TreeData = await categoryServices.SelectAllActiveRec(_tablename);
+        StateHasChanged();
+
+    }
+
+    async Task ShowModalAdd()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(AddOrEdit.addOrEdit), true);
+        parameters.Add(nameof(AddOrEdit.tableName), _tablename);
+        parameters.Add(nameof(AddOrEdit.uid), 0);
+        var messageForm = Modal.Show<AddOrEdit>("Add Category", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+        await FillDataIntoTable();
+    }
+
+
+    async Task ShowModalEdit(tbl_TABLE_CATEGORY parameter)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(AddOrEdit.addOrEdit), false);
+        parameters.Add(nameof(AddOrEdit.tableName), _tablename);
+        parameters.Add(nameof(AddOrEdit.uid), parameter.uid);
+        var messageForm = Modal.Show<AddOrEdit>("Edit Category", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+        await FillDataIntoTable();
+    }
+
+
+    async Task ShowModalDelete(tbl_TABLE_CATEGORY parameter)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Delete.tableName), _tablename);
+        parameters.Add(nameof(Delete.uid), parameter.uid);
+        var messageForm = Modal.Show<Delete>("Delete Category", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+
+        await FillDataIntoTable();
+    }
+
+}
