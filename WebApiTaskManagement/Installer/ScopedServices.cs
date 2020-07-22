@@ -29,6 +29,7 @@ namespace WebApiTaskManagement.Installer
             services.AddTransient<spi_getTree_Repository>();
             services.AddSingleton<HttpClient>();
             services.AddTransient<Type_Repository>();
+            services.AddTransient<tbl_INTER_EMP_TYPE_CAT_Repository>();
 
         }
     }

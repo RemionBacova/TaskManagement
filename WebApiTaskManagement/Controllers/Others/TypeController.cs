@@ -19,7 +19,7 @@ namespace WebApiTaskManagement.Controllers.Others
         }
 
         [HttpGet("GetAll_Types")]
-        public async Task<IEnumerable<Type_Model>> SelectConnections()
+        public async Task<IEnumerable<Type_Model>> SelectAllActiveRec()
         {
             return await _repository.SelectEntitites();
         }
