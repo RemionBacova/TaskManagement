@@ -22,10 +22,16 @@ namespace WebApiTaskManagement.Controllers.Others
 
         }
 
-        [HttpGet("SelectAllActiveRecInter")]
-        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRec(int? empuid, int? calType_uid, int? calCat_uid)
+        [HttpGet("SelectAllActiveRecInterParam")]
+        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRecParam(int? empuid, int? calType_uid, int? calCat_uid)
         {
-            return await _repository.SelectAllActiveRec(empuid, calType_uid, calCat_uid);
+            return await _repository.SelectAllActiveRecParam(empuid, calType_uid, calCat_uid);
+        }
+
+        [HttpGet("SelectAllActiveRecInter")]
+        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRec()
+        {
+            return await _repository.SelectAllActiveRec();
         }
 
         [HttpPost("{empuid}/{calType_uid}/{calCat_uid}")]
@@ -34,12 +40,7 @@ namespace WebApiTaskManagement.Controllers.Others
             return await _repository.spi_inter_emp_type_cat(empuid, calType_uid, calCat_uid, user_uid);
         }
 
-        [HttpDelete("{empUID}")]
-        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string empUID)
-        {
-            return await _repository.DeleteRow(empUID);
-
-        }
+      
 
     }
 }
