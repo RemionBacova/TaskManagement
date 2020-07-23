@@ -20,7 +20,7 @@ namespace WebApiTaskManagement.Repository.Concrete
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
-        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRec(int? empuid, int? calType_uid,int? calCat_uid)
+        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRecParam(int? empuid, int? calType_uid,int? calCat_uid)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -59,6 +59,19 @@ namespace WebApiTaskManagement.Repository.Concrete
                 ;
             }
         }
+
+        public async Task<IEnumerable<tbl_INTER_EMPLOYE_C_T>> SelectAllActiveRec()
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectAllRecInterEmployee_Calendar";
+                var queryParameters = new DynamicParameters();
+               
+                return await db.QueryAsync<tbl_INTER_EMPLOYE_C_T>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
 
     }
 }

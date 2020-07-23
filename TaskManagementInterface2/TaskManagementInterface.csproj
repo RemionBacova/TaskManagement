@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Records\" />
+    <Folder Include="Data\Calendar\" />
+    <Folder Include="Pages\HR\Calendar\" />
+    <Folder Include="Pages\HR\Details\Components\" />
+    <Folder Include="Services\Calendar\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
