@@ -218,6 +218,20 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
         }
         #endregion
 
+
+        public async Task<IEnumerable<tbl_TABLE_INFO_Model1>> SelectAllActiveRecWith_Element_TypeInfo(string tableName,string elementUid, string typeinfoUid)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectActiveRecByTypeInfo_ElementID";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@table",  tableName );
+                queryParameters.Add("@@type_info_uid", typeinfoUid);
+                queryParameters.Add("@ElementId", elementUid);
+                return await db.QueryAsync<tbl_TABLE_INFO_Model1>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
 }
 

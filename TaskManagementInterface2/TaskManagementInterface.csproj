@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Data\Calendar\" />
     <Folder Include="Pages\HR\Calendar\" />
-    <Folder Include="Pages\HR\Details\Components\" />
     <Folder Include="Services\Calendar\" />
   </ItemGroup>
 

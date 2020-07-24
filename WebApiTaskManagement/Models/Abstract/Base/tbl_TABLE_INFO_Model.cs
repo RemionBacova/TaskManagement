@@ -21,4 +21,14 @@ namespace WebApiTaskManagement.Models.Abstract.Base
         public int? user_uid { get; set; }
 
     }
+    public class tbl_TABLE_INFO_Model1
+    {
+        [PrimaryKey]
+        public int uid { get; set; }
+        public string nomination { get; set; }
+        public int? element_uid { get; set; }
+        public int? type_info_uid { get; set; }
+  
+
+    }
 }

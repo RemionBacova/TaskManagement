@@ -68,6 +68,14 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
         }
 
 
-        
+        [HttpGet("SelectAllActiveRecWith_Element_TypeInfo")]
+        public async Task<IEnumerable<tbl_TABLE_INFO_Model1>> SelectAllActiveRecWith_Element_TypeInfo(string elementUid, string typeinfoUid)
+        {
+            return await _repository.SelectAllActiveRecWith_Element_TypeInfo(tableName,elementUid,typeinfoUid);
+
+        }
+
+
+
     }
 }
