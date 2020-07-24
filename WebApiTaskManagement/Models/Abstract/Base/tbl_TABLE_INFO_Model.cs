@@ -28,6 +28,8 @@ namespace WebApiTaskManagement.Models.Abstract.Base
         public string nomination { get; set; }
         public int? element_uid { get; set; }
         public int? type_info_uid { get; set; }
+
+        public int? property { get; set; }
   
 
     }
