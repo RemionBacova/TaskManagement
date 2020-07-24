@@ -25,10 +25,10 @@ namespace WebApiTaskManagement.Models.Abstract.Base
     {
         [PrimaryKey]
         public int uid { get; set; }
-        public string nomination { get; set; }
+        public string value { get; set; }
         public int? element_uid { get; set; }
         public int? type_info_uid { get; set; }
-
+        public string nomination { get; set; }
         public int? property { get; set; }
   
 

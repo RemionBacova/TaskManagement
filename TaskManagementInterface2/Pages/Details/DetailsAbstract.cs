@@ -17,9 +17,7 @@ namespace TaskManagementInterface.Pages.Details
         
            dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
            return "";
-           
-            
-            
+
         }
 
         public abstract bool Save(string Entity, string ElementID, string TypeID, string Value);

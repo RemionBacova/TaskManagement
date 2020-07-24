@@ -1,11 +1,13 @@
-﻿<div>
+﻿@using TaskManagementInterface.Services.Info
+@using TaskManagementInterface.Data.Models.Info 
+<div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Readonly Placeholder='Int'></SfTextBox>
+            <SfTextBox Readonly Placeholder='Int' @bind-Value="infoModel.value" ></SfTextBox>
 
         </div>
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Int'></SfTextBox>
+            <SfTextBox Placeholder='Int' @bind-Value="infoModel.nomination"></SfTextBox>
 
         </div>
 
@@ -14,4 +16,13 @@
 
 @code {
 
+    private SelectInfo_Model infoModel = new SelectInfo_Model();
+    public InfoServices _infoServices = new InfoServices();
+    public List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
+
+    public async Task OnInitializedAsync(string Entity,string ElementID, string TypeInfoID)
+    {
+        dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
+    }
+    
 }
