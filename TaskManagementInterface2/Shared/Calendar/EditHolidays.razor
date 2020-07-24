@@ -1,0 +1,151 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.Element
+@using TaskManagementInterface.Data.CALENDAR
+@using TaskManagementInterface.Data.Models
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+
+
+
+<div class="modal-body" style="width:450px">
+
+    <input type="hidden" @bind="uid" />
+
+
+
+    <br />
+    <div class="form-inline">
+        <div class="form-group col-md-11">
+            @if (EmployeeName != "")
+            {
+                <SfTextBox Readonly="true" FloatLabelType='@FloatLabelType.Auto' @bind-Value="EmployeeName"></SfTextBox>}
+            else
+            {
+                <SfDropDownList TValue="string" Placeholder="Select Employee" TItem="tbl_TABLE_Model" DataSource="@EmployeeDropdown">
+                    <DropDownListEvents TValue="string" ValueChange="EmployeeClicked"></DropDownListEvents>
+                    <DropDownListFieldSettings Value="uid" Text="nomination"></DropDownListFieldSettings>
+                </SfDropDownList>
+            }
+        </div>
+    </div>
+
+    <br />
+
+
+
+    <div class="col-md-11">
+        <SfDropDownList TValue="string" Placeholder="Select Category" TItem="tbl_TABLE_CATEGORY" DataSource="@CategoryDropdown">
+            <DropDownListEvents TValue="string" ValueChange="EntitieClicked"></DropDownListEvents>
+            <DropDownListFieldSettings Value="uid" Text="nomination"></DropDownListFieldSettings>
+        </SfDropDownList>
+    </div>
+
+
+
+    <div class="form-inline">
+        <div class="col-md-11">
+            <SfDropDownList TValue="string" Placeholder="Select Type" TItem="TaskManagementInterface.Data.Models.tbl_TABLE_TYPE" DataSource="@TypeDropdown">
+                <DropDownListEvents TValue="string" ValueChange="TypeClicked"></DropDownListEvents>
+                <DropDownListFieldSettings Value="uid" Text="nomination"></DropDownListFieldSettings>
+            </SfDropDownList>
+        </div>
+
+
+    </div>
+
+
+    <SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+    <SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
+
+
+</div>
+
+
+
+@code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    private List<tbl_INTER_EMPLOYE_C_T> HolidaytModel = new List<tbl_INTER_EMPLOYE_C_T>();
+    private List<tbl_TABLE_CATEGORY> CategoryDropdown = new List<tbl_TABLE_CATEGORY>();
+    private List<tbl_TABLE_TYPE> TypeDropdown = new List<tbl_TABLE_TYPE>();
+    private List<tbl_TABLE_Model> EmployeeDropdown = new List<tbl_TABLE_Model>();
+
+    TaskManagementInterface.Services.Calendar.CalendarServices CalendarServices = new TaskManagementInterface.Services.Calendar.CalendarServices();
+    string errorType = "";
+    [Parameter] public string EmployeeName { get; set; }
+    [Parameter] public int uid { get; set; }
+    private string returnValue = "";
+    string selectedCategory="";
+    string selectedType="";
+    string selectedEmployee="";
+
+
+
+    private async Task EntitieClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        string value = e.Value.ToString();
+        TypeDropdown = await CalendarServices.SelectAllActiveTypesByCategory("Calendar", value);
+        selectedCategory = value;
+        StateHasChanged();
+
+
+    }
+    private async Task EmployeeClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        string value = e.Value.ToString();
+        selectedEmployee = value;
+
+
+    }
+    private async Task TypeClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        string value = e.Value.ToString();
+        selectedType = value;
+
+
+    }
+
+    protected async void OnLoad()
+    {
+
+        CategoryDropdown = await CalendarServices.SelectAllActiveRecCategory("CALENDAR");
+        EmployeeDropdown = await CalendarServices.SelectAllActiveEmployees();
+        StateHasChanged();
+
+    }
+
+    protected override void OnInitialized() => OnLoad();
+
+    void SubmitForm() => Save();
+    void Cancel() => BlazoredModal.Cancel();
+
+    protected async Task Save()
+    {
+        Error errorModel = new Error();
+        if (selectedEmployee == "")
+        {
+            errorModel = await CalendarServices.AddHoliday(uid.ToString(), selectedType, selectedCategory);
+
+        }
+        else {
+            errorModel = await CalendarServices.AddHoliday(selectedEmployee, selectedType, selectedCategory); 
+        }
+        var parametersResult = new ModalParameters();
+
+        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+
+
+
+        var result = await messageForm.Result;
+
+
+
+
+        StateHasChanged();
+        BlazoredModal.Close(ModalResult.Ok(returnValue));
+
+    }
+}

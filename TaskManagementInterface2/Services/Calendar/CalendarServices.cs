@@ -32,16 +32,37 @@ namespace TaskManagementInterface.Services.Calendar
         {
             return await http.GetJsonAsync<List<tbl_TABLE_CATEGORY>>("http://192.168.1.109/api/tbl_" + table + "_CATEGORY");
         }
-        
+        ///
         public async Task<List<tbl_INTER_EMPLOYE_C_T>>SelectHolidays(string parameters)
         {
             return await http.GetJsonAsync<List<tbl_INTER_EMPLOYE_C_T>>("http://192.168.1.109/api/tbl_INTER_EMP_T_C_/SelectAllActiveRecInter"+parameters);
+
+        }
+        public async Task<List<tbl_INTER_EMPLOYE_C_T>> SelectAllHolidays()
+        {
+            return await http.GetJsonAsync<List<tbl_INTER_EMPLOYE_C_T>>("http://192.168.1.109/api/tbl_INTER_EMP_T_C_/SelectAllActiveRecInter");
 
         }
         public async Task<List<tbl_TABLE_TYPE>> SelectAllActiveTypesByCategory(string _tablename, string uid)
         {
             string url = "http://192.168.1.109/api/tbl_" + _tablename + "_Type/GetTypeByCategory?category_uid=" + uid;
             return await http.GetJsonAsync<List<tbl_TABLE_TYPE>>(url);
+        }
+        //http://192.168.1.109/api/tbl_INTER_EMP_T_C_/45/1/1
+        public async Task<Error> AddHoliday(string employee, string type,string category)
+        {
+            string url = "http://192.168.1.109/api/tbl_INTER_EMP_T_C_/" + employee + "/" + type + "/" + category;
+            try
+            {
+                List<Error> list = await http.PostJsonAsync<List<Error>>(url, "");
+                return list.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Error error = new Error();
+                error.ERRORDESCRIPTION = ex.ToString();
+                return error;
+            }
         }
         public async Task<tbl_TABLE_TYPE> SelectTypeById(string _tablename, string uid)
         {

@@ -1,0 +1,117 @@
+﻿@using Syncfusion.Blazor.Grids
+@page "/HolidayAdministration"
+@using TaskManagementInterface.Data.ELEMENT
+@using TaskManagementInterface.Services.Calendar
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Data.CALENDAR
+@using TaskManagementInterface.Shared.Calendar
+@inject IModalService Modal
+
+
+<div class=" row">
+    <button class="e-tbar-btn e-tbtn-txt e-control e-btn e-lib" type="button" aria-label="Add" style="width: auto;" @onclick="(() => ShowModalEdit(modelAdd))" >
+        <span class="e-btn-icon e-add e-icons e-icon-left">
+        </span><span class="e-tbar-btn-text">Add</span>
+    </button>
+
+    <SfGrid TValue="tbl_INTER_EMPLOYE_C_T" DataSource="@Holidays">
+        <GridColumns>
+            
+            <GridColumn Field=@nameof(tbl_INTER_EMPLOYE_C_T.CALENDAR_CATEGORY) HeaderText="Calendar category" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(tbl_INTER_EMPLOYE_C_T.UID) HeaderText="Calendar ID" TextAlign="TextAlign.Right" Width="0"></GridColumn>
+           <GridColumn Field="@nameof(tbl_INTER_EMPLOYE_C_T.employeE_UID)" HeaderText="Calendar ID" TextAlign="TextAlign.Right" Width="0"></GridColumn>
+                <GridColumn Field=@nameof(tbl_INTER_EMPLOYE_C_T.EMPLOYEE) HeaderText="Employee" Width="130"></GridColumn>
+            
+            <GridColumn Field=@nameof(tbl_INTER_EMPLOYE_C_T.CALENDAR_TYPE) HeaderText="Calendar Type" Width="120"></GridColumn>
+            <GridColumn HeaderText="Edit" Field="@nameof(tbl_INTER_EMPLOYE_C_T.UID)" Width="200">
+                <Template>
+                    @{
+                        <div>
+                            <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalEdit(context as tbl_INTER_EMPLOYE_C_T))">
+                                <span class="e-btn-icon e-icons e-edit "></span>
+                            </button>
+                            <button class="e-control e-btn e-lib e-flat e-edit-delete e-Deletebutton e-icon-btn" @onclick="(() => ShowModalDelete(context as tbl_INTER_EMPLOYE_C_T))">
+                                <span class="e-btn-icon e-icons e-delete "></span>
+                            </button>
+                        </div>
+                    }
+                </Template>
+            </GridColumn>
+        </GridColumns>
+    </SfGrid>
+</div>
+
+
+
+
+
+@code{
+
+    [Parameter] public string tablename { get; set; }
+    string _returnMessage = "";
+    string Category = "";
+    public List<tbl_INTER_EMPLOYE_C_T> Holidays = new List<tbl_INTER_EMPLOYE_C_T>();
+    //per ta kalu si parameter tek add
+    tbl_INTER_EMPLOYE_C_T modelAdd = new tbl_INTER_EMPLOYE_C_T();
+    CalendarServices calendarServices = new CalendarServices();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Holidays = await calendarServices.SelectAllHolidays();
+        StateHasChanged();
+    }
+    //private async Task ShowModalAdd()
+    //{
+
+    //    var parameters = new ModalParameters();
+    //    parameters.Add(nameof(EditHolidays.addOrEdit), true);
+    //    parameters.Add(nameof(EditHolidays.uid), 0);
+    //    var messageForm = Modal.Show<AddOrEditCalendar>("Edit Holidays", parameters);// tittle parameters
+    //    var result = await messageForm.Result;
+    //    if (!result.Cancelled)
+    //        _returnMessage = result.Data?.ToString() ?? string.Empty;
+    //    Holidays = await calendarServices.SelectAllHolidays();
+
+    //}
+
+
+
+
+    private async Task ShowModalEdit(tbl_INTER_EMPLOYE_C_T model)
+    {
+
+        var parameters = new ModalParameters();
+        if (model.employeE_UID > 0)
+        {
+            parameters.Add(nameof(EditHolidays.EmployeeName), model.EMPLOYEE);
+            parameters.Add(nameof(EditHolidays.uid), model.employeE_UID);
+        }
+        else
+        {
+            parameters.Add(nameof(EditHolidays.EmployeeName), "");
+            parameters.Add(nameof(EditHolidays.uid), 0);
+
+        }
+        var messageForm = Modal.Show<EditHolidays>("Edit Holidays", parameters);// tittle parameters
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        Holidays = await calendarServices.SelectAllHolidays();
+
+    }
+
+    private async Task ShowModalDelete(tbl_INTER_EMPLOYE_C_T model)
+    {
+        //var parameters = new ModalParameters();
+        //parameters.Add(nameof(DeleteCalendar.tableName), tablename);
+        //parameters.Add(nameof(DeleteCalendar.uid), model.uid);
+        //var messageForm = Modal.Show<DeleteCalendar> ("Delete", parameters);// tittle parameters
+        //var result = await messageForm.Result;
+        //if (!result.Cancelled)
+        //    _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+        //Element = await elementServices.SelectAllActiveRec(Category, tablename);
+    }
+
+
+}
