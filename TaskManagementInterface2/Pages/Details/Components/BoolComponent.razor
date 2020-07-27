@@ -6,14 +6,14 @@
             <SfTextBox Placeholder='Type Info' @bind-Value="infoModel.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfTextBox TValue="string?" @bind="CurrentValue" @bind:event="oninput"></SfTextBox>
+            <SfCheckBox TValue="bool?" @bind="CurrentValue" @bind:event="oninput"></SfCheckBox>
         </div>
     </div>
 </div>
 
 @code {
 
-    private string CurrentValue = "";
+    private bool CurrentValue = true;
     private SelectInfo_Model infoModel = new SelectInfo_Model();
     public InfoServices _infoServices = new InfoServices();
     public List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
@@ -21,7 +21,7 @@
     public async Task OnInitializedAsync(string Entity, string ElementID, string TypeInfoID)
     {
         dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
-        CurrentValue = dataInfo[0].value;
+        CurrentValue = bool.Parse(dataInfo[0].value);
 
     }
 
