@@ -109,7 +109,8 @@
 
     private async void loadInfo(string Entity, string ElementId, string valueType)
     {
-        List<tbl_TABLE_TYPE_INFO> list = await typeInfoServices.SelectAllActiveRecByType(Entity, valueType);
+        string tablename= "tbl_" + Entity + "_Type_Info";
+        List <tbl_TABLE_TYPE_INFO> list = await typeInfoServices.SelectAllActiveRecByType(tablename, valueType);
         foreach (tbl_TABLE_TYPE_INFO z in list)
         {
             switch (z.property)

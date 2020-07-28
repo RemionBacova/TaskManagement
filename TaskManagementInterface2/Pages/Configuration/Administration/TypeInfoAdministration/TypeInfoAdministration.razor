@@ -67,10 +67,25 @@
                 <div class="col-lg-12 control-section">
                     <div class="content-wrapper">
                         <div class="row">
+                            @*// public int uid { get; set; }
+                            public int? uid_sup { get; set; }
+                            public int? type_uid { get; set; }
+                            public string nomination { get; set; }
+                            public string description { get; set; }
+                            public string description2 { get; set; }
+                            public string description3 { get; set; }
+                            public int? property { get; set; }
+                            public bool mandatory { get; set; }
+                            public float? queue { get; set; }
+                            public int? db { get; set; }
+                            public bool file { get; set; }
+                            public bool? active { get; set; }
+                            public int? user_uid { get; set; }*@
+
                             <SfTreeGrid DataSource="@Tree" TValue="tbl_TABLE_TYPE_INFO" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
                                 <TreeGridEvents TValue="tbl_TABLE_TYPE_INFO"> </TreeGridEvents>
                                 <TreeGridPageSettings PageSize="100"></TreeGridPageSettings>
-                               
+
                                 <TreeGridColumns>
                                     <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
                                     <TreeGridColumn Field="nomination" HeaderText="Nomination" Width="20%"></TreeGridColumn>
@@ -152,7 +167,7 @@
                 {
                     _tablename = "tbl_" + value + "_Category";
                     selectedTable = "tbl_" + value + "_Type";
-                    selectedTypeTable = "tbl_" + value + "_Type_Info";
+                    selectedTypeTable = "tbl_" +value + "_Type_Info";
                 }
                 CategoryName = "";
                 TypeName = "";
@@ -235,13 +250,15 @@
                 var messageForm = Modal.Show<TaskManagementInterface.Shared.TypeInfo.ChooseTypeModal>("Choose", parameters);
 
                 var result = await messageForm.Result;
+                string[] value = (string[])result.Data;
 
                 try
                 {
-                    TypeUID = result.Data.ToString();
+                    TypeUID = value[0];
+                    TypeName = value[1];
 
                     Tree = await typeinfoservice.SelectAllActiveRecByType(selectedTypeTable, TypeUID);
-                    TypeName = (await typeinfoservice.SelectCurrentType(selectedTable, TypeUID)).nomination;
+
                 }
                 catch
                 {

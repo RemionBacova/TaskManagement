@@ -25,7 +25,7 @@ namespace TaskManagementInterface.Services.TypeInfo
            
 
 
-            return await http.GetJsonAsync<List<tbl_TABLE_TYPE_INFO>>("http://192.168.1.109/api/tbl_" + tableName + "_TYPE_INFO/GetByType?TYPE_UID=" + uid);
+            return await http.GetJsonAsync<List<tbl_TABLE_TYPE_INFO>>("http://192.168.1.109/api/" + tableName + "/GetByType?TYPE_UID=" + uid);
 
         }
         public async Task<tbl_TABLE_TYPE> SelectCurrentType(string table, string id)

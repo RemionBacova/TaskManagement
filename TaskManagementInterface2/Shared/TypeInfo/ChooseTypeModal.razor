@@ -66,9 +66,10 @@
 
     private void SelectParent(tbl_TABLE_TYPE e)
     {
-
-        string value = e.uid.ToString();
-        BlazoredModal.Close(ModalResult.Ok(value));
+        string[] Value = new string[2];
+        Value[0] = e.uid.ToString();
+        Value[1] = e.nomination.ToString();
+        BlazoredModal.Close(ModalResult.Ok(Value));
 
     }
  }
