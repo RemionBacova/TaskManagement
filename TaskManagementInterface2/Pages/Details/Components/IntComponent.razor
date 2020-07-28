@@ -2,12 +2,13 @@
 @using TaskManagementInterface.Data.Models.Info 
 <div>
     <div class="form-inline">
-        <div class="form-group col-md-3">
+        <div class="col-md-6">
             <SfTextBox Placeholder='Type Info' @bind-Value="infoModel.nomination"></SfTextBox>
         </div>
-        <div class="form-group col-md-3">
-            <SfNumericTextBox TValue="int?"  @bind="CurrentValue" @bind:event="oninput"></SfNumericTextBox>
+        <div class="col-md-6">
+            <SfTextBox Placeholder='Int' @bind-Value="infoModel.nomination"></SfTextBox>
         </div>
+
     </div>
 </div>
 

@@ -1,26 +1,31 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskManagementInterface.Data;
 using TaskManagementInterface.Data.Models.Info;
 using TaskManagementInterface.Services.Info;
 
 namespace TaskManagementInterface.Pages.Details
 {
-    public abstract class DetailsAbstract : DetailsInterface
+    public abstract class DetailsAbstract : ComponentBase,DetailsInterface
     {
+        public string stringValue = "";
         InfoServices _infoServices = new InfoServices();
         List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
-        public  async Task<string> GetValue(string Entity, string ElementID, string TypeInfoID)
+        List<tbl_TABLE_INFO> saveInfo = new List<tbl_TABLE_INFO>();
+        public  async Task<SelectInfo_Model> GetValue(string Entity, string ElementID, string TypeInfoID)
         {
-            //ne baze te entity dhe element id dhe type info id do duhet te maresh vleren eshte njesoj per te gjitha 
         
-           dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
-           return "";
+            dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
+            return dataInfo.FirstOrDefault();
 
         }
 
-        public abstract bool Save(string Entity, string ElementID, string TypeID, string Value);
-       
+        public async Task<Error> Save(string Entity, string ElementID, string TypeID, string Value)
+        {
+            return await _infoServices.AddInfo(Entity, ElementID, TypeID, stringValue);
+        }
     }
 }

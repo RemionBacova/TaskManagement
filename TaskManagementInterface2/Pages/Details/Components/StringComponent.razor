@@ -1,28 +1,73 @@
-﻿@using TaskManagementInterface.Services.Info
+﻿@page "/stringcomponent/{Entity}/{ElementID}/{TypeInfoID}"
+@inherits StringComponentBase
 @using TaskManagementInterface.Data.Models.Info
+@using TaskManagementInterface.Services.Info
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Type Info' @bind-Value="infoModel.nomination"></SfTextBox>
+            <SfTextBox Placeholder='Type Info' @bind-Value="@Nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfTextBox TValue="string?" @bind="CurrentValue" @bind:event="oninput"></SfTextBox>
+            <SfTextBox  @bind-Value="@ValueGetSet" ></SfTextBox>
         </div>
     </div>
 </div>
 
 @code {
 
-    private string CurrentValue = "";
-    private SelectInfo_Model infoModel = new SelectInfo_Model();
-    public InfoServices _infoServices = new InfoServices();
-    public List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
 
-    public async Task OnInitializedAsync(string Entity, string ElementID, string TypeInfoID)
+    public string Nomination = "";
+
+    private string Value = "";
+    public string ValueGetSet
     {
-        dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
-        CurrentValue = dataInfo[0].value;
+        get { return this.Value; }
+        set
+        {
+            this.Value = value;
+            this.stringValue = value.ToString();
+        }
+    }
 
+    public string ParseValue(string InternalValue)
+    {
+        this.stringValue = Value.ToString();
+        return InternalValue.ToString();
+    }
+
+    public StringComponent()
+    {
+        try
+        {
+            //SelectInfo_Model selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            //this.ValueGetSet = ParseValue(selectInfo_Model.nomination.ToString());
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public StringComponent(string Entity, string ElementID, string TypeInfoID)
+    {
+        this.Entity = Entity;
+        this.ElementID = ElementID;
+        this.TypeInfoID = TypeInfoID;
+        try
+        {
+            SelectInfo_Model selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            this.ValueGetSet = ParseValue(selectInfo_Model.nomination.ToString());
+            this.Nomination = selectInfo_Model.nomination;
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
 }

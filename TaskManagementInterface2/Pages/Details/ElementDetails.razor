@@ -1,0 +1,144 @@
+﻿
+@page "/elementDetails/{tablename}"
+@using Syncfusion.Blazor.Grids
+@using TaskManagementInterface.Data.ELEMENT
+@using TaskManagementInterface.Services.Element
+@using Syncfusion.Blazor.DropDowns
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.TypeInfo
+@using TaskManagementInterface.Data.Models 
+@using TaskManagementInterface.Pages.Details.Components 
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <SfDropDownList TValue="string" Placeholder="Select Category" TItem="tbl_TABLE_CATEGORY" DataSource="@CategoryDropDown">
+                <DropDownListEvents TValue="string" ValueChange="EntitieClicked"></DropDownListEvents>
+                <DropDownListFieldSettings Value="uid" Text="nomination"></DropDownListFieldSettings>
+            </SfDropDownList>
+
+            <SfGrid TValue="tbl_Element" DataSource="@Element">
+                <GridColumns>
+
+                    <GridColumn Field=@nameof(tbl_Element.type) HeaderText="Type" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                    <GridColumn Field=@nameof(tbl_Element.uid) HeaderText="ID" TextAlign="TextAlign.Right" Width="80"></GridColumn>
+                    <GridColumn Field=@nameof(tbl_Element.code) HeaderText="Code" Width="150"></GridColumn>
+
+                    <GridColumn Field=@nameof(tbl_Element.nomination) HeaderText="Name" Width="130"></GridColumn>
+
+                    <GridColumn Field=@nameof(tbl_Element.description) HeaderText="Title" Width="120"></GridColumn>
+                    <GridColumn HeaderText="Select" Field="@nameof(tbl_Element.uid)" Width="200">
+                        <Template>
+                            @{
+                                <div>
+                                    <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => SelectElement(context as tbl_Element, context as tbl_Element))">
+                                        <span class="e-btn-icon e-icons e-edit "></span>
+                                    </button>
+
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+        <div class="col-md-6">
+            <br />
+            @foreach (DetailsAbstract counter in detailsAbstracts)
+            {
+
+                try
+                {
+                    RenderFragment renderFragment = (builder) => { builder.OpenComponent(0, counter.GetType()); builder.CloseComponent(); };
+                    <div>
+                        <div>Before the component</div>
+                        @renderFragment
+                        <div>Afterthe component</div>
+                    </div>
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+
+        </div>
+    </div>
+
+
+@code {
+
+    [Parameter] public string tablename { get; set; }
+    string _returnMessage = "";
+    string Category = "";
+
+    public List<tbl_Element> Element = new List<tbl_Element>();
+    public List<tbl_TABLE_CATEGORY> CategoryDropDown = new List<tbl_TABLE_CATEGORY>();
+    ElementServices elementServices = new ElementServices();
+
+
+    TypeInfoServices typeInfoServices = new TypeInfoServices();
+
+    List<DetailsAbstract> detailsAbstracts = new List<DetailsAbstract>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        CategoryDropDown = await elementServices.SelectAllActiveRecCategory(tablename);
+        StateHasChanged();
+    }
+
+    private async Task EntitieClicked(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        string value = e.Value.ToString();
+        Element = await elementServices.SelectAllActiveRec(value, tablename);
+        Category = value;
+        StateHasChanged();
+    }
+
+    private void SelectElement(tbl_Element uid, tbl_Element typeuid)
+    {
+
+        string value = uid.uid.ToString();
+        string valueType = typeuid.type_uid.ToString();
+        detailsAbstracts.Clear();
+        loadInfo(tablename, value, valueType);
+
+    }
+
+    private async void loadInfo(string Entity, string ElementId, string valueType)
+    {
+        List<tbl_TABLE_TYPE_INFO> list = await typeInfoServices.SelectAllActiveRecByType(Entity, valueType);
+        foreach (tbl_TABLE_TYPE_INFO z in list)
+        {
+            switch (z.property)
+            {
+
+                case 2:
+                    {
+                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.StringComponent(Entity, ElementId, z.uid.ToString()));
+                    }
+                    break;
+
+                case 4:
+                    {
+                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.BoolComponent(Entity, ElementId, z.uid.ToString()));
+                    }
+                    break;
+                default:
+                    {
+                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.StringComponent(Entity, ElementId, z.uid.ToString()));
+                    }
+                    break;
+
+            }
+            StateHasChanged();
+        }
+
+
+    }
+
+}
+
+

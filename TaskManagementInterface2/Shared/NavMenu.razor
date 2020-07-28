@@ -156,7 +156,7 @@
                         <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToEmployees" class="action-button" > <i class="fa fa-cog mr-2"></i>Actions</button>
                     </div>
                     <div class="d-flex">
-                        <a class="my-auto">Details</a>
+                        <button data-toggle="collapse" data-target=".collapse.show" @onclick="RedirectToElementDetails" class="action-button"> <i class="fa fa-cog mr-2"></i>Details</button>
                     </div>
                     <div class="d-flex">
                         <a class="my-auto">Documents</a>
@@ -490,6 +490,12 @@
     public void RedirectToAssets()
     {
         NavigationManager.NavigateTo("/ElementAdministration/Assets");
+
+    }
+
+    public void RedirectToElementDetails()
+    {
+        NavigationManager.NavigateTo("/elementDetails/Employees");
 
     }
 
