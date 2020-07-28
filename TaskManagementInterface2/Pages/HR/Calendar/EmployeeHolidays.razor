@@ -1,0 +1,67 @@
+﻿@page "/EmployeeHolidays"
+@using Syncfusion.Blazor.Schedule
+@inject IModalService Modal
+@using TaskManagementInterface.Shared.Calendar
+    <div >
+        <div class="row">
+            <div class="col-md-7">
+                <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
+            </div>
+            <div class="col-md-1">
+                <SfButton @onclick="SelectEmployee">...</SfButton>
+            </div>
+        </div>
+        <br />
+            <br />
+        <div class="row">
+            <div class="col-md-8">
+                <SfSchedule TValue="string" Width="100%" Height="510px" SelectedDate="@(new DateTime(2020, 07, 24))">
+                    <ScheduleViews>
+                        <ScheduleEvents TValue="string" @onclick="OnCreated" ></ScheduleEvents>
+                        <ScheduleView Option="View.Month"></ScheduleView>
+                    </ScheduleViews>
+                </SfSchedule>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <SfButton>Add</SfButton>
+                    </div>
+                    <div class="col-md-3">
+                        <SfButton>Edit</SfButton>
+                    </div>
+                    <div class="col-md-2">
+                        <SfButton>Delete</SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <SfTextBox></SfTextBox>
+                <SfTextBox></SfTextBox>
+                <SfTextBox></SfTextBox>
+            </div>
+        </div>
+    </div>
+@*custom code start*@
+
+@*custom code end*@
+@code{
+    string EmployeeName = "";
+    string _returnMessage = "";
+
+    protected async Task SelectEmployee()
+    {
+        var messageForm = Modal.Show<ChooseEmployee>("Choose Emplyee");
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+        string[] test = (string[])result.Data;
+
+        EmployeeName =test[1];
+
+    }
+    public void OnCreated(object args)
+    {
+
+    }
+}

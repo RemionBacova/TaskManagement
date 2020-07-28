@@ -1,0 +1,74 @@
+﻿@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Grids
+@using TaskManagementInterface.Data
+@inject IModalService ModalService
+@inject HttpClient http
+@using TaskManagementInterface.Data.Models
+@using TaskManagementInterface.Services.Element 
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <SfGrid DataSource="@TreeData" TValue="tbl_TABLE_Model" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
+            <GridEvents TValue="tbl_TABLE_Model"> </GridEvents>
+            <GridPageSettings PageSize="100"></GridPageSettings>
+            <GridColumns>
+                <GridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></GridColumn>
+                <GridColumn Field="nomination" HeaderText="Nomination" Width="20%"></GridColumn>
+                <GridColumn Field="description" HeaderText="Description" Width="20%"></GridColumn>
+                <GridColumn HeaderText="Select" Field="uid" Width="200">
+                    <Template>
+                        @{
+                                                    <div>
+                                                        <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(()=>SelectEmployee(context as tbl_TABLE_Model))">
+                                                            <span class="e-btn-icon e-icons e-edit "></span>
+                                                        </button>
+
+                                                    </div> 
+                         }
+                    </Template>
+                </GridColumn>
+            </GridColumns>
+        </SfGrid>
+    </div>
+</div>
+
+
+
+
+
+
+
+@code { 
+
+        [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+        //SelectAllActiveTypesByCategory
+
+
+        TaskManagementInterface.Services.Calendar.CalendarServices CalendarService = new TaskManagementInterface.Services.Calendar.CalendarServices();
+    public List<tbl_TABLE_Model> TreeData = new List<tbl_TABLE_Model>();
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        TreeData = await CalendarService.SelectAllActiveEmployees();
+        StateHasChanged();
+    }
+
+
+    private void SelectEmployee(tbl_TABLE_Model e)
+    {
+
+        string[] val = new string[2];
+        val[0] = e.uid.ToString();
+        val[1] = e.nomination;
+        StateHasChanged();
+        BlazoredModal.Close(ModalResult.Ok(val));
+
+
+    }
+ }
