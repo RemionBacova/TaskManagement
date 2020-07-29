@@ -6,10 +6,10 @@
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+            <SfTextBox CssClass="e-outline" Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
-        <div class="form-group col-md-3">
-            <SfTimePicker TValue="TimeSpan?" @bind-Value="@TimeValue" @onfocusout="Save"></SfTimePicker>
+        <div class="form-group col-md-6">
+            <SfTimePicker CssClass="e-outline" TValue="TimeSpan?" @bind-Value="@TimeValue" @onfocusout="Save"></SfTimePicker>
         </div>
     </div>
 </div>

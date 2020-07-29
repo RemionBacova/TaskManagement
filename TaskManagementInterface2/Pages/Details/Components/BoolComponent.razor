@@ -7,10 +7,10 @@
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+            <SfTextBox CssClass="e-outline" Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
-        <div class="form-group col-md-3">
-            <SfCheckBox @bind-Checked="selectinfovalue" @onfocusout="Save"></SfCheckBox>
+        <div class="form-group col-md-6">
+            <SfCheckBox CssClass="e-outline" @bind-Checked="selectinfovalue" @onfocusout="Save"></SfCheckBox>
         </div>
     </div>
 </div>

@@ -5,10 +5,10 @@
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Type Info' @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+            <SfTextBox CssClass="e-outline" Placeholder='Type Info' @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
-        <div class="form-group col-md-3">
-            <SfTextBox  @bind-Value="@selectInfo_Model.value" @onfocusout="Save"></SfTextBox>
+        <div class="form-group col-md-6">
+            <SfTextBox CssClass="e-outline" @bind-Value="@selectInfo_Model.value" @onfocusout="Save"></SfTextBox>
         </div>
     </div>
 </div>
