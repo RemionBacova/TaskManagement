@@ -1,44 +1,59 @@
 ﻿@page "/boolcomponent/{Entity}/{ElementID}/{TypeInfoID}"
-@inherits BoolComponentBase
+@inherits DetailsAbstract
 @using TaskManagementInterface.Data.Models.Info
 @using TaskManagementInterface.Services.Info
 
-    <div>
-        <div class="form-inline">
-            <div class="form-group col-md-3">
-                <SfTextBox Placeholder='Type Info' @bind-Value="@infoModel.nomination"></SfTextBox>
-            </div>
-            <div class="form-group col-md-3">
-                <SfCheckBox TValue="bool?" @bind="@ValueGetSet" @bind:event="oninput"></SfCheckBox>
-            </div>
+
+<div>
+    <div class="form-inline">
+        <div class="form-group col-md-3">
+            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+        </div>
+        <div class="form-group col-md-3">
+            <SfCheckBox @bind-Checked="selectinfovalue" @onfocusout="Save"></SfCheckBox>
         </div>
     </div>
+</div>
 
-@code{
+@code {
 
-    private bool Value = false;
-    public bool ValueGetSet
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
+
+
+    SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+    InfoServices infoServices = new InfoServices();
+    public bool selectinfovalue { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        get { return this.Value; }
-        set
+        try
         {
-            this.Value = value;
-            this.stringValue = value.ToString();
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            selectinfovalue = bool.Parse(selectInfo_Model.value);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
-    public bool ParseValue()
+
+    public async Task Save()
     {
-        this.stringValue = Value.ToString();
-        return bool.Parse(this.infoModel.value);
+        if (selectinfovalue == false)
+        {
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, selectinfovalue.ToString());
+        }
     }
 
-    public BoolComponent(string Entity, string ElementID, string TypeInfoID)
-    {
-        Task<SelectInfo_Model> task = GetValue(Entity, ElementID, TypeInfoID);
-        task.Wait(60);
-        this.infoModel = task.Result;
-        this.ValueGetSet = ParseValue();
-        StateHasChanged();
-    }
+
+
+
+
 }

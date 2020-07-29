@@ -1,17 +1,56 @@
-﻿
-
+﻿@page "/datecomponent/{Entity}/{ElementID}/{TypeInfoID}"
+@inherits DetailsAbstract
+@using TaskManagementInterface.Services.Info
+@using TaskManagementInterface.Data.Models.Info
+@using Syncfusion.Blazor.Calendars
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-         
+            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-       
+            <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue" @onfocusout="Save"></SfDatePicker>
         </div>
     </div>
 </div>
-@code{
 
+@code {
+
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
+
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+    SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+    InfoServices infoServices = new InfoServices();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            DateValue = Convert.ToDateTime(selectInfo_Model.value);
+
+
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+
+    public async Task Save()
+    {
+        if (!DateValue.HasValue)
+        {
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, DateValue.ToString());
+        }
+    }
 
 }
-

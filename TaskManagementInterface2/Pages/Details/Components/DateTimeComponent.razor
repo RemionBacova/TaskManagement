@@ -1,29 +1,56 @@
-﻿@using TaskManagementInterface.Services.Info
+﻿@page "/datetimecomponent/{Entity}/{ElementID}/{TypeInfoID}"
+@inherits DetailsAbstract
+@using TaskManagementInterface.Services.Info
 @using TaskManagementInterface.Data.Models.Info
 @using Syncfusion.Blazor.Calendars
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Type Info' @bind-Value="infoModel.nomination"></SfTextBox>
+            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfTimePicker TValue="DateTime" @bind="CurrentValue" @bind:event="oninput"></SfTimePicker>
+            <SfDateTimePicker TValue="DateTime?" @bind-Value="@DateValue" @onfocusout="Save"></SfDateTimePicker>
         </div>
     </div>
 </div>
 
 @code {
 
-    private DateTime CurrentValue = new DateTime(2000, 1, 1);
-    private SelectInfo_Model infoModel = new SelectInfo_Model();
-    public InfoServices _infoServices = new InfoServices();
-    public List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
 
-    public async Task OnInitializedAsync(string Entity, string ElementID, string TypeInfoID)
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+    SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+    InfoServices infoServices = new InfoServices();
+
+    protected override async Task OnInitializedAsync()
     {
-        dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
-        CurrentValue = DateTime.Parse(dataInfo[0].value);
+        try
+        {
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            DateValue = Convert.ToDateTime(selectInfo_Model.value);
 
+
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+
+    public async Task Save()
+    {
+        if (!DateValue.HasValue)
+        {
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, DateValue.ToString());
+        }
     }
 
 }

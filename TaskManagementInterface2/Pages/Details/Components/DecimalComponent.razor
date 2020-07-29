@@ -1,29 +1,60 @@
-﻿@using TaskManagementInterface.Services.Info
+﻿@page "/decimalcomponent/{Entity}/{ElementID}/{TypeInfoID}"
+@inherits DetailsAbstract
+@using TaskManagementInterface.Services.Info
 @using TaskManagementInterface.Data.Models.Info
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Type Info' @bind-Value="infoModel.nomination"></SfTextBox>
+            <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfNumericTextBox TValue="decimal?" @bind="CurrentValue" @bind:event="oninput"></SfNumericTextBox>
+
+            <SfNumericTextBox TValue="decimal" @bind-Value="selectinfovalue" ShowSpinButton=false @onfocusout="Save">
+                @*<NumericTextBoxEvents TValue="int?" ValueChange="Save"></NumericTextBoxEvents>*@
+            </SfNumericTextBox>
         </div>
     </div>
 </div>
 
 @code {
 
-    private decimal CurrentValue = 0;
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
 
-    private SelectInfo_Model infoModel = new SelectInfo_Model();
-    public InfoServices _infoServices = new InfoServices();
-    public List<SelectInfo_Model> dataInfo = new List<SelectInfo_Model>();
 
-    public async Task OnInitializedAsync(string Entity, string ElementID, string TypeInfoID)
+    SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+    InfoServices infoServices = new InfoServices();
+    public decimal selectinfovalue { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
     {
-        dataInfo = await _infoServices.SelectEntitiesInfo(Entity, ElementID, TypeInfoID);
-        CurrentValue = decimal.Parse(dataInfo[0].value);
+        try
+        {
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+            selectinfovalue = Convert.ToDecimal(selectInfo_Model.value);
 
+
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+
+    public async Task Save()
+    {
+        if (selectinfovalue == 0)
+        {
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, selectinfovalue.ToString());
+        }
     }
 
 }
