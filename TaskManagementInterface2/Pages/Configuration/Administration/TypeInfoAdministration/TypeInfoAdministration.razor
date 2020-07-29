@@ -67,20 +67,7 @@
                 <div class="col-lg-12 control-section">
                     <div class="content-wrapper">
                         <div class="row">
-                            @*// public int uid { get; set; }
-                            public int? uid_sup { get; set; }
-                            public int? type_uid { get; set; }
-                            public string nomination { get; set; }
-                            public string description { get; set; }
-                            public string description2 { get; set; }
-                            public string description3 { get; set; }
-                            public int? property { get; set; }
-                            public bool mandatory { get; set; }
-                            public float? queue { get; set; }
-                            public int? db { get; set; }
-                            public bool file { get; set; }
-                            public bool? active { get; set; }
-                            public int? user_uid { get; set; }*@
+                           
 
                             <SfTreeGrid DataSource="@Tree" TValue="tbl_TABLE_TYPE_INFO" IdMapping="uid" ParentIdMapping="uid_sup" TreeColumnIndex="1" AllowPaging="true" AllowSorting="true" Height="600">
                                 <TreeGridEvents TValue="tbl_TABLE_TYPE_INFO"> </TreeGridEvents>
@@ -90,9 +77,8 @@
                                     <TreeGridColumn Field="uid" HeaderText="ElementID" Width="0" TextAlign="TextAlign.Left"></TreeGridColumn>
                                     <TreeGridColumn Field="nomination" HeaderText="Nomination" Width="20%"></TreeGridColumn>
                                     <TreeGridColumn Field="description" HeaderText="Description" Width="20%"></TreeGridColumn>
-                                    <TreeGridColumn Field="description2" HeaderText="UID" Width="20%"></TreeGridColumn>
-                                    <TreeGridColumn Field="description3" HeaderText="Types" Width="20%">
-                                    </TreeGridColumn>
+                                    <TreeGridColumn Field="property" HeaderText="UID" Width="20%"></TreeGridColumn>
+                                 
                                     <TreeGridColumn Field="mandatory" HeaderText="Mandatory" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
                                     <TreeGridColumn Field="file" HeaderText="File" Width="20%" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" EditType="Syncfusion.Blazor.Grids.EditType.BooleanEdit" DisplayAsCheckBox="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></TreeGridColumn>
                                     <TreeGridColumn HeaderText="Edit" Field="uid" Width="200">
@@ -102,7 +88,7 @@
                                                     var buttonCH = (context as tbl_TABLE_TYPE_INFO);
 
                                                     <div>
-                                                        @if (buttonCH.description3 == "DropDown")
+                                                        @if (buttonCH.property ==5)
                                                         {
                                                             <button class="e-control e-btn e-lib e-flat e-edit-delete e-Editbutton e-icon-btn" @onclick="(() => ShowModalCh(context as tbl_TABLE_TYPE_INFO))">
                                                                 <span class="e-btn-icon e-icons e-search "></span>
