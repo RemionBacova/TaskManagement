@@ -9,7 +9,7 @@
             <SfTextBox Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfTimePicker TValue="DateTime?" @bind-Value="@DateValue" @onfocusout="Save"></SfTimePicker>
+            <SfTimePicker TValue="TimeSpan?" @bind-Value="@TimeValue" @onfocusout="Save"></SfTimePicker>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
     [Parameter] public string ElementID { get; set; }
     [Parameter] public string TypeInfoID { get; set; }
 
-    public DateTime? DateValue { get; set; } = DateTime.Now;
+    public TimeSpan? TimeValue { get; set; }
     SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
     InfoServices infoServices = new InfoServices();
 
@@ -29,7 +29,7 @@
         try
         {
             selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
-            DateValue = Convert.ToDateTime(selectInfo_Model.value);
+            TimeValue = TimeSpan.Parse(selectInfo_Model.value);
 
 
 
@@ -43,13 +43,13 @@
 
     public async Task Save()
     {
-        if (!DateValue.HasValue)
+        if (!TimeValue.HasValue)
         {
             await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
         }
         else
         {
-            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, DateValue.ToString());
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, TimeValue.ToString());
         }
     }
 

@@ -20,7 +20,7 @@
     [Parameter] public string ElementID { get; set; }
     [Parameter] public string TypeInfoID { get; set; }
 
-    public DateTime? DateValue { get; set; } = DateTime.Now;
+    public DateTime? DateValue { get; set; }
     SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
     InfoServices infoServices = new InfoServices();
 
@@ -48,8 +48,9 @@
             await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
         }
         else
+
         {
-            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, DateValue.ToString());
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, DateValue.Value.Date.ToString("MM-dd-yyyy"));
         }
     }
 
