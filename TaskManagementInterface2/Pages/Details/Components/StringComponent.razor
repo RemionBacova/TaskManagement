@@ -1,49 +1,34 @@
 ﻿@page "/stringcomponent/{Entity}/{ElementID}/{TypeInfoID}"
-@inherits StringComponentBase
+@inherits DetailsAbstract
 @using TaskManagementInterface.Data.Models.Info
 @using TaskManagementInterface.Services.Info
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox Placeholder='Type Info' @bind-Value="@Nomination"></SfTextBox>
+            <SfTextBox Placeholder='Type Info' @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
         </div>
         <div class="form-group col-md-3">
-            <SfTextBox  @bind-Value="@ValueGetSet" ></SfTextBox>
+            <SfTextBox  @bind-Value="@selectInfo_Model.value" @onfocusout="Save"></SfTextBox>
         </div>
     </div>
 </div>
 
 @code {
 
-    [Parameter] public string Entity { get; set; }
-    [Parameter] public string ElementID { get; set; }
-    [Parameter] public string TypeInfoID { get; set; }
+        [Parameter] public string Entity { get; set; }
+        [Parameter] public string ElementID { get; set; }
+        [Parameter] public string TypeInfoID { get; set; }
 
-    public string Nomination = "";
 
-    private string Value = "";
-    public string ValueGetSet
-    {
-        get { return this.Value; }
-        set
-        {
-            this.Value = value;
-            this.stringValue = value.ToString();
-        }
-    }
+        SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+        InfoServices infoServices = new InfoServices();
 
-    public string ParseValue(string InternalValue)
-    {
-        this.stringValue = Value.ToString();
-        return InternalValue.ToString();
-    }
 
-    public StringComponent()
+    protected override async Task OnInitializedAsync()
     {
         try
         {
-            //SelectInfo_Model selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
-            //this.ValueGetSet = ParseValue(selectInfo_Model.nomination.ToString());
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
 
         }
         catch (Exception ex)
@@ -52,22 +37,20 @@
         }
     }
 
-    public StringComponent(string Entity, string ElementID, string TypeInfoID)
-    {
-        this.Entity = Entity;
-        this.ElementID = ElementID;
-        this.TypeInfoID = TypeInfoID;
-        try
-        {
-            SelectInfo_Model selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
-            this.ValueGetSet = ParseValue(selectInfo_Model.nomination.ToString());
-            this.Nomination = selectInfo_Model.nomination;
 
-        }
-        catch (Exception ex)
+    public async Task Save()
+    { if (selectInfo_Model.value == "")
         {
-            Console.WriteLine(ex.Message);
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, selectInfo_Model.value);
         }
     }
+
+
+
+
 
 }

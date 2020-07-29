@@ -44,24 +44,10 @@
         </div>
         <div class="col-md-6">
             <br />
-            @foreach (DetailsAbstract counter in detailsAbstracts)
+            @foreach (var item in listOfComponents)
             {
-
-                try
-                {
-                    RenderFragment renderFragment = (builder) => { builder.OpenComponent(0, counter.GetType()); builder.CloseComponent(); };
-                    <div>
-                        <div>Before the component</div>
-                        @renderFragment
-                        <div>Afterthe component</div>
-                    </div>
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                @item;
             }
-
 
         </div>
     </div>
@@ -80,12 +66,13 @@
 
     TypeInfoServices typeInfoServices = new TypeInfoServices();
 
-    List<DetailsAbstract> detailsAbstracts = new List<DetailsAbstract>();
+    public List<RenderFragment> listOfComponents = new List<RenderFragment>();
 
 
     protected override async Task OnInitializedAsync()
     {
         CategoryDropDown = await elementServices.SelectAllActiveRecCategory(tablename);
+
         StateHasChanged();
     }
 
@@ -102,7 +89,7 @@
 
         string value = uid.uid.ToString();
         string valueType = typeuid.type_uid.ToString();
-        detailsAbstracts.Clear();
+        listOfComponents.Clear();
         loadInfo(tablename, value, valueType);
 
     }
@@ -113,32 +100,40 @@
         List <tbl_TABLE_TYPE_INFO> list = await typeInfoServices.SelectAllActiveRecByType(tablename, valueType);
         foreach (tbl_TABLE_TYPE_INFO z in list)
         {
-            switch (z.property)
-            {
+            AddComponent(Entity, ElementId, z.uid.ToString(), z.property.ToString());
+        }
+        StateHasChanged();
+    }
 
-                case 2:
-                    {
-                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.StringComponent(Entity, ElementId, z.uid.ToString()));
-                    }
-                    break;
 
-                case 4:
-                    {
-                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.BoolComponent(Entity, ElementId, z.uid.ToString()));
-                    }
-                    break;
-                default:
-                    {
-                        detailsAbstracts.Add(new TaskManagementInterface.Pages.Details.Components.StringComponent(Entity, ElementId, z.uid.ToString()));
-                    }
-                    break;
 
-            }
-            StateHasChanged();
+    void AddComponent(string Entity, string ElementID, string TypeInfoId, string propertyType)
+    {
+        listOfComponents.Add(CreateDynamicComponent(Entity, ElementID, TypeInfoId, propertyType));
+
+    }
+
+
+    RenderFragment CreateDynamicComponent(string Entity, string ElementID, string TypeInfoId, string propertyType) => builder =>
+    {
+        if (propertyType == "1")
+        {
+            builder.OpenComponent(0, typeof(IntComponent));
+        }
+        if (propertyType == "2")
+        {
+            builder.OpenComponent(0, typeof(StringComponent));
         }
 
 
-    }
+
+        builder.AddAttribute(1, "Entity", Entity);
+        builder.AddAttribute(2, "ElementID", ElementID);
+        builder.AddAttribute(3, "TypeInfoId", TypeInfoId);
+        builder.CloseComponent();
+
+    };
+
 
 }
 

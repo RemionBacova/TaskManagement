@@ -226,7 +226,7 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 string readSp = "SelectActiveRecByTypeInfo_ElementID";
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table",  tableName );
-                queryParameters.Add("@@type_info_uid", typeinfoUid);
+                queryParameters.Add("@type_info_uid", typeinfoUid);
                 queryParameters.Add("@ElementId", elementUid);
                 return await db.QueryAsync<tbl_TABLE_INFO_Model1>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
