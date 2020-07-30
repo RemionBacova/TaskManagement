@@ -2,7 +2,7 @@
 @using Syncfusion.Blazor.Schedule
 @inject IModalService Modal
 @using TaskManagementInterface.Shared.Calendar
-    <div >
+    <div>
         <div class="row">
             <div class="col-md-7">
                 <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
@@ -12,13 +12,15 @@
             </div>
         </div>
         <br />
-            <br />
+        <br />
         <div class="row">
             <div class="col-md-8">
-                <SfSchedule TValue="string" Width="100%" Height="510px" SelectedDate="@(new DateTime(2020, 07, 24))">
+                <SfSchedule TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
                     <ScheduleViews>
-                        <ScheduleEvents TValue="string" @onclick="OnCreated" ></ScheduleEvents>
-                        <ScheduleView Option="View.Month"></ScheduleView>
+                        <ScheduleEvents TValue="AppointmentData"  OnCellClick="OnCellClick"></ScheduleEvents>
+
+                        <ScheduleEventSettings TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                        <ScheduleView StartHour="false" Option="View.Month"></ScheduleView>
                     </ScheduleViews>
                 </SfSchedule>
                 <br />
@@ -47,6 +49,30 @@
 @code{
     string EmployeeName = "";
     string _returnMessage = "";
+    string EmployeeId = "";
+    List<TaskManagementInterface.Data.tbl_TABLE_Model> Holidays = new List<Data.tbl_TABLE_Model>();
+    TaskManagementInterface.Services.Calendar.CalendarServices calendarservice = new Services.Calendar.CalendarServices();
+    AppointmentData model = new AppointmentData();
+    SfSchedule<AppointmentData> ScheduleRef;
+
+    List<AppointmentData> DataSource = new List<AppointmentData>();
+
+    public async void OnCellClick(CellClickEventArgs args)
+    {
+        var CellData = await ScheduleRef.GetCellDetails(args.Element);
+        var data = model.Name;
+        //To get the current cell details
+        await ScheduleRef.OpenEditor(CellData, CurrentAction.Add);   //To open editor window on cell click
+    }
+
+    public class AppointmentData
+    {
+        public int Id { get; set; }
+        public string Subject { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Name { get; set; }
+    }
 
     protected async Task SelectEmployee()
     {
@@ -58,9 +84,24 @@
         string[] test = (string[])result.Data;
 
         EmployeeName =test[1];
+        EmployeeId = test[0];
+        Holidays = await calendarservice.SelectEmployeeHolidays(EmployeeId.ToString());
+        foreach (var element in Holidays)
+        {
+            AppointmentData model = new AppointmentData();
+
+            model.Id = element.uid;
+            model.Subject = element.description;
+            model.StartTime = DateTime.Parse(element.nomination);
+            model.EndTime = DateTime.Parse(element.nomination);
+            model.Name = element.description;
+            DataSource.Add(model);
+
+        }
+        StateHasChanged();
 
     }
-    public void OnCreated(object args)
+    public void OnCreated(object sender)
     {
 
     }
