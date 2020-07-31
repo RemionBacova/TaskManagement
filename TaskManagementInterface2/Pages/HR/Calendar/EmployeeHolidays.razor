@@ -15,12 +15,11 @@
         <br />
         <div class="row">
             <div class="col-md-8">
-                <SfSchedule TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
+                <SfSchedule  TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
                     <ScheduleViews>
-                        <ScheduleEvents TValue="AppointmentData"  OnCellClick="OnCellClick"></ScheduleEvents>
-
-                        <ScheduleEventSettings TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
-                        <ScheduleView StartHour="false" Option="View.Month"></ScheduleView>
+                        <ScheduleEvents TValue="AppointmentData" OnCellClick="OnCellClick" OnEventClick="OnEventClick"></ScheduleEvents>
+                        <ScheduleEventSettings   EnableMaxHeight="true" TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                        <ScheduleView  Option="View.Month"></ScheduleView>
                     </ScheduleViews>
                 </SfSchedule>
                 <br />
@@ -57,12 +56,18 @@
 
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
+
     public async void OnCellClick(CellClickEventArgs args)
     {
-        var CellData = await ScheduleRef.GetCellDetails(args.Element);
-        var data = model.Name;
-        //To get the current cell details
-        await ScheduleRef.OpenEditor(CellData, CurrentAction.Add);   //To open editor window on cell click
+        var cellData = await ScheduleRef.GetCellDetails(args.Element); //to get the current cell details
+        await ScheduleRef.OpenEditor(cellData, CurrentAction.Add); //to open the editor on cell click
+    }
+
+
+    public async void OnEventClick(EventClickArgs<AppointmentData> args)
+    {
+        var CellData = await ScheduleRef.GetEventDetails(args.Element);
+
     }
 
     public class AppointmentData
