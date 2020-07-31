@@ -32,6 +32,8 @@ namespace TaskManagementInterface.Services.Calendar
         {
             return await http.GetJsonAsync<List<tbl_TABLE_CATEGORY>>("http://192.168.1.109/api/tbl_" + table + "_CATEGORY");
         }
+
+       
         ///
         public async Task<List<tbl_INTER_EMPLOYE_C_T>>SelectHolidays(string parameters)
         {
@@ -68,6 +70,12 @@ namespace TaskManagementInterface.Services.Calendar
         {
             return (await http.GetJsonAsync<List<tbl_TABLE_TYPE>>("http://192.168.1.109/api/tbl_" + _tablename + "_Type/" + uid)).FirstOrDefault();
         }
+
+        public async Task<List<tbl_TABLE_Model>> SelectEmployeeHolidays( string uid)
+        {
+            return await http.GetJsonAsync<List<tbl_TABLE_Model>>("http://192.168.1.109/api/tbl_INTER_EMP_T_C_/SelectEmployeeHolidays/" + uid);
+        }
+
         public async Task<Error> Add(tbl_Element Model, string tableName, string parameters)
         {
             string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.type_uid + "/" + Model.nomination + "/" + Model.category + parameters;
