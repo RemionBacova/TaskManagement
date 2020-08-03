@@ -40,7 +40,11 @@ namespace WebApiTaskManagement.Controllers.Others
             return await _repository.spi_inter_emp_type_cat(empuid, calType_uid, calCat_uid, user_uid);
         }
 
-      
 
+        [HttpGet("SelectEmployeeHolidays/{empuid}")]
+        public async Task<IEnumerable<tbl_TABLE_Model>>SelectEmployee_Holidays(int? empuid)
+        {
+            return await _repository.SelectEmployee_Holidays(empuid);
+        }
     }
 }

@@ -46,7 +46,16 @@ namespace WebApiTaskManagement.Repository.Concrete
                 return await db.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
-
+        public async Task<IEnumerable<tbl_TABLE_Model>> SelectEmployee_Holidays(int? empuid)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectEmployee_Holiday";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@employee_uid", empuid);
+                return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
         public async Task<IEnumerable<SelectError_Model>> DeleteRow( string empUID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
