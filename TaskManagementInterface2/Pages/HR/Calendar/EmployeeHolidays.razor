@@ -60,7 +60,6 @@
     public async void OnCellClick(CellClickEventArgs args)
     {
         var cellData = await ScheduleRef.GetCellDetails(args.Element); //to get the current cell details
-        await ScheduleRef.OpenEditor(cellData, CurrentAction.Add); //to open the editor on cell click
     }
 
 
@@ -70,6 +69,7 @@
 
     }
 
+
     public class AppointmentData
     {
         public int Id { get; set; }
@@ -78,6 +78,7 @@
         public DateTime EndTime { get; set; }
         public string Name { get; set; }
     }
+
 
     protected async Task SelectEmployee()
     {
@@ -106,6 +107,7 @@
         StateHasChanged();
 
     }
+
     public void OnCreated(object sender)
     {
 
