@@ -2,6 +2,7 @@
 @using Syncfusion.Blazor.Schedule
 @inject IModalService Modal
 @using TaskManagementInterface.Shared.Calendar
+@using TaskManagementInterface.Shared.Holidays 
     <div>
         <div class="row">
             <div class="col-md-7">
@@ -18,14 +19,14 @@
                 <SfSchedule  TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
                     <ScheduleViews>
                         <ScheduleEvents TValue="AppointmentData" OnCellClick="OnCellClick" OnEventClick="OnEventClick"></ScheduleEvents>
-                        <ScheduleEventSettings   EnableMaxHeight="true" TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                        <ScheduleEventSettings    TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
                         <ScheduleView  Option="View.Month"></ScheduleView>
                     </ScheduleViews>
                 </SfSchedule>
                 <br />
                 <div class="row">
                     <div class="col-md-3">
-                        <SfButton>Add</SfButton>
+                        <SfButton @onclick="AddHoliday"> Add</SfButton>
                     </div>
                     <div class="col-md-3">
                         <SfButton>Edit</SfButton>
@@ -36,9 +37,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <SfTextBox></SfTextBox>
-                <SfTextBox></SfTextBox>
-                <SfTextBox></SfTextBox>
+                <SfTextBox></SfTextBox>+
+
             </div>
         </div>
     </div>
@@ -53,6 +53,8 @@
     TaskManagementInterface.Services.Calendar.CalendarServices calendarservice = new Services.Calendar.CalendarServices();
     AppointmentData model = new AppointmentData();
     SfSchedule<AppointmentData> ScheduleRef;
+    public string typeUid = "";
+    public string categoryId = "";
 
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
@@ -77,6 +79,21 @@
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Name { get; set; }
+
+    }
+
+    public async Task  AddHoliday()
+    {
+        var parameters = new ModalParameters();
+
+        parameters.Add(nameof(AddHolidays.EmployeeId), EmployeeId);
+        parameters.Add(nameof(AddHolidays.TypeId), typeUid);
+        parameters.Add(nameof(AddHolidays.CategoryId), categoryId);
+
+        var messageForm = Modal.Show<AddHolidays>("AddHoliday");
+        var result = await messageForm.Result;
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
     }
 
 
@@ -101,9 +118,12 @@
             model.StartTime = DateTime.Parse(element.nomination);
             model.EndTime = DateTime.Parse(element.nomination);
             model.Name = element.description;
+            typeUid = element.type_uid.ToString();
+            categoryId = element.category.ToString();
             DataSource.Add(model);
 
         }
+
         StateHasChanged();
 
     }
