@@ -1,0 +1,66 @@
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.Element
+@using TaskManagementInterface.Data.ELEMENT
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Schedule 
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <SfDatePicker CssClass="e-outline" TValue="DateTime?" @bind-Value="@DateValue" ></SfDatePicker>
+        <br />
+    </div>
+    <div class="col-md-4">
+        <SfTextBox @bind-Value="@Reason"/>
+    </div>
+    
+</div>
+
+
+
+
+<SfButton @onclick="SubmitForm" CssClass="e-info">Submit</SfButton>
+<SfButton @onclick="Cancel" CssClass="e-primary">Cancel</SfButton>
+
+
+
+
+
+@code { [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+
+
+
+    [Parameter] public int EmployeeId { get; set; }
+    [Parameter] public string TypeId { get; set; }
+    [Parameter] public int CategoryId { get; set; }
+
+
+    string Reason = "";
+    private string returnValue = "";
+    public DateTime? DateValue { get; set; }
+    TaskManagementInterface.Services.Calendar.CalendarServices calendarservice = new Services.Calendar.CalendarServices();
+
+
+
+
+
+    void SubmitForm() => Save();
+    void Cancel() => BlazoredModal.Cancel();
+
+    protected async Task Save()
+    {
+
+        //Procedura e insertit.
+
+        if (DateValue != null)
+        {
+            BlazoredModal.Close(ModalResult.Ok(DateValue));
+        }
+    }
+
+
+}

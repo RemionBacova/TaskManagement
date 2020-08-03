@@ -75,7 +75,10 @@ namespace TaskManagementInterface.Services.Calendar
         {
             return await http.GetJsonAsync<List<tbl_TABLE_Model>>("http://192.168.1.109/api/tbl_INTER_EMP_T_C_/SelectEmployeeHolidays/" + uid);
         }
+        
 
+        //duhet krijuar shtimi te inter_emp
+        
         public async Task<Error> Add(tbl_Element Model, string tableName, string parameters)
         {
             string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.type_uid + "/" + Model.nomination + "/" + Model.category + parameters;
