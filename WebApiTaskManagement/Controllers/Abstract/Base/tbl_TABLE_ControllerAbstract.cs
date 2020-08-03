@@ -58,6 +58,12 @@ namespace WebApiTaskManagement.Controllers.Abstract.Base
             return await _repository.SelectAllActiveRecPlusType(tableName,category);
 
         }
+        [HttpGet("SelectCalendar")]
+        public async Task<IEnumerable<tbl_TABLE_Model_Calendar>> SelectAllActiveRec_Calendar(string employeeUID)
+        {
+            return await _repository.SelectAllActiveRec_Calendar(employeeUID);
+
+        }
 
         [HttpGet("{uid}")]
         public async Task<IEnumerable<tbl_TABLE_Model>> SelectActiveRecByUID(string uid)

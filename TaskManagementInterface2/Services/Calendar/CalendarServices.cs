@@ -71,9 +71,11 @@ namespace TaskManagementInterface.Services.Calendar
             return (await http.GetJsonAsync<List<tbl_TABLE_TYPE>>("http://192.168.1.109/api/tbl_" + _tablename + "_Type/" + uid)).FirstOrDefault();
         }
 
-        public async Task<List<tbl_TABLE_Model>> SelectEmployeeHolidays( string uid)
+        
+
+        public async Task<List<TaskManagementInterface.Data.Calendar.tbl_TABLE_Model_Calendar>> SelectEmployeeHolidays( string uid)
         {
-            return await http.GetJsonAsync<List<tbl_TABLE_Model>>("http://192.168.1.109/api/tbl_INTER_EMP_T_C_/SelectEmployeeHolidays/" + uid);
+            return await http.GetJsonAsync<List<TaskManagementInterface.Data.Calendar.tbl_TABLE_Model_Calendar>>("http://192.168.1.109/api/tbl_CALENDAR/SelectCalendar?employeeUID=" + uid);
         }
         
 
@@ -82,6 +84,23 @@ namespace TaskManagementInterface.Services.Calendar
         public async Task<Error> Add(tbl_Element Model, string tableName, string parameters)
         {
             string url = "http://192.168.1.109/api/tbl_" + tableName + "/" + Model.type_uid + "/" + Model.nomination + "/" + Model.category + parameters;
+            try
+            {
+                List<Error> list = await http.PostJsonAsync<List<Error>>(url, "");
+                return list.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Error error = new Error();
+                error.ERRORDESCRIPTION = ex.ToString();
+                return error;
+            }
+        }
+
+
+        public async Task<Error> AddHolidays(string parameters,string typeUID,string nomination, string CategoryUid)
+        {
+            string url = "http://192.168.1.109/api/tbl_CALENDAR/"+typeUID + "/" +nomination + "/" + CategoryUid + parameters;
             try
             {
                 List<Error> list = await http.PostJsonAsync<List<Error>>(url, "");
