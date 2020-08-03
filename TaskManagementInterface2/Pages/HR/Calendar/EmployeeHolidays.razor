@@ -2,47 +2,57 @@
 @using Syncfusion.Blazor.Schedule
 @inject IModalService Modal
 @using TaskManagementInterface.Shared.Calendar
-@using TaskManagementInterface.Shared.Holidays 
-@using TaskManagementInterface.Data.CALENDAR 
-    <div>
-        <div class="row">
-            <div class="col-md-7">
-                <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
-            </div>
-            <div class="col-md-1">
-                <SfButton @onclick="SelectEmployee">...</SfButton>
-            </div>
+@using TaskManagementInterface.Shared.Holidays
+@using TaskManagementInterface.Data.CALENDAR
+<div>
+    <div class="row">
+        <div class="col-md-7">
+            <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
         </div>
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-md-8">
-                <SfSchedule   EditorTemplate="false" TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
-                    <ScheduleViews>
-                        <ScheduleEvents  TValue="AppointmentData"  OnEventClick="OnEventClick"></ScheduleEvents>
-                        <ScheduleEventSettings  AllowAdding="false" AllowDeleting="false" AllowEditing="false"    TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
-                        <ScheduleView  Option="View.Month"></ScheduleView>
-                    </ScheduleViews>
-                </SfSchedule>
-                <br />
-                <div class="row">
-                    <div class="col-md-3">
-                        <SfButton @onclick="AddHoliday"> Add</SfButton>
-                    </div>
-                    <div class="col-md-3">
-                        <SfButton>Edit</SfButton>
-                    </div>
-                    <div class="col-md-2">
-                        <SfButton>Delete</SfButton>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <SfTextBox></SfTextBox>+
-
-            </div>
+        <div class="col-md-1">
+            <SfButton @onclick="SelectEmployee">...</SfButton>
         </div>
     </div>
+    <br />
+   
+    <div class="row">
+        <div class="col-md-3">
+            <SfButton @onclick="AddHoliday"> Add</SfButton>
+        </div>
+    </div>
+    <br />
+    
+    
+    <div class="row">
+
+        <div class="col-md-8">
+            <SfSchedule EditorTemplate="false" TValue="AppointmentData" @ref="@ScheduleRef" Width="100%" Height="510px" SelectedDate="@DateTime.Now">
+                <ScheduleViews>
+                    <ScheduleEvents TValue="AppointmentData" OnEventClick="OnEventClick"></ScheduleEvents>
+                    <ScheduleEventSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false"  TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                    <ScheduleView Option="View.Month"></ScheduleView>
+                </ScheduleViews>
+            </SfSchedule>
+            </div>
+
+            <div class="col-md-3">
+                <SfTextBox></SfTextBox>
+                <SfTextBox></SfTextBox>
+                <SfTextBox></SfTextBox>
+
+            </div>
+
+        </div>
+
+    <br/>
+        <div>
+            <div class="col-md-2">
+                <SfButton>Delete</SfButton>
+            </div>
+        </div>
+
+    </div>
+
 @*custom code start*@
 
 @*custom code end*@
@@ -60,7 +70,7 @@
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
 
-   
+
 
 
     public async void OnEventClick(EventClickArgs<AppointmentData> args)
@@ -79,7 +89,7 @@
 
     }
 
-    public async Task  AddHoliday()
+    public async Task AddHoliday()
     {
         var parameters = new ModalParameters();
 
@@ -102,7 +112,7 @@
 
         string[] test = (string[])result.Data;
 
-        EmployeeName =test[1];
+        EmployeeName = test[1];
         EmployeeId = test[0];
         Holidays = await calendarservice.SelectEmployeeHolidays(EmployeeId.ToString());
         foreach (var element in Holidays)
@@ -123,5 +133,5 @@
         StateHasChanged();
 
     }
-   
+
 }
