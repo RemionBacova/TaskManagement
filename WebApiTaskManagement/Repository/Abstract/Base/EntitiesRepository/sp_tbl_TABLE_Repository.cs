@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTaskManagement.Controllers.Employees_Controllers;
 using WebApiTaskManagement.Models;
 using WebApiTaskManagement.Models.Abstract.Base;
 
@@ -154,6 +155,17 @@ namespace WebApiTaskManagement.Repository.Abstract.Base.EntitiesRepository
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@table", "tbl_" + tableName);
                 return await db.QueryAsync<tbl_TABLE_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<IEnumerable<tbl_TABLE_Model_Calendar>> SelectAllActiveRec_Calendar(string employeeUID)
+        {
+            using (IDbConnection db = new SqlConnection(_constring))
+            {
+                string readSp = "SelectEmployee_Holiday";
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@employee_uid", employeeUID);
+                return await db.QueryAsync<tbl_TABLE_Model_Calendar>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
         #endregion

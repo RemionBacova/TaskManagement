@@ -3,6 +3,7 @@
 @inject IModalService Modal
 @using TaskManagementInterface.Shared.Calendar
 @using TaskManagementInterface.Shared.Holidays 
+@using TaskManagementInterface.Data.CALENDAR 
     <div>
         <div class="row">
             <div class="col-md-7">
@@ -16,10 +17,10 @@
         <br />
         <div class="row">
             <div class="col-md-8">
-                <SfSchedule  TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
+                <SfSchedule   EditorTemplate="false" TValue="AppointmentData"  @ref="@ScheduleRef"  Width="100%" Height="510px" SelectedDate="@DateTime.Now">
                     <ScheduleViews>
-                        <ScheduleEvents TValue="AppointmentData" OnCellClick="OnCellClick" OnEventClick="OnEventClick"></ScheduleEvents>
-                        <ScheduleEventSettings    TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                        <ScheduleEvents  TValue="AppointmentData"  OnEventClick="OnEventClick"></ScheduleEvents>
+                        <ScheduleEventSettings  AllowAdding="false" AllowDeleting="false" AllowEditing="false"    TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
                         <ScheduleView  Option="View.Month"></ScheduleView>
                     </ScheduleViews>
                 </SfSchedule>
@@ -49,7 +50,7 @@
     string EmployeeName = "";
     string _returnMessage = "";
     string EmployeeId = "";
-    List<TaskManagementInterface.Data.tbl_TABLE_Model> Holidays = new List<Data.tbl_TABLE_Model>();
+    List<TaskManagementInterface.Data.Calendar.tbl_TABLE_Model_Calendar> Holidays = new List<TaskManagementInterface.Data.Calendar.tbl_TABLE_Model_Calendar>();
     TaskManagementInterface.Services.Calendar.CalendarServices calendarservice = new Services.Calendar.CalendarServices();
     AppointmentData model = new AppointmentData();
     SfSchedule<AppointmentData> ScheduleRef;
@@ -59,11 +60,11 @@
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
 
-    public async void OnCellClick(CellClickEventArgs args)
-    {
-        var cellData = await ScheduleRef.GetCellDetails(args.Element); //to get the current cell details
-        await ScheduleRef.OpenEditor(cellData, CurrentAction.Add); //to open the editor on cell click
-    }
+    //public async void OnCellClick(CellClickEventArgs args)
+    //{
+    //    var cellData = await ScheduleRef.GetCellDetails(args.Element); //to get the current cell details
+    //    await ScheduleRef.OpenEditor(cellData, CurrentAction.Add); //to open the editor on cell click
+    //}
 
 
     public async void OnEventClick(EventClickArgs<AppointmentData> args)
@@ -86,11 +87,11 @@
     {
         var parameters = new ModalParameters();
 
-        parameters.Add(nameof(AddHolidays.EmployeeId), EmployeeId);
+        parameters.Add(nameof(AddHolidays.EmployeeId), Convert.ToInt32(EmployeeId));
         parameters.Add(nameof(AddHolidays.TypeId), typeUid);
         parameters.Add(nameof(AddHolidays.CategoryId), categoryId);
 
-        var messageForm = Modal.Show<AddHolidays>("AddHoliday");
+        var messageForm = Modal.Show<AddHolidays>("AddHoliday", parameters);
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
@@ -117,17 +118,14 @@
             model.StartTime = DateTime.Parse(element.nomination);
             model.EndTime = DateTime.Parse(element.nomination);
             model.Name = element.description;
-            typeUid = element.type_uid.ToString();
-            categoryId = element.category.ToString();
+
             DataSource.Add(model);
 
         }
-
+        typeUid = Holidays.FirstOrDefault().type_uid.ToString();
+        categoryId = Holidays.FirstOrDefault().calendaR_CATEGORY_UID.ToString();
         StateHasChanged();
 
     }
-    public void OnCreated(object sender)
-    {
-
-    }
+   
 }

@@ -5,19 +5,24 @@
 @using TaskManagementInterface.Data.ELEMENT
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Schedule 
+@using Syncfusion.Blazor.DropDowns 
 
 
 
-<div class="row">
-    <div class="col-md-8">
-        <SfDatePicker CssClass="e-outline" TValue="DateTime?" @bind-Value="@DateValue" ></SfDatePicker>
-        <br />
+    <div class="row">
+        <SfDropDownList TValue="string" Placeholder="Select Category" TItem="tbl_TABLE_CATEGORY" DataSource="@categoryDropdown">
+            <DropDownListEvents TValue="string" ValueChange="OnChange"></DropDownListEvents>
+            <DropDownListFieldSettings Text="nomination" Value="uid"></DropDownListFieldSettings>
+        </SfDropDownList>
+        <SfDropDownList TValue="string" Placeholder="Select Type" TItem="TaskManagementInterface.Data.Models.tbl_TABLE_TYPE" DataSource="@TypeDropdown">
+            <DropDownListEvents TValue="string" ValueChange="OnChangeType"></DropDownListEvents>
+            <DropDownListFieldSettings Text="nomination" Value="uid"></DropDownListFieldSettings>
+        </SfDropDownList>
+            <SfDatePicker CssClass="e-outline" TValue="DateTime?" @bind-Value="@DateValue"></SfDatePicker>
+            
+            <SfTextBox @bind-Value="@Reason" />
+
     </div>
-    <div class="col-md-4">
-        <SfTextBox @bind-Value="@Reason"/>
-    </div>
-    
-</div>
 
 
 
@@ -36,7 +41,10 @@
 
     [Parameter] public int EmployeeId { get; set; }
     [Parameter] public string TypeId { get; set; }
-    [Parameter] public int CategoryId { get; set; }
+    [Parameter] public string CategoryId { get; set; }
+    List<tbl_TABLE_CATEGORY> categoryDropdown = new List<tbl_TABLE_CATEGORY>();
+    List<TaskManagementInterface.Data.Models.tbl_TABLE_TYPE> TypeDropdown = new List<TaskManagementInterface.Data.Models.tbl_TABLE_TYPE>();
+
 
 
     string Reason = "";
@@ -47,14 +55,52 @@
 
 
 
-
     void SubmitForm() => Save();
     void Cancel() => BlazoredModal.Cancel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        string table = "CALENDAR";
+        categoryDropdown = await calendarservice.SelectAllActiveRecCategory(table);
+    }
+
+    public async Task OnChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        CategoryId = e.Value.ToString();
+        TypeDropdown = await calendarservice.SelectAllActiveTypesByCategory("CALENDAR", CategoryId);
+
+
+    }
+
+    public async Task OnChangeType(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string> e)
+    {
+        TypeId = e.Value.ToString();
+    }
+
 
     protected async Task Save()
     {
 
+
         //Procedura e insertit.
+        tbl_Element model = new tbl_Element();
+        Error errorModel = new Error();
+
+
+
+        string parameters = "?DESCRIPTION=" + Reason + "&DESCRIPTION2="+ EmployeeId;
+        //string parameters,string typeUID,string nomination, string CategoryUid
+        errorModel = await calendarservice.AddHolidays(parameters,TypeId,DateValue.Value.ToString("MM-dd-yyyy"), CategoryId);
+
+        var parametersResult = new ModalParameters();
+        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+        var result = await messageForm.Result;
+
+
+
+
 
         if (DateValue != null)
         {
