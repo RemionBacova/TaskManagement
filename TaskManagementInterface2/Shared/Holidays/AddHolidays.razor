@@ -40,8 +40,8 @@
 
 
     [Parameter] public int EmployeeId { get; set; }
-    [Parameter] public string TypeId { get; set; }
-    [Parameter] public string CategoryId { get; set; }
+    public string TypeId = "";
+    public string CategoryId = "";
     List<tbl_TABLE_CATEGORY> categoryDropdown = new List<tbl_TABLE_CATEGORY>();
     List<TaskManagementInterface.Data.Models.tbl_TABLE_TYPE> TypeDropdown = new List<TaskManagementInterface.Data.Models.tbl_TABLE_TYPE>();
 

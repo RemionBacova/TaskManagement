@@ -60,7 +60,7 @@
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
 
-   
+
 
 
     public async void OnEventClick(EventClickArgs<AppointmentData> args)
@@ -84,8 +84,7 @@
         var parameters = new ModalParameters();
 
         parameters.Add(nameof(AddHolidays.EmployeeId), Convert.ToInt32(EmployeeId));
-        parameters.Add(nameof(AddHolidays.TypeId), typeUid);
-        parameters.Add(nameof(AddHolidays.CategoryId), categoryId);
+      
 
         var messageForm = Modal.Show<AddHolidays>("AddHoliday", parameters);
         var result = await messageForm.Result;
@@ -118,10 +117,11 @@
             DataSource.Add(model);
 
         }
-        typeUid = Holidays.FirstOrDefault().type_uid.ToString();
-        categoryId = Holidays.FirstOrDefault().calendaR_CATEGORY_UID.ToString();
+
+        //typeUid = Holidays.FirstOrDefault().type_uid.ToString();
+        //categoryId = Holidays.FirstOrDefault().calendaR_CATEGORY_UID.ToString();
         StateHasChanged();
 
     }
-   
+
 }
