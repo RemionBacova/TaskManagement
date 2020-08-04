@@ -1,10 +1,37 @@
-﻿\<h3>DeleteHolidays</h3>
+﻿@inject HttpClient http
+@inject IModalService Modal
+@using TaskManagementInterface.Data
+@using TaskManagementInterface.Services.Element
+@using TaskManagementInterface.Data.ELEMENT
+
+
+<div class="row">
+    <label>
+        Do you want to delete this evening ?
+    </label>
+    <SfButton @onclick="Delete">Yes</SfButton>  <SfButton>No</SfButton>
+</div>
+
+
+@code { 
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    [Parameter] public string EventId { get; set; }
+    [Parameter] public string EmployeeId { get; set; }
+    TaskManagementInterface.Services.Calendar.CalendarServices calendarservice = new Services.Calendar.CalendarServices();
+
+    public async Task Delete()
+    {
+        Error errorModel = new Error();
 
 
 
+        errorModel = await calendarservice.DeleteElement(EventId,"CALENDAR");
+        var parametersResult = new ModalParameters();
+        parametersResult.Add(nameof(ErrorDatabaseMessage.ErrorName), errorModel.ERRORDESCRIPTION);
+        parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
+        var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
+        var result = await messageForm.Result;
+        BlazoredModal.Close(ModalResult.Ok(EmployeeId));
 
-@code {
-    
-    
-    
     }
+}

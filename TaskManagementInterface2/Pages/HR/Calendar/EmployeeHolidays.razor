@@ -26,13 +26,15 @@
     <div class="row">
 
         <div class="col-md-8">
-            <SfSchedule EditorTemplate="false" TValue="AppointmentData" @ref="@ScheduleRef" Width="100%" Height="510px" SelectedDate="@DateTime.Now">
-                <ScheduleViews>
-                    <ScheduleEvents TValue="AppointmentData" OnEventClick="OnEventClick"></ScheduleEvents>
-                    <ScheduleEventSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false"  TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
-                    <ScheduleView Option="View.Month"></ScheduleView>
-                </ScheduleViews>
-            </SfSchedule>
+            <SfSchedule TValue="AppointmentData" @ref="@ScheduleRef" Width="100%" Height="510px" SelectedDate="@DateTime.Now">
+               
+
+                    <ScheduleViews>
+                        <ScheduleEvents  TValue="AppointmentData" OnEventClick="OnEventClick"></ScheduleEvents>
+                        <ScheduleEventSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false" TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
+                        <ScheduleView Option="View.Month"></ScheduleView>
+                    </ScheduleViews>
+                    </SfSchedule>
             </div>
 
             <div class="col-md-3">
@@ -76,6 +78,16 @@
     public async void OnEventClick(EventClickArgs<AppointmentData> args)
     {
         var CellData = await ScheduleRef.GetEventDetails(args.Element);
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(DeleteHolidays.EmployeeId), EmployeeId);
+        parameters.Add(nameof(DeleteHolidays.EventId), CellData.Id.ToString());
+        var messageForm = Modal.Show<DeleteHolidays>("Delete Event ?", parameters);
+        var result = await messageForm.Result;
+
+        if (!result.Cancelled)
+            _returnMessage = result.Data?.ToString() ?? string.Empty;
+        EmployeeId = result.Data.ToString();
+        await FillData();
 
     }
 
@@ -92,14 +104,15 @@
     public async Task AddHoliday()
     {
         var parameters = new ModalParameters();
-
         parameters.Add(nameof(AddHolidays.EmployeeId), Convert.ToInt32(EmployeeId));
-      
-
         var messageForm = Modal.Show<AddHolidays>("AddHoliday", parameters);
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
+
+
+        EmployeeId = result.Data.ToString();
+        await FillData();
     }
 
     protected async Task SelectEmployee()
@@ -113,6 +126,17 @@
 
         EmployeeName = test[1];
         EmployeeId = test[0];
+        await FillData();
+
+    
+        StateHasChanged();
+
+    }
+
+    private async Task FillData()
+    {
+        Holidays.Clear();
+        DataSource.Clear();
         Holidays = await calendarservice.SelectEmployeeHolidays(EmployeeId.ToString());
         foreach (var element in Holidays)
         {
@@ -127,11 +151,7 @@
             DataSource.Add(model);
 
         }
-
-        //typeUid = Holidays.FirstOrDefault().type_uid.ToString();
-        //categoryId = Holidays.FirstOrDefault().calendaR_CATEGORY_UID.ToString();
         StateHasChanged();
-
     }
 
 }

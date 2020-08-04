@@ -97,15 +97,13 @@
         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
         var result = await messageForm.Result;
+        BlazoredModal.Close(ModalResult.Ok(EmployeeId));
 
 
 
 
 
-        if (DateValue != null)
-        {
-            BlazoredModal.Close(ModalResult.Ok(DateValue));
-        }
+
     }
 
 
