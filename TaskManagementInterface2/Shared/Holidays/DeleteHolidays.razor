@@ -9,7 +9,7 @@
     <label>
         Do you want to delete this evening ?
     </label>
-    <SfButton @onclick="Delete">Yes</SfButton>  <SfButton>No</SfButton>
+    <SfButton @onclick="Delete">Yes</SfButton>  <SfButton @onclick="Cancel">No</SfButton>
 </div>
 
 
@@ -31,6 +31,11 @@
         parametersResult.Add(nameof(ErrorDatabaseMessage.Id), errorModel.UID);
         var messageForm = Modal.Show<ErrorDatabaseMessage>("Message", parametersResult);
         var result = await messageForm.Result;
+        BlazoredModal.Close(ModalResult.Ok(EmployeeId));
+
+    }
+    public void Cancel()
+    {
         BlazoredModal.Close(ModalResult.Ok(EmployeeId));
 
     }
