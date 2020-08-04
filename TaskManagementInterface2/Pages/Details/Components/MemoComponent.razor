@@ -5,13 +5,14 @@
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox CssClass="e-outline" Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+            <label id="nominationLabel">@selectInfo_Model.nomination</label>
         </div>
         <div class="form-group col-md-6">
             <SfTextBox CssClass="e-outline" @bind-Value="@selectInfo_Model.value" @onfocusout="Save"></SfTextBox>
         </div>
     </div>
 </div>
+
 
 @code {
 
