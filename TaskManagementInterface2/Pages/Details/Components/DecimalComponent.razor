@@ -5,13 +5,10 @@
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
-            <SfTextBox CssClass="e-outline" Readonly="true" @bind-Value="@selectInfo_Model.nomination"></SfTextBox>
+            <label id="nominationLabel">@selectInfo_Model.nomination</label>
         </div>
         <div class="form-group col-md-6">
-
-            <SfNumericTextBox CssClass="e-outline" TValue="decimal" @bind-Value="selectinfovalue" ShowSpinButton=false @onfocusout="Save">
-                @*<NumericTextBoxEvents TValue="int?" ValueChange="Save"></NumericTextBoxEvents>*@
-            </SfNumericTextBox>
+            <SfNumericTextBox CssClass="e-outline" TValue="decimal" @bind-Value="selectinfovalue" ShowSpinButton=false @onfocusout="Save"></SfNumericTextBox>
         </div>
     </div>
 </div>
