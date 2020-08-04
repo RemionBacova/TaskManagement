@@ -86,8 +86,15 @@
 
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
-        EmployeeId = result.Data.ToString();
-        await FillData();
+        try
+        {
+            EmployeeId = result.Data.ToString();
+            await FillData();
+        }
+        catch(Exception e)
+        {
+
+        }
 
     }
 
@@ -109,10 +116,15 @@
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;
+        try
+        {
+            EmployeeId = result.Data.ToString();
+            await FillData();
+        }
+        catch(Exception e)
+        {
 
-
-        EmployeeId = result.Data.ToString();
-        await FillData();
+        }
     }
 
     protected async Task SelectEmployee()
@@ -128,7 +140,7 @@
         EmployeeId = test[0];
         await FillData();
 
-    
+
 
     }
 
