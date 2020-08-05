@@ -2,6 +2,7 @@
 @inherits DetailsAbstract
 @using TaskManagementInterface.Data.Models.Info
 @using TaskManagementInterface.Services.Info
+@using Syncfusion.Blazor.Inputs
 <div>
     <div class="form-inline">
         <div class="form-group col-md-3">
@@ -9,6 +10,11 @@
         </div>
         <div class="form-group col-md-6">
             <img id="imageViewer" src="@path" asp-append-version="true" width="100" height="100" />
+        </div>
+        <div>
+            <SfUploader AutoUpload="false">
+                <UploaderEvents ValueChange="OnChange"></UploaderEvents>
+            </SfUploader>
         </div>
     </div>
 </div>
@@ -19,6 +25,7 @@
     [Parameter] public string ElementID { get; set; }
     [Parameter] public string TypeInfoID { get; set; }
 
+    TaskManagementInterface.Services.Files.UploadFileService uploadFile = new TaskManagementInterface.Services.Files.UploadFileService();
 
     SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
     InfoServices infoServices = new InfoServices();
@@ -50,4 +57,11 @@
         }
     }
 
+    public async void OnChange(UploadChangeEventArgs args)
+    {
+        await uploadFile.AddInfo(Entity, ElementID, TypeInfoID);
+
+
+
+    }
 }
