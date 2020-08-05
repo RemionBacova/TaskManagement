@@ -36,5 +36,14 @@ namespace webapiUploadFile.Controllers
         {
             return await _repository.SelectFileByUID(Element_UID, type_info_uid);
         }
+
+        [HttpDelete("{UID}")]
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
+        {
+            return await _repository.DeleteRow(tableName, UID);
+
+        }
+
+
     }
 }

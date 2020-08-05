@@ -11,53 +11,42 @@ using webapiUploadFile.Models;
 
 namespace webapiUploadFile.Repository
 {
-    public class tbl_FilesRepository
+    public class tbl_FileTypeRepository
     {
-
         private readonly string _constring;
-        public tbl_FilesRepository(IConfiguration configuration)
+        public tbl_FileTypeRepository(IConfiguration configuration)
         {
             _constring = configuration.GetConnectionString("defaultConnection");
         }
 
 
-        public async Task<IEnumerable<SelectError_Model>> spi_Files(string entity, string elementID, string typeUID,string url, string file, string file_type)
+        public async Task<IEnumerable<SelectError_Model>> spi_FilesTypes(string nomination)
         {
-    
+
 
             using (IDbConnection sql = new SqlConnection(_constring))
             {
 
-                string readSp = "spi_tbl_FILES";
+                string readSp = "spi_tbl_FILETYPE";
                 var queryParameters = new DynamicParameters();
-
-
-                queryParameters.Add("@entity", entity);
-                queryParameters.Add("@elementID", elementID);
-                queryParameters.Add("@typeUID", typeUID);
-                queryParameters.Add("@url", url);
-                queryParameters.Add("@file", file);
-                queryParameters.Add("@file_type", file_type);
-
-
+                queryParameters.Add("@nomination", nomination);
                 return await sql.QueryAsync<SelectError_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
 
         }
 
-        public async Task<IEnumerable<tbl_Files>> SelectFileByUID(string Element_UID, string type_info_uid)
+        public async Task<IEnumerable<tbl_FileType_Model>> SelectFileType(int uid)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
-                string readSp = "SelectAllActiveRecFileByUID";
+                string readSp = "SelectAllActiveRecFileType";
                 var queryParameters = new DynamicParameters();
-                queryParameters.Add("@Element_UID", Element_UID);
-                queryParameters.Add("@Type_Info_UID", type_info_uid);
-                return await db.QueryAsync<tbl_Files>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
+                queryParameters.Add("@uid", uid);
+                return await db.QueryAsync<tbl_FileType_Model>(readSp, queryParameters, commandType: CommandType.StoredProcedure);
             }
         }
 
-        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, string UID)
+        public async Task<IEnumerable<SelectError_Model>> DeleteRow(string tableName, int UID)
         {
             using (IDbConnection db = new SqlConnection(_constring))
             {
@@ -69,6 +58,5 @@ namespace webapiUploadFile.Repository
                 ;
             }
         }
-
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using webapiUploadFile.Repository;
+using webapiUploadFile.Services;
 
 namespace webapiUploadFile
 {
@@ -27,6 +28,9 @@ namespace webapiUploadFile
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<tbl_FilesRepository>();
+            services.AddTransient<tbl_FileTypeRepository>();
+            services.AddTransient<FileService>();
+
 
             services.AddMvc();
             //Added Smagger service and also different metadata
