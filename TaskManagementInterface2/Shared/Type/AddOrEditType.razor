@@ -39,25 +39,7 @@
         </div>
 
 
-        <br />
-        <div class="form-inline">
-            <div class="form-group col-md-11">
-                <SfNumericTextBox Placeholder='Code Actual' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.codeactual"/>
-
-
-            </div>
-        </div>
-
-        <br />
-        <br />
-        <div class="form-inline">
-            <div class="form-group col-md-11">
-                <SfNumericTextBox Placeholder='Code Begin' FloatLabelType='@FloatLabelType.Auto' @bind-Value="TypeModel.codebegin"></SfNumericTextBox>
-
-            </div>
-        </div>
-
-        <br />
+       
         <br />
         <div class="form-inline">
             <div class="form-group col-md-11">
@@ -158,11 +140,11 @@
                     if (ParentID == "")
                     {
 
-                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin+ "&codeactual=" + TypeModel.codeactual+"&elcat="+TypeModel.elcat;
+                        parameters = "?description=" + TypeModel.description + "&codeend=" + TypeModel.codeend+"&elcat="+TypeModel.elcat;
                     }
                     else
                     {
-                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend+ "&codebegin=" + TypeModel.codebegin + "&codeactual=" + TypeModel.codeactual+"&elcat=" + TypeModel.elcat;
+                        parameters = "?uid_sup=" + ParentID + "&description=" + TypeModel.description + "&codeend="+TypeModel.codeend + "&elcat=" + TypeModel.elcat;
                     }
 
                     if (!addOrEdit)

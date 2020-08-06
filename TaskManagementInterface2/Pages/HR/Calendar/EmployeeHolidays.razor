@@ -4,50 +4,39 @@
 @using TaskManagementInterface.Shared.Calendar
 @using TaskManagementInterface.Shared.Holidays
 @using TaskManagementInterface.Data.CALENDAR
-<div>
-    <div class="row">
-        <div class="col-md-7">
-            <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
+    <div>
+        <div class="row">
+            <div class="col-md-7">
+                <SfTextBox @bind-Value="EmployeeName"></SfTextBox>
+            </div>
+            <div class="col-md-1">
+                <SfButton @onclick="SelectEmployee">...</SfButton>
+            </div>
         </div>
-        <div class="col-md-1">
-            <SfButton @onclick="SelectEmployee">...</SfButton>
-        </div>
-    </div>
-    <br />
-   
-    <div class="row">
-        <div class="col-md-3">
-            <SfButton @onclick="AddHoliday"> Add</SfButton>
-        </div>
-    </div>
-    <br />
-    
-    
-    <div class="row">
+        <br />
 
-        <div class="col-md-8">
-            <SfSchedule TValue="AppointmentData" @ref="@ScheduleRef" Width="100%" Height="510px" SelectedDate="@DateTime.Now">
-               
-
+        <div class="row">
+            <div class="col-md-3">
+                <SfButton @onclick="AddHoliday"> Add</SfButton>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <SfSchedule TValue="AppointmentData" @ref="@ScheduleRef" Width="100%" Height="510px" SelectedDate="@DateTime.Now">
                     <ScheduleViews>
-                        <ScheduleEvents  TValue="AppointmentData" OnEventClick="OnEventClick"></ScheduleEvents>
+                        <ScheduleEvents TValue="AppointmentData" OnEventClick="OnEventClick"></ScheduleEvents>
                         <ScheduleEventSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false" TValue="AppointmentData" DataSource="@DataSource"></ScheduleEventSettings>
                         <ScheduleView Option="View.Month"></ScheduleView>
                     </ScheduleViews>
-                    </SfSchedule>
+                </SfSchedule>
             </div>
-
             <div class="col-md-3">
                 <SfTextBox></SfTextBox>
                 <SfTextBox></SfTextBox>
                 <SfTextBox></SfTextBox>
-
             </div>
-
         </div>
-
-    <br/>
-        <div>
+        <div class="row">
             <div class="col-md-2">
                 <SfButton>Delete</SfButton>
             </div>
@@ -55,9 +44,7 @@
 
     </div>
 
-@*custom code start*@
 
-@*custom code end*@
 @code{
     string EmployeeName = "";
     string _returnMessage = "";
@@ -68,7 +55,6 @@
     SfSchedule<AppointmentData> ScheduleRef;
     public string typeUid = "";
     public string categoryId = "";
-
     List<AppointmentData> DataSource = new List<AppointmentData>();
 
 
@@ -129,7 +115,7 @@
 
     protected async Task SelectEmployee()
     {
-        var messageForm = Modal.Show<ChooseEmployee>("Choose Emplyee");
+        var messageForm = Modal.Show<ChooseEmployee>("Choose Emplyee"); 
         var result = await messageForm.Result;
         if (!result.Cancelled)
             _returnMessage = result.Data?.ToString() ?? string.Empty;

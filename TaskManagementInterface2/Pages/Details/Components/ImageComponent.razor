@@ -1,5 +1,67 @@
-﻿<h3>ImageComponent</h3>
+﻿@page "/imagecomponent/{Entity}/{ElementID}/{TypeInfoID}"
+@inherits DetailsAbstract
+@using TaskManagementInterface.Data.Models.Info
+@using TaskManagementInterface.Services.Info
+@using Syncfusion.Blazor.Inputs
+<div>
+    <div class="form-inline">
+        <div class="form-group col-md-3">
+            <label id="nominationLabel">@selectInfo_Model.nomination</label>
+        </div>
+        <div class="form-group col-md-6">
+            <img id="imageViewer" src="@path" asp-append-version="true" width="100" height="100" />
+        </div>
+        <div>
+            <SfUploader AutoUpload="false">
+                <UploaderEvents ValueChange="OnChange"></UploaderEvents>
+            </SfUploader>
+        </div>
+    </div>
+</div>
 
 @code {
 
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public string ElementID { get; set; }
+    [Parameter] public string TypeInfoID { get; set; }
+
+    TaskManagementInterface.Services.Files.UploadFileService uploadFile = new TaskManagementInterface.Services.Files.UploadFileService();
+
+    SelectInfo_Model selectInfo_Model = new SelectInfo_Model();
+    InfoServices infoServices = new InfoServices();
+    string path = "https://thumbs.dreamstime.com/z/tv-test-image-card-rainbow-multi-color-bars-geometric-signals-retro-hardware-s-minimal-pop-art-print-suitable-89603635.jpg";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            selectInfo_Model = Task.Run(() => GetValue(Entity, ElementID, TypeInfoID)).Result;
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+
+    public async Task Save()
+    {
+        if (selectInfo_Model.value == "")
+        {
+            await infoServices.DeleteElement(Entity, selectInfo_Model.uid.ToString());
+        }
+        else
+        {
+            await infoServices.AddInfo(Entity, ElementID, TypeInfoID, selectInfo_Model.value);
+        }
+    }
+
+    public async void OnChange(UploadChangeEventArgs args)
+    {
+        await uploadFile.AddInfo(Entity, ElementID, TypeInfoID);
+
+
+
+    }
 }
