@@ -1,0 +1,36 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using webapiMachineReporting.Models;
+using webapiMachineReporting.Repository;
+
+namespace webapiMachineReporting.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MachinesController : ControllerBase
+    {
+        private MachinesRepository _repository;
+
+        public MachinesController(MachinesRepository repository)
+        {
+            this._repository = repository; /*?? throw new ArgumentNullException(nameof(repository));*/
+
+        }
+
+        //Post api/machine
+        [HttpPost]
+        public async Task spi_tbl_Machines([FromBody] Machines machines)
+        {
+            await _repository.spi_tbl_Machines(machines);
+        }
+
+        [HttpGet("GetAll_Machines")]
+        public async Task<IEnumerable<Machines1>> SelectActiveMachines()
+        {
+            return await _repository.SelectActiveMachines();
+        }
+    }
+}
